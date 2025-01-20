@@ -1,0 +1,759 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Hello, world!" href="hello_world.html" /><link rel="prev" title="Development" href="index.html" />
+
+    <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Installation - Bonsai 0.8.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=aefb6c79" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=76091274" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #f7f7f6;
+  --color-background-secondary: #eeeeec;
+  --color-background-border: #cfd0cb;
+  --color-foreground-primary: #2e3436;
+  --color-sidebar-item-background--hover: #f7f7f6;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #651fff;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Bonsai 0.8.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Bonsai 0.8.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/introduction_to_bim.html">Introduction to BIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/explore_model.html">Exploring an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/create_model.html">Creating an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/next_steps.html">Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../viewing/dealing_with_large_models.html">Dealing with large models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/georeferencing.html">Georeferencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/git_support.html">Tracking revisions with Git</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Development</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Development</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hello_world.html">Hello, world!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="undo_system.html">Undo system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_docs.html">Writing documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging Bonsai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/other_addons.html">Other add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/topbar.html">Topbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/properties.html">Properties</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/docs/guides/development/installation.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/edit/v0.8.0/src/bonsai/docs/guides/development/installation.rst" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
+<p>There are different methods of installation, depending on your situation.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#unstable-installation"><span class="std std-ref">Unstable installation</span></a> is recommended
+for power users helping with testing.</p></li>
+<li><p><a class="reference internal" href="#bundling-for-blender"><span class="std std-ref">Bundling for Blender</span></a> is recommended for distributing the add-on.</p></li>
+<li><p><a class="reference internal" href="#live-development-environment"><span class="std std-ref">Live development environment</span></a> is
+recommended for developers who are actively coding.</p></li>
+<li><p><a class="reference internal" href="#packaged-installation"><span class="std std-ref">Packaged installation</span></a> is recommended
+for those who use a package manager.</p></li>
+</ol>
+<section id="system-requirements">
+<h2>System requirements<a class="headerlink" href="#system-requirements" title="Link to this heading">¶</a></h2>
+<p>Bonsai officially supports all major 64-bit platforms, as well as the Python
+version shipped by the Blender Foundation for the most recent three major
+Blender versions:</p>
+<ul class="simple">
+<li><p>64-bit Linux (<code class="docutils literal notranslate"><span class="pre">linux-x64</span></code>)</p></li>
+<li><p>64-bit MacOS Intel (<code class="docutils literal notranslate"><span class="pre">macos-x64</span></code>)</p></li>
+<li><p>64-bit MacOS Silicon (<code class="docutils literal notranslate"><span class="pre">macos-arm64</span></code>)</p></li>
+<li><p>64-bit Windows (<code class="docutils literal notranslate"><span class="pre">windows-x64</span></code>)</p></li>
+<li><p>Blender 4.2 with Python 3.11</p></li>
+</ul>
+<p>Due to significant changes in the Blender extensions system, Blender versions
+&lt;4.2 are not supported.</p>
+<p>Developer builds may exist for different versions of Python but there will be
+no guarantee of the uptime or stability of these builds.</p>
+<p>Other system specifications match the <a class="reference external" href="https://www.blender.org/download/requirements/">Blender Requirements</a> and the <a class="reference external" href="https://vfxplatform.com/">VFX Platform</a> standard.</p>
+<p>Sometimes, a build may be delayed, or contain broken code. We try to avoid this,
+but it happens.</p>
+</section>
+<section id="unstable-installation">
+<h2>Unstable installation<a class="headerlink" href="#unstable-installation" title="Link to this heading">¶</a></h2>
+<p><strong>Unstable installation</strong> is almost the same as <strong>Stable installation</strong>, except
+that they are typically updated every day. To install the <strong>Unstable</strong> version:</p>
+<ol class="arabic">
+<li><p>Open up Blender, and click on <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">&gt;</span> <span class="pre">Preferences</span></code>.</p>
+<img alt="../../_images/install-bonsai-1.png" src="../../_images/install-bonsai-1.png" />
+</li>
+<li><p>Select the <strong>Get Extensions</strong> tab, and press <strong>Allow Online Access</strong>.</p>
+<img alt="../../_images/install-bonsai-2.png" src="../../_images/install-bonsai-2.png" />
+</li>
+<li><p>Go to the <a class="reference external" href="https://github.com/IfcOpenShell/bonsai_unstable_repo">Bonsai Unstable Repository</a>, and drag and drop
+from the appropriate link in the <code class="docutils literal notranslate"><span class="pre">ID</span></code> column of the table into Blender
+depending on your operating system.</p>
+<img alt="../../_images/unstable-drag-drop.png" src="../../_images/unstable-drag-drop.png" />
+</li>
+<li><p>Enable <strong>Check for Updates on Startup</strong> to get updates for daily Bonsai
+builds automatically.</p>
+<img alt="../../_images/unstable-auto-update.png" src="../../_images/unstable-auto-update.png" />
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Instead of drag and drop, you can manually create the repository:</p>
+<p>Open <span class="menuselection">Topbar ‣ Edit ‣ Preferences ‣ Get Extensions
+‣ Repositories (Top Right) ‣ “+” Icon ‣ Add Remote Remository</span>.
+You’ll see a window similar to the one above.</p>
+<p>Use as URL:
+<code class="docutils literal notranslate"><span class="pre">https://raw.githubusercontent.com/IfcOpenShell/bonsai_unstable_repo/main/index.json</span></code>
+and enable <strong>Check for Updates on Startup</strong> if you want them.</p>
+</div>
+<ol class="arabic" start="5">
+<li><p>Search for <strong>Bonsai</strong> in the top left search bar, then press the <strong>Install</strong>
+button.</p>
+<img alt="../../_images/install-bonsai-3.png" src="../../_images/install-bonsai-3.png" />
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure the extension you install has <code class="docutils literal notranslate"><span class="pre">raw.githubusercontent.com</span></code> as
+it’s “Repository” (not <code class="docutils literal notranslate"><span class="pre">extensions.blender.org</span></code>).</p>
+<img alt="../../_images/unstable-repo.png" src="../../_images/unstable-repo.png" />
+</div>
+<ol class="arabic" start="6">
+<li><p>Whenever a new update is available, you’ll see it in the bottom right
+<span class="menuselection">Status Bar</span></p>
+<img alt="../../_images/unstable-icon.png" src="../../_images/unstable-icon.png" />
+</li>
+<li><p>To update, click on the update button in <span class="menuselection">Topbar ‣ Edit ‣
+Preferences ‣ Get Extensions</span>.</p>
+<img alt="../../_images/update.png" src="../../_images/update.png" />
+</li>
+<li><p>After an update, be sure to restart.</p>
+<img alt="../../_images/unstable-restart.png" src="../../_images/unstable-restart.png" />
+</li>
+</ol>
+<p>If you wish to install an <strong>Unstable</strong> version offline, you can download a
+daily or previous build from the <a class="reference external" href="https://github.com/IfcOpenShell/IfcOpenShell/releases?q=bonsai&amp;expanded=true">GitHub releases page</a>,
+then go to <span class="menuselection">Topbar ‣ Edit ‣ Preferences ‣ Get Extensions
+‣ “V” Icon (top right) ‣ Install from Disk</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Installing a previous build is a great way to roll back to previous versions. Uninstall the current version,
+then install the previous version from your disk. Make the install directory into the repo folder, and you can still
+update by the click of a button, when you are ready for the latest build.</p>
+</div>
+</section>
+<section id="bundling-for-blender">
+<h2>Bundling for Blender<a class="headerlink" href="#bundling-for-blender" title="Link to this heading">¶</a></h2>
+<p>Instead of waiting for an official release on the Bonsai website, it
+is possible to make your own Blender add-on from the bleeding edge source code
+of Bonsai. Bonsai is coded in Python and doesn’t require any
+compilation, so this is a relatively easy process.</p>
+<p>Note that Bonsai depends on IfcOpenShell, and IfcOpenShell does require
+compilation. The following instructions will use a pre-built IfcOpenShell
+(using an IfcOpenBot build) for convenience. Instructions on how to compile
+IfcOpenShell is out of scope of this document.</p>
+<p>You can create your own package by using the Makefile as shown below. You can
+choose between a <code class="docutils literal notranslate"><span class="pre">PLATFORM</span></code> of <code class="docutils literal notranslate"><span class="pre">linux</span></code>, <code class="docutils literal notranslate"><span class="pre">macos</span></code>, <code class="docutils literal notranslate"><span class="pre">macosm1</span></code>, and <code class="docutils literal notranslate"><span class="pre">win</span></code>.
+You can choose between a <code class="docutils literal notranslate"><span class="pre">PYVERSION</span></code> of <code class="docutils literal notranslate"><span class="pre">py312</span></code>, <code class="docutils literal notranslate"><span class="pre">py311</span></code>, <code class="docutils literal notranslate"><span class="pre">py310</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">py39</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>src/bonsai
+make<span class="w"> </span>dist<span class="w"> </span><span class="nv">PLATFORM</span><span class="o">=</span>linux<span class="w"> </span><span class="nv">PYVERSION</span><span class="o">=</span>py311
+ls<span class="w"> </span>dist/
+</pre></div>
+</div>
+<p>This will give you a fully packaged Blender add-on zip that you can distribute
+and install.</p>
+</section>
+<section id="live-development-environment">
+<h2>Live development environment<a class="headerlink" href="#live-development-environment" title="Link to this heading">¶</a></h2>
+<p>One option for developers who want to actively develop from source is to follow
+the instructions from <a class="reference internal" href="#bundling-for-blender"><span class="std std-ref">Bundling for Blender</span></a>. However,
+creating a build, uninstalling the old add-on, and installing a new build is a
+slow process.  Although it works, it is very slow, so we do not recommend it.</p>
+<p>A more rapid approach is to follow the
+<a class="reference internal" href="#unstable-installation"><span class="std std-ref">Unstable installation</span></a> method, as this
+provides all dependencies for you out of the box.</p>
+<p>Once you’ve done this, you can replace certain Python files that tend to be
+updated frequently with those from the Git repository. We’re going to use
+symbolic links, so we can code in our Git repository, and see the changes in
+our Blender installation (you will need to restart Blender to see changes).</p>
+<p>For Linux or Mac:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">dev_environment.sh</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Please update REPO_PATH and BLENDER_PATH in the script below.</span>
+<span class="c1"># Default BLENDER_PATH on Mac: &quot;/Users/$USER/Library/Application Support/Blender/4.3&quot;</span>
+<span class="c1"># Default BLENDER_PATH on Linux: &quot;$HOME/.config/blender/4.3&quot;</span>
+<span class="c1"># REPO_PATH=&quot;/path/to/where/your/git/repository/is/cloned/IfcOpenShell&quot;</span>
+<span class="nb">set</span><span class="w"> </span>-e
+<span class="nv">REPO_PATH</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="nv">BLENDER_PATH</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="nv">PACKAGE_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BLENDER_PATH</span><span class="si">}</span><span class="s2">/extensions/.local/lib/python3.11/site-packages&quot;</span>
+<span class="c1"># If you are installing offline, use this instead:</span>
+<span class="c1"># BONSAI_PATH=&quot;${BLENDER_PATH}/extensions/user_default/bonsai&quot;</span>
+<span class="nv">BONSAI_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BLENDER_PATH</span><span class="si">}</span><span class="s2">/extensions/raw_githubusercontent_com/bonsai&quot;</span>
+
+<span class="c1"># Changing to the Git repository directory</span>
+<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPO_PATH</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Copy over compiled IfcOpenShell files</span>
+cp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcopenshell/&quot;</span>*_wrapper*<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcopenshell-python/ifcopenshell/&quot;</span>
+
+<span class="c1"># Remove extension and link to Git</span>
+rm<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BONSAI_PATH</span><span class="si">}</span><span class="s2">/__init__.py&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcopenshell&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifccsv.py&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcdiff.py&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bsdd.py&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bcf&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifc4d&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifc5d&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifccityjson&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcclash&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcpatch&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifctester&quot;</span>
+rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcfm&quot;</span>
+
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/bonsai/bonsai/__init__.py&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BONSAI_PATH</span><span class="si">}</span><span class="s2">/__init__.py&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/bonsai/bonsai&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcopenshell-python/ifcopenshell&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcopenshell&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifccsv/ifccsv.py&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifccsv.py&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcdiff/ifcdiff.py&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcdiff.py&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/bsdd/bsdd.py&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bsdd.py&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/bcf/bcf&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bcf&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifc4d/ifc4d&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifc4d&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifc5d/ifc5d&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifc5d&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifccityjson/ifccityjson&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifccityjson&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcclash/ifcclash&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcclash&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcpatch/ifcpatch&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcpatch&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifctester/ifctester&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifctester&quot;</span>
+ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcfm/ifcfm&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcfm&quot;</span>
+
+<span class="c1"># Manually download some third party dependencies</span>
+<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai/bim/data/gantt&quot;</span>
+wget<span class="w"> </span>https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.js
+wget<span class="w"> </span>https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.css
+<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai/bim/schema&quot;</span>
+wget<span class="w"> </span>https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl
+</pre></div>
+</div>
+</div>
+<p>Or, if you’re on Windows, you can use the batch script below. You need to run
+it as an administrator. Before running it follow the instructions descibed
+in the <cite>rem</cite> tags.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">dev_environment.bat</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">echo</span> off
+
+<span class="k">setlocal</span>
+
+
+<span class="c1">rem Uncomment setting REPO_PATH to use custom path for IfcOpenShell repository.</span>
+<span class="c1">rem Otherwise by default it is assumed script is executed from IfcOpenShell directory.</span>
+<span class="c1">rem SET REPO_PATH=%HOMEDRIVE%\Users\%USERNAME%\Where\Your\Git\Repository\Is\Cloned\IfcOpenShell</span>
+<span class="k">SET</span> <span class="nv">BLENDER_PATH</span><span class="p">=</span><span class="nv">%HOMEDRIVE%</span>\Users\<span class="nv">%USERNAME%</span>\AppData\Roaming\Blender Foundation\Blender\4.3
+<span class="k">SET</span> <span class="nv">PACKAGE_PATH</span><span class="p">=</span><span class="nv">%BLENDER_PATH%</span>\extensions\.local\lib\python3.11\site-packages
+<span class="k">SET</span> <span class="nv">BONSAI_PATH</span><span class="p">=</span><span class="nv">%BLENDER_PATH%</span>\extensions\user_default\bonsai
+
+
+<span class="k">echo</span> SETUP BONSAI ADD-ON LIVE DEVELOPMENT ENVIRONMENT
+<span class="k">echo</span> Update REPO_PATH, BLENDER_PATH, PACKAGE_PATH, BONSAI_PATH in the script above.
+<span class="k">echo</span> This script needs to be run as administrator (to create symbolic links)
+<span class="k">echo</span> Make sure you have followed these steps before proceeding :)
+<span class="k">echo</span>.
+<span class="k">echo</span> Currently set paths:
+<span class="k">if</span> <span class="k">not</span> <span class="k">defined</span> <span class="nv">REPO_PATH</span> <span class="p">(</span>
+    <span class="k">echo</span> REPO_PATH is not set, assuming we&#39;re already in IfcOpenShell directory.
+    <span class="k">set</span> <span class="nv">REPO_PATH</span><span class="p">=</span><span class="nv">%cd%</span>
+<span class="p">)</span>
+<span class="k">echo</span> REPO_PATH=<span class="nv">%REPO_PATH%</span>
+<span class="k">echo</span> BLENDER_PATH=<span class="nv">%BLENDER_PATH%</span>
+<span class="k">echo</span> PACKAGE_PATH=<span class="nv">%PACKAGE_PATH%</span>
+<span class="k">echo</span> BONSAI_PATH=<span class="nv">%BONSAI_PATH%</span>
+<span class="k">pause</span>
+
+<span class="k">echo</span> Changing to the Git repository directory...
+<span class="k">cd</span> <span class="nv">%REPO_PATH%</span>
+
+<span class="k">echo</span> Copy over compiled IfcOpenShell files...
+<span class="k">copy</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcopenshell\*_wrapper*&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcopenshell-python\ifcopenshell\&quot;</span>
+
+<span class="k">echo</span> Remove extension and link to Git...
+<span class="k">del</span> <span class="s2">&quot;</span><span class="nv">%BONSAI_PATH%</span><span class="s2">\__init__.py&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcopenshell&quot;</span>
+<span class="k">del</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifccsv.py&quot;</span>
+<span class="k">del</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcdiff.py&quot;</span>
+<span class="k">del</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bsdd.py&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bcf&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifc4d&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifc5d&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifccityjson&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcclash&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcpatch&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifctester&quot;</span>
+<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcfm&quot;</span>
+
+<span class="k">mklink</span> <span class="s2">&quot;</span><span class="nv">%BONSAI_PATH%</span><span class="s2">\__init__.py&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\bonsai\bonsai\__init__.py&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\bonsai\bonsai&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcopenshell&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcopenshell-python\ifcopenshell&quot;</span>
+<span class="k">mklink</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifccsv.py&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifccsv\ifccsv.py&quot;</span>
+<span class="k">mklink</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcdiff.py&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcdiff\ifcdiff.py&quot;</span>
+<span class="k">mklink</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bsdd.py&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\bsdd\bsdd.py&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bcf&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\bcf\bcf&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifc4d&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifc4d\ifc4d&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifc5d&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifc5d\ifc5d&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifccityjson&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifccityjson\ifccityjson&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcclash&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcclash\ifcclash&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcpatch&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcpatch\ifcpatch&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifctester&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifctester\ifctester&quot;</span>
+<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcfm&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcfm\ifcfm&quot;</span>
+
+<span class="k">echo</span> Manually downloading some third party dependencies...
+curl https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.js -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\data\gantt\jsgantt.js&quot;</span>
+curl https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.css -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\data\gantt\jsgantt.css&quot;</span>
+curl -L https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\schema\Brick.ttl&quot;</span>
+
+<span class="k">pause</span>
+</pre></div>
+</div>
+</div>
+<p>After you modify your code in the Git repository, you will need to restart
+Blender for the changes to take effect.</p>
+<p>If there are changes to the IfcOpenShell binaries, you may replace the two
+<code class="docutils literal notranslate"><span class="pre">*ifcopenshell_wrapper*</span></code> files with new ones downloaded from the automated
+<a class="reference external" href="https://builds.ifcopenshell.org/">IfcOpenShell builds directory</a>.</p>
+<p>The downside with this approach is that if a new dependency is added, or a
+compiled dependency has changed (that is not available via the build
+directory), or the build system changes, you’ll need to fix your setup
+manually. But this is relatively rare. Reviewing the Makefile history, <a class="reference external" href="https://github.com/IfcOpenShell/IfcOpenShell/commits/v0.8.0/src/bonsai/Makefile">here</a>,
+is one quick way to see if a dependency has changed.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>There is a <a class="reference external" href="https://blenderartists.org/uploads/short-url/yto1sjw7pqDRVNQzpVLmn51PEDN.zip">useful Blender Addon</a>
+(see <a class="reference external" href="https://blenderartists.org/t/reboot-blender-addon/640465/13">forum thread</a>) that adds
+a Reboot button in File menu.  In this way, it’s possible to directly
+restart Blender and test the modified source code.  There is also a VS Code
+add-on called <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=JacquesLucke.blender-development">Blender Development</a>
+that has a similar functionality.</p>
+</div>
+</section>
+<section id="packaged-installation">
+<h2>Packaged installation<a class="headerlink" href="#packaged-installation" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Arch Linux</strong>: <a class="reference external" href="https://aur.archlinux.org/packages/ifcopenshell-git/">Direct from Git</a>.</p></li>
+<li><p><strong>Chocolatey on Windows</strong>: <a class="reference external" href="https://community.chocolatey.org/packages/bonsai-nightly/">Unstable</a>.</p></li>
+</ul>
+</section>
+<section id="tips-for-package-managers">
+<h2>Tips for package managers<a class="headerlink" href="#tips-for-package-managers" title="Link to this heading">¶</a></h2>
+<p>Bonsai is fully contained in the <code class="docutils literal notranslate"><span class="pre">bonsai/</span></code> subfolder of the Blender add-ons
+directory. This is typically distributed as a zipfile as per Blender add-on
+conventions. Within this folder, you’ll find the following file structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">core</span><span class="o">/</span> <span class="p">(</span><span class="n">Blender</span> <span class="n">agnostic</span> <span class="n">core</span> <span class="n">logic</span><span class="p">)</span>
+<span class="n">tool</span><span class="o">/</span> <span class="p">(</span><span class="n">Blender</span> <span class="n">specific</span> <span class="n">shared</span> <span class="n">functionality</span><span class="p">)</span>
+<span class="n">bim</span><span class="o">/</span> <span class="p">(</span><span class="n">Blender</span> <span class="n">specific</span> <span class="n">UI</span><span class="p">)</span>
+<span class="n">libs</span><span class="o">/</span> <span class="p">(</span><span class="n">other</span> <span class="n">assets</span><span class="p">)</span>
+<span class="n">wheels</span><span class="o">/</span> <span class="p">(</span><span class="n">dependencies</span><span class="p">)</span>
+<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>This corresponds to the structure found in the source code <a class="reference external" href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/bonsai">here</a>.</p>
+<p>Bonsai is complex, and requires many dependencies, including Python modules,
+binaries, and static assets. When packaged for users, these dependencies are
+bundled with the add-on for convenience.</p>
+<p>If you choose to install Bonsai and use your own system dependencies, the
+source of truth for how dependencies are bundled are found in
+the <a class="reference external" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/Makefile">Makefile</a>
+in the <code class="docutils literal notranslate"><span class="pre">dist</span></code> target.</p>
+</section>
+<section id="add-on-compatibility">
+<h2>Add-on compatibility<a class="headerlink" href="#add-on-compatibility" title="Link to this heading">¶</a></h2>
+<p>Bonsai is a non-trivial add-on. By turning Blender into a graphical front-end
+to a native IFC authoring platform, some fundamental Blender features (such as
+hotkeys for basic functionality like object deletion or duplication) have been
+patched and many dependencies have been introduced.</p>
+<p>Other add-ons may no longer work as intended when Bonsai is enabled, or vice
+versa, Bonsai may no longer work as intended when other add-ons are enabled.</p>
+<p>Known scenarios which will lead to add-on incompatibility include:</p>
+<ul class="simple">
+<li><p>The add-on also overrides the same hotkeys. For example, if an add-on
+overrides the “X” key to delete an object, you will need to manually trigger
+(either via menu or custom hotkey) the Bonsai equivalent operator
+(e.g. IFC Delete).</p></li>
+<li><p>The add-on uses object deletion or duplication macros with dictionary
+override. Note that this is also deprecated in Blender, so the other add-on
+should be updated to fix this.</p></li>
+<li><p>The add-on requires a conflicting dependency, or a conflicting version of the
+same dependency. Neither add-on may work simultaneously.</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="hello_world.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Hello, world!</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Development</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2024 IfcOpenShell Contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://ifcopenshell.org" aria-label="IfcOpenShell">
+                <img src="https://ifcopenshell.org/assets/images/logo.png" style="width: auto;" />
+            </a>
+              <a class="muted-link " href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/docs" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#system-requirements">System requirements</a></li>
+<li><a class="reference internal" href="#unstable-installation">Unstable installation</a></li>
+<li><a class="reference internal" href="#bundling-for-blender">Bundling for Blender</a></li>
+<li><a class="reference internal" href="#live-development-environment">Live development environment</a></li>
+<li><a class="reference internal" href="#packaged-installation">Packaged installation</a></li>
+<li><a class="reference internal" href="#tips-for-package-managers">Tips for package managers</a></li>
+<li><a class="reference internal" href="#add-on-compatibility">Add-on compatibility</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=ec16d22d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

@@ -1,0 +1,616 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Development" href="../development/index.html" /><link rel="prev" title="Georeferencing" href="georeferencing.html" />
+
+    <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Tracking revisions with Git - Bonsai 0.8.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=aefb6c79" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=76091274" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #f7f7f6;
+  --color-background-secondary: #eeeeec;
+  --color-background-border: #cfd0cb;
+  --color-foreground-primary: #2e3436;
+  --color-sidebar-item-background--hover: #f7f7f6;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #651fff;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Bonsai 0.8.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Bonsai 0.8.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/introduction_to_bim.html">Introduction to BIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/explore_model.html">Exploring an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/create_model.html">Creating an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/next_steps.html">Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../viewing/dealing_with_large_models.html">Dealing with large models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="georeferencing.html">Georeferencing</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tracking revisions with Git</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../development/index.html">Development</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Development</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/hello_world.html">Hello, world!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/undo_system.html">Undo system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/writing_docs.html">Writing documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/debugging.html">Debugging Bonsai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other_addons.html">Other add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/topbar.html">Topbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/properties.html">Properties</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/docs/guides/authoring/git_support.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/edit/v0.8.0/src/bonsai/docs/guides/authoring/git_support.rst" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="tracking-revisions-with-git">
+<h1>Tracking revisions with Git<a class="headerlink" href="#tracking-revisions-with-git" title="Link to this heading">¶</a></h1>
+<p>Bonsai supports tracking the development of your IFC files with a Git
+repository.</p>
+<p>Bonsai is an IFC file editor, you can create or load an IFC project,
+change, add or remove BIM objects and save to disk. A Git repository is a
+special folder on your computer where text files, such as IFC files, can be
+efficiently stored and past versions recalled.</p>
+<p>Git is also a tool to share files with other people, transmitting only file
+changes, and allowing multiple people to keep local copies of the same
+repository up-to-date.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you don’t already have Git installed on your system, you will need to
+<a class="reference external" href="https://git-scm.com/downloads">Download from the Git website</a>.
+You may have to restart Blender after installation.</p>
+</div>
+<section id="adding-your-ifc-file-to-a-repository">
+<h2>Adding your IFC file to a repository<a class="headerlink" href="#adding-your-ifc-file-to-a-repository" title="Link to this heading">¶</a></h2>
+<p>First, save your file to disk. If the folder is already a repository you can
+<em>Add</em> the file in the <em>IFC Git panel</em> to tell Git you want to track it,
+otherwise Bonsai will offer to convert the folder into a repository.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You probably don’t want to turn your entire HOME or User folder into a Git
+repository. Create one folder per project, this folder can contain multiple
+IFC files, optionally in subfolders, plus any resources needed to support
+them.</p>
+</div>
+<p>After adding an IFC file, this action will appear as the most recent item at
+the top of the revision list.</p>
+</section>
+<section id="committing-changes">
+<h2>‘Committing’ changes<a class="headerlink" href="#committing-changes" title="Link to this heading">¶</a></h2>
+<p>As you work on your IFC project, save the file regularly as usual. When you
+get to a point where it would be useful to later retrieve this state, you need
+to <em>commit</em> this to the Git repository. Bonsai gives you three options:</p>
+<ul class="simple">
+<li><p>Showing uncommitted changes will temporarily highlight the differences
+between the saved file and the last committed revision. Green objects are new
+and blue objects exist in the previous revision but have since been modified.</p></li>
+<li><p>Discarding uncommitted changes will throw away all your saved changes and
+revert the model to the previous revision.</p></li>
+<li><p>Committing changes will save this state of the model in the repository, along
+with a short commit message, the date, and your author details.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All revisions need to have some sort of commit message. Typically this
+should be kept to 50 characters or less, but there is no practical limit,
+consider that this message may appear in various places, including on
+drawings, web pages, email subject lines etc.. It is also best to describe the
+status of the revision rather than the changes, ie. “Kitchen now has a
+door” is better than “Add a kitchen door” - but this is a matter of taste.</p>
+</div>
+</section>
+<section id="visualising-differences">
+<h2>Visualising differences<a class="headerlink" href="#visualising-differences" title="Link to this heading">¶</a></h2>
+<p>As you add commits, the revision list will build up. Usually you are working at
+the HEAD of a branch, ie. at the top of the list, but you can select items in
+the list to view commit metadata. You can also temporarily colourise the current
+model showing differences between this and any other saved revision - colours
+are the same as above: green objects are new to the current model, blue
+objects have changed in some way, and (if you have an older revision loaded)
+red objects have been deleted.</p>
+</section>
+<section id="viewing-object-history">
+<h2>Viewing object history<a class="headerlink" href="#viewing-object-history" title="Link to this heading">¶</a></h2>
+<p>The history of <em>everything</em> in the project is tracked in Git, the revision log
+for the currently selected object can be viewed with the Bonsai side-bar.</p>
+</section>
+<section id="retrieving-revisions">
+<h2>Retrieving Revisions<a class="headerlink" href="#retrieving-revisions" title="Link to this heading">¶</a></h2>
+<p>Colourising the model will show you <em>which</em> things are different, but it won’t
+show you <em>how</em> they are different. As long as you have no uncommitted changes,
+you can switch to the selected revision, this will load in Bonsai as a
+full model that can be viewed and even edited.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Switching to a different revision actually changes the file on disk before
+loading it in Bonsai. Don’t worry, the original hasn’t been lost,
+simply select the revision at the top of the list, switch back to
+that and you can continue as before.</p>
+</div>
+</section>
+<section id="branching">
+<h2>Branching<a class="headerlink" href="#branching" title="Link to this heading">¶</a></h2>
+<p>Git supports a branched workflow. Say that you want to explore some design
+options, but don’t want to mess-up the primary design, you can fork off any
+revision into a new branch and work on this without breaking anything in any
+other branches.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The primary branch in a Git repository is usually called <em>main</em>, though
+this is a convention, and older versions of Git call it <em>master</em>. Branch
+names should be short, but can contain unicode characters, emojis etc…
+Branch names can’t contain spaces, and have some other minor limitations -
+Bonsai will not allow you to create invalid branch names.</p>
+</div>
+<p>To create a new branch from the current HEAD (ie. the top of the revision list)
+enter a branch name when committing. Leaving this field empty just adds a
+normal commit without creating a branch, however committing a change to an
+earlier revision necessarily implies a new branch, so Bonsai will insist
+that you give it a name.</p>
+<p>Each branch can now be navigated separately in the revision list, to switch
+between branches, and to any previous revision in any branch, select the
+revision you are interested-in and switch as before.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Conceptually a local branch is equivalent to a remote fork in somebody
+else’s copy of your repository, and indeed by adding a remote you
+can fetch their work into a <em>remote branch</em> in your local repository.</p>
+</div>
+</section>
+<section id="merging">
+<h2>Merging<a class="headerlink" href="#merging" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Merging is experimental functionality. There are various circumstances
+where a merge will fail, don’t worry, this won’t break your model but you
+may not want to rely on this functionality without having some experience
+of what changes are likely to merge and what won’t.</p>
+</div>
+<p>You can merge changes that exist in a selected revision into the current
+model, even if changes have been made in both revisions - as long as these
+changes don’t directly conflict.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Merging requires the <em>ifcmerge</em> tool installed in your <cite>PATH</cite>, if it is
+not installed the merge operator will not be enabled.</p>
+</div>
+<p>When two branches have diverged, merging an IFC model requires <em>conflict
+resolution</em> (because added entities may inadvertently reuse the same Step-IDs),
+this means that data on one side or the other may be rewritten by Bonsai in
+order to accommodate both sets of changes. ie. the merge process is
+<em>asymmetrical</em>.  Bonsai privileges data in the remote <cite>origin/main</cite> branch
+over the local working branch, similarly it privileges data in the local <cite>main</cite>
+branch over any other local working branch. The practical result of this is
+that branches branched-off the <cite>main</cite> branch can generally be merged back into
+<cite>main</cite>, but any sub-branches of these will need to be merged back into their
+parent-branch <em>before</em> merging the parent-branch back into <cite>main</cite>.</p>
+</section>
+<section id="tags">
+<h2>Tags<a class="headerlink" href="#tags" title="Link to this heading">¶</a></h2>
+<p>Git tags are useful to label important revisions (think of <em>TENDER</em>,
+<em>CONSTRUCTION</em>, <em>RevA</em> etc..). Tags appear as a prefix in the revision list,
+which can be filtered to only show revisions with tags. Tags for the selected
+revision are also listed in full below the revision list along with their
+optional message text.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tag names have the same limitations as branch names, names should be short
+and without spaces, but can contain unicode characters, emojis etc…
+Bonsai will not allow you to create invalid or duplicate tag names.
+Similar to commit messages, tag messages should be 50 characters or less,
+though there is no practical limit.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Tags can be deleted locally, but Git is distributed, so if the tag has
+migrated to a remote repository it will reappear when you fetch changes
+from that repository.</p>
+</div>
+</section>
+<section id="remote-operations">
+<h2>Remote operations<a class="headerlink" href="#remote-operations" title="Link to this heading">¶</a></h2>
+<p>Git is a <em>distributed revision control system</em>, your local repository can be a
+version of a remote repository and vice-versa. This is conceptually similar to
+local branching except this remote repository could belong to someone else or
+could be hosted by an online Git-forge service.</p>
+<p>Your repository can have multiple remote repositories registered, each
+can have potentially multiple branches.</p>
+<p>Bonsai allows you to make a local <em>clone</em> of a remote repository.  You will
+need to provide a URL <em>origin</em> to fetch, and an empty local folder to become
+the local repository.</p>
+<p>The <em>Fetch</em> operator retrieves new data from the remote repository. This isn’t
+automatically merged, each branch fetched from the remote repository appears as
+a branch that can be browsed, switched-to or merged just like a local branch.
+These remote branches have prefixed names, eg. <cite>origin/main</cite>.</p>
+<p>Once you have committed changes to your local repository, the <em>Push</em> operator
+tries to update the remote branch using changes from the selected local branch.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remote repositories can be accessed in multiple ways; ssh, ftp or https
+protocols, for example, can require authentication. This authentication may
+expect you to generate and upload ssh keys, store API tokens, save
+username/password pairs, or use some other form of credential.
+Bonsai can’t configure these credentials for you, follow the
+configuration instructions provided by your online service before trying
+actions that require authentication.</p>
+</div>
+</section>
+<section id="using-other-git-tools">
+<h2>Using other Git tools<a class="headerlink" href="#using-other-git-tools" title="Link to this heading">¶</a></h2>
+<p>Bonsai is not a full Git user interface, but it provides most of the tools
+you will need for day-to-day usage. In general if you need other Git
+functionality you can use external Git tools with your repository and any
+changes will be reflected in the Bonsai UI.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../development/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Development</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="georeferencing.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Georeferencing</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2024 IfcOpenShell Contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://ifcopenshell.org" aria-label="IfcOpenShell">
+                <img src="https://ifcopenshell.org/assets/images/logo.png" style="width: auto;" />
+            </a>
+              <a class="muted-link " href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/docs" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Tracking revisions with Git</a><ul>
+<li><a class="reference internal" href="#adding-your-ifc-file-to-a-repository">Adding your IFC file to a repository</a></li>
+<li><a class="reference internal" href="#committing-changes">‘Committing’ changes</a></li>
+<li><a class="reference internal" href="#visualising-differences">Visualising differences</a></li>
+<li><a class="reference internal" href="#viewing-object-history">Viewing object history</a></li>
+<li><a class="reference internal" href="#retrieving-revisions">Retrieving Revisions</a></li>
+<li><a class="reference internal" href="#branching">Branching</a></li>
+<li><a class="reference internal" href="#merging">Merging</a></li>
+<li><a class="reference internal" href="#tags">Tags</a></li>
+<li><a class="reference internal" href="#remote-operations">Remote operations</a></li>
+<li><a class="reference internal" href="#using-other-git-tools">Using other Git tools</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=ec16d22d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

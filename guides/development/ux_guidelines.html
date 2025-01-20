@@ -1,0 +1,535 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>User Experience and User Interface guidelines - Bonsai 0.8.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=aefb6c79" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=76091274" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #f7f7f6;
+  --color-background-secondary: #eeeeec;
+  --color-background-border: #cfd0cb;
+  --color-foreground-primary: #2e3436;
+  --color-sidebar-item-background--hover: #f7f7f6;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #651fff;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Bonsai 0.8.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Bonsai 0.8.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/introduction_to_bim.html">Introduction to BIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/explore_model.html">Exploring an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/create_model.html">Creating an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/next_steps.html">Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../viewing/dealing_with_large_models.html">Dealing with large models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/georeferencing.html">Georeferencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/git_support.html">Tracking revisions with Git</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Development</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Development</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hello_world.html">Hello, world!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="undo_system.html">Undo system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_docs.html">Writing documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging Bonsai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authoring/other_addons.html">Other add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/topbar.html">Topbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/properties.html">Properties</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/docs/guides/development/ux_guidelines.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/edit/v0.8.0/src/bonsai/docs/guides/development/ux_guidelines.rst" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="user-experience-and-user-interface-guidelines">
+<h1>User Experience and User Interface guidelines<a class="headerlink" href="#user-experience-and-user-interface-guidelines" title="Link to this heading">¶</a></h1>
+<p>This is intended as a reference document for developers working on the Bonsai.</p>
+<section id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading">¶</a></h2>
+<p>BIM will by definition contain a (big) number of submodules or subschemas. Granting access to the features of these submodules to the users needs to be considered with several things in minds :</p>
+<ol class="arabic simple">
+<li><p>Ease of use : How do I achieve my goal with the minimal number of clicks ? How many different menu items do I have to go through to get to my goal ? How long do I   have to scroll a menu to get to the specific thing I have in mind ?</p></li>
+<li><p>Clarity : How long do I have to visually parse the interface to find the item or button I’m looking for ? Are the buttons correctly labeled and are the icons   descriptive enough ? If something is forbidden, can I easily know why ? Can I know what a button does before clicking on it ?</p></li>
+<li><p>Completeness : I need to have access to all the items that are related to the topic I’m interested in. If it is tied to another submodule, I need to have access to it.</p></li>
+</ol>
+<ul>
+<li><p><strong>Blender</strong></p>
+<p>These considerations must be adapted to the Python API, to the general paradigm we have chosen to access, modify or create IFC data, and to the general philosophy of Blender. There are many ways and places where an add-on creator can choose to present information to the user. Bonsai currently works that way :</p>
+<ul class="simple">
+<li><p>Information about the current context is displayed inside the properties editor. We leverage the fact that it is already built around displaying different types of information whether we are in the Scene, Material, Mesh, Object, Curve, Texture, etc. subpanels. It fits really well with the way things are already organized in the IFC classification.</p></li>
+<li><p>Tools to create, modify or delete items are in the dedicated Toolbar (The left one)   in the 3D viewport</p></li>
+<li><p>Some Misc tools and information are displayed in the N panel of the 3D viewport .   They’re shortcuts to things that are already present elsewhere in the UI, but are   handy to have when modifying objects or geometry in the Viewport.</p></li>
+<li><p>Adding specific Import / Export IFC operators (arguably a bit misleading since   Bonsai does more than import / export in these operations)</p></li>
+</ul>
+</li>
+<li><p><strong>Interface panels</strong></p>
+<ul class="simple">
+<li><p>The good : Every submodule is visually separated from each other. The user can customize its interface to only show what’s relevant to them at any one point by folding in or out panels. Development / Debugging is facilitated because each submodule’s interface is separated from the others.</p></li>
+<li><p>The bad : Having many interface panels clutters the interface, leading to an overwhelming experience for newcomers especially.</p></li>
+<li><p>Proposal : The addon should in the long run provide the user with dynamic UI depending on what’s their usecase. Preferably accessed in the Addon Preferences interface, with pre-made options that dynamically enable or disable specific parts of the UI. It should also provide the option to selectively add or remove specific parts of the UI on top of that. Additionally, when it does not make sense to display a specific panel, it should be hidden from the UI. (eg if an object has no IFC Class, it can’t be spatially contained, so the IFC Spatial Container panel should be hidden until the user sets the IFC class)
+In the long term it could also be interesting to think about some kind of tutorial mode where more information is conveyed through the interface for new users.</p></li>
+</ul>
+</li>
+<li><p><strong>Item Lists</strong></p>
+<p>An item list should provide right off the bat a few features :</p>
+<ul class="simple">
+<li><p>Add a new item.</p></li>
+<li><p>Modify an item, whether by adding a button to each item in the list, or adding a button on the list header to modify the selected item.</p></li>
+<li><p>Delete an item, whether by adding a button to each item in the list, or adding a button on the list header to delete the selected item.</p></li>
+<li><p>Modify an item’s name by double-clicking on the field if applicable</p></li>
+<li><p>The currently selected item should be highlighted</p></li>
+<li><p>There should be a search field to filter through specific items in the list, with buttons to invert selection, sort alphabetically and revert display. (Features that   are provided by the <cite>UIList</cite> class)</p></li>
+</ul>
+</li>
+<li><p><strong>Operators</strong></p>
+<ul class="simple">
+<li><p>Some buttons should be dynamically disabled (grayed out and impossible to click on) when the context to execute them does not make sense. It is important to note there should not be any heavy computation to determine this since this is executed several times per second for each button where it is implemented. It should only test for simple things and not rely on retrieving information from other modules too much. eg : <cite>Is an item selected ?</cite> <cite>Is the z position of the selected object &gt; 0 ?</cite> or <cite>Is the selected object an IfcOpeningElement ?</cite> and <strong>not</strong> <cite>Is there an IfcOpeningElement in the current file ?</cite> or <cite>How many different classes of IfcBeam are implemented in the file ?</cite>
+In Blender this is done in two ways :</p>
+<ul>
+<li><p>Directly in the operator <cite>poll</cite> method which is executed when the button is displayed in the interface. The drawback is that some operators rely on custom attributes     which are provided only when the user clicks on the button, and cannot be test in the <cite>poll</cite> method. Note in V3.0 we can implement custom messages when the <cite>poll</cite>     method fails, depending on the step where the context was not right.</p></li>
+<li><p>In the UI drawing code, where specific layout parts can be disabled.</p></li>
+</ul>
+</li>
+<li><p>Some buttons or entire interface layout rows or columns may be disabled or hidden at once. It may be desirable when it relies on specific things or combinations of things not being met in the project. In order to avoid UI flicker or the user wondering where the button went, dynamically hiding UI elements should have a minimal interference with the rest of the UI by :</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Hiding the last row(s) of a panel</p></li>
+<li><p>Dynamically resizing the rest of the UI when it’s not possible to (1)</p></li>
+</ol>
+<p>The user should be advised why they are prevented to do things via either :</p>
+<ul>
+<li><p>A custom message using Blender’s report system</p></li>
+<li><p>A label in the UI replacing the missing UI elements</p></li>
+<li><p>A helpful tooltip on an operator</p>
+<p>Generally the context itself should be used to the best of its ability to convey why it’s possible to do some things or not. The separation of concerns in multiple   different dynamically hidden-or-shown sub-panels should help limit confusion.</p>
+</li>
+<li><p>The user should be forbidden to click on buttons when its execution returns early and does nothing. If a button is clickable and the user clicks on it,   there should always be some kind of feedback.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="icons">
+<h2>Icons<a class="headerlink" href="#icons" title="Link to this heading">¶</a></h2>
+<ul>
+<li><img alt="https://user-images.githubusercontent.com/25156105/137270452-bf6c03ea-2d3e-4ae3-8121-6799e8beb335.png" src="https://user-images.githubusercontent.com/25156105/137270452-bf6c03ea-2d3e-4ae3-8121-6799e8beb335.png" />
+</li>
+</ul>
+<p><strong>Icon name</strong> : <cite>“CANCEL”</cite></p>
+<p><strong>Use</strong> : To disable the edition state of a particular item.</p>
+<p><strong>Expected result</strong> : A part of the interface showing the item attributes is either shrunk down or hidden. The button is usually replaced by a button to delete this item.</p>
+<ul>
+<li><img alt="https://user-images.githubusercontent.com/25156105/137271575-dcae9e56-3c64-4d8b-89b0-6cf103b999f2.png" src="https://user-images.githubusercontent.com/25156105/137271575-dcae9e56-3c64-4d8b-89b0-6cf103b999f2.png" />
+</li>
+</ul>
+<p><strong>Icon name</strong> : <cite>“X”</cite></p>
+<p><strong>Use</strong> : To delete a particular item, for instance an element of a list.</p>
+<p><strong>Expected result</strong> : The interface element referencing the deleted item is hidden from the interface. If the item was in a list, and the deleted element was selected, the next element becomes selected, or if there is no next element, no element is selected.</p>
+<ul>
+<li><img alt="https://user-images.githubusercontent.com/25156105/137271601-e79012e5-fc61-402e-830c-b34b4ca757a0.png" src="https://user-images.githubusercontent.com/25156105/137271601-e79012e5-fc61-402e-830c-b34b4ca757a0.png" />
+</li>
+</ul>
+<p><strong>Icon name</strong> : <cite>“GREASEPENCIL”</cite></p>
+<p><strong>Use</strong> : To Enable the edition of a particular item.</p>
+<p><strong>Behaviour</strong> : Usually only one element of a particular context can be edited at a time.</p>
+<p><strong>Expected result</strong> : The interface should either expand or spawn new elements to display the chosen item’s editable attributes. If the editem item is part of a list and its interface elements contained an operator to delete it, it is swapped for an operator to disable the edition of that item.</p>
+<p><strong>Proposal</strong> : Currently all the edition buttons are hidden from the interface when editing a particular item. This results on buttons jumping to the right slightly. My proposal is to instead show but disable the other buttons to prevent interface flicker.</p>
+<p><strong>Current</strong> : <a class="reference external" href="https://user-images.githubusercontent.com/25156105/137273603-f9ac39e5-7616-4fb9-89e2-4dae453e650a.gif">https://user-images.githubusercontent.com/25156105/137273603-f9ac39e5-7616-4fb9-89e2-4dae453e650a.gif</a></p>
+<p><strong>Proposal</strong> : <a class="reference external" href="https://user-images.githubusercontent.com/25156105/137273329-532d6d59-e39d-483e-980b-b8405062eaa8.gif">https://user-images.githubusercontent.com/25156105/137273329-532d6d59-e39d-483e-980b-b8405062eaa8.gif</a></p>
+<img alt="https://user-images.githubusercontent.com/25156105/137273981-26fa664a-a29e-402e-9d7e-67b8b71c2d5d.png" src="https://user-images.githubusercontent.com/25156105/137273981-26fa664a-a29e-402e-9d7e-67b8b71c2d5d.png" />
+<ul class="simple">
+<li><p><strong>Icon name</strong> : <cite>“ADD”</cite></p></li>
+</ul>
+<p><strong>Use</strong> : To add an item to a particular context, either initializing it (eg. adding a coordinate system) or adding an element to a list.</p>
+<p><strong>Expected result</strong> : The interface should either expand to display the new item or a new line should be shown if the item is added in a list.</p>
+<p><strong>Proposal</strong> : In some instances adding an element in a list automatically enables the edition of this item’s attributes. (eg IFC Groups) but in other instances it does not (eg IFC strucural load cases). It is arguable but I do not think the user should expect a new item to be in editable state right off the bat when they add it to a list.</p>
+<ul>
+<li><img alt="https://user-images.githubusercontent.com/25156105/137274869-0d0b876a-545c-4a58-a386-90f85764b7cc.png" src="https://user-images.githubusercontent.com/25156105/137274869-0d0b876a-545c-4a58-a386-90f85764b7cc.png" />
+</li>
+</ul>
+<p><strong>Icon name</strong> : <cite>“RESTRICT_SELECT_OFF”</cite></p>
+<p><strong>Use</strong> : To select all the instances related to a particular item.</p>
+<p><strong>Expected result</strong> : All the objects relating to a particular item should be selected in the 3D viewport and/or in the outline.</p>
+<p><strong>Proposal</strong> : Whether or not previously selected objects should be deselected beforehand is up for debate I think, because both behaviours can be desirable. It also raises the question of which object should be set to active. (Random ? First one ? Biggest one ?…)</p>
+<ul>
+<li><img alt="https://user-images.githubusercontent.com/25156105/137275582-98c1dfcc-fc96-41d6-80dd-fdb82796e66e.png" src="https://user-images.githubusercontent.com/25156105/137275582-98c1dfcc-fc96-41d6-80dd-fdb82796e66e.png" />
+</li>
+</ul>
+<p><strong>Icon name</strong> : <cite>“IMPORT”</cite></p>
+<p><strong>Use</strong> : to import a particular file from the user’s computer’s directory to the current context</p>
+<p><strong>Expected result</strong> : A new file browser window should open, with sufficient information provided to the user to know which file type should be loaded in (eg adding a file extension, adding information in the filebrowser UI). When the file is loaded, the interface should expand to show the attributes or information or new context-sensitive operations provided by the imported file.</p>
+<p><strong>Proposal</strong> : Currently there are some instances where I don’t know if the elements are supposed to require an external file, eg</p>
+<img alt="https://user-images.githubusercontent.com/25156105/137275887-e0f0b694-842b-422f-bc09-cdcefef64107.png" src="https://user-images.githubusercontent.com/25156105/137275887-e0f0b694-842b-422f-bc09-cdcefef64107.png" />
+<ul>
+<li><img alt="https://user-images.githubusercontent.com/25156105/137276333-4d083f6a-36b9-494f-b0de-ec1d321cbd3d.png" src="https://user-images.githubusercontent.com/25156105/137276333-4d083f6a-36b9-494f-b0de-ec1d321cbd3d.png" />
+</li>
+</ul>
+<p><strong>Icon name</strong> : <cite>“EXPORT”</cite></p>
+<p><strong>Use</strong> : To export a particular file to the user’s computer’s directory</p>
+<p><strong>Expected result</strong> : A new file browser window should open, with sufficient information provided to the user to know which file type is going to be saved (eg adding a file extension, adding information in the filebrowser UI).</p>
+<p><strong>Proposal</strong> : When there is no actual file to be saved in the user’s directory or the filepath is already set in another place in the UI :</p>
+<img alt="https://user-images.githubusercontent.com/25156105/137276840-3ceda0cd-87bd-45f5-8488-bfce86bf3d84.png" src="https://user-images.githubusercontent.com/25156105/137276840-3ceda0cd-87bd-45f5-8488-bfce86bf3d84.png" />
+<p>It may be better to use a save icon of some sort instead, eg</p>
+<img alt="https://user-images.githubusercontent.com/25156105/137276758-5d60f0ca-5a93-4af3-9c4f-30c5794e0657.png" src="https://user-images.githubusercontent.com/25156105/137276758-5d60f0ca-5a93-4af3-9c4f-30c5794e0657.png" />
+<ul>
+<li><img alt="https://user-images.githubusercontent.com/25156105/137277047-bd45df5b-3b47-4b2c-aa29-a340b0710345.png" src="https://user-images.githubusercontent.com/25156105/137277047-bd45df5b-3b47-4b2c-aa29-a340b0710345.png" />
+</li>
+</ul>
+<p><strong>Icon name</strong> : <cite>“FILEBROWSER”</cite></p>
+<p><strong>Use</strong> : To Provide the current context with the path to a particular file or folder</p>
+<p><strong>Expected result</strong> : A new file browser window should open, with sufficient information provided to the user to know which file type is required (eg adding a file extension, adding information in the filebrowser UI). Upon file or folder selection, this should populate a field in the current interface context with the path to the selected file or folder, or at least let the user know that the required information is now correctly filled in.</p>
+<ul>
+<li><img alt="https://user-images.githubusercontent.com/25156105/137277374-fa7ff310-0b41-49a9-98bd-7c4686da05fd.png" src="https://user-images.githubusercontent.com/25156105/137277374-fa7ff310-0b41-49a9-98bd-7c4686da05fd.png" />
+</li>
+</ul>
+<p><strong>Icon name</strong> : <cite>“EYEDROPPER”</cite></p>
+<p><strong>Use</strong> : To select a particular object in the interface to fill the field it is attached to</p>
+<p><strong>Expected result</strong> : The cursor should change to an eyedropper until the user clicks on the required item. The user should be made aware after selection if it was successful (associated field being filled) or unsuccessful (message ? or field staying empty)</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2024 IfcOpenShell Contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://ifcopenshell.org" aria-label="IfcOpenShell">
+                <img src="https://ifcopenshell.org/assets/images/logo.png" style="width: auto;" />
+            </a>
+              <a class="muted-link " href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/docs" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">User Experience and User Interface guidelines</a><ul>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#icons">Icons</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=ec16d22d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

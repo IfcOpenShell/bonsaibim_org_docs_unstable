@@ -1,0 +1,719 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Project Info - Bonsai 0.8.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=aefb6c79" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=76091274" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #f7f7f6;
+  --color-background-secondary: #eeeeec;
+  --color-background-border: #cfd0cb;
+  --color-foreground-primary: #2e3436;
+  --color-sidebar-item-background--hover: #f7f7f6;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #651fff;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Bonsai 0.8.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Bonsai 0.8.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/introduction_to_bim.html">Introduction to BIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/explore_model.html">Exploring an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/create_model.html">Creating an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/next_steps.html">Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/viewing/dealing_with_large_models.html">Dealing with large models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/authoring/georeferencing.html">Georeferencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/authoring/git_support.html">Tracking revisions with Git</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../guides/development/index.html">Development</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Development</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/hello_world.html">Hello, world!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/undo_system.html">Undo system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/writing_docs.html">Writing documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/debugging.html">Debugging Bonsai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/authoring/other_addons.html">Other add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topbar.html">Topbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../properties.html">Properties</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/docs/reference/project_overview/project_info.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/edit/v0.8.0/src/bonsai/docs/reference/project_overview/project_info.rst" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="project-info">
+<h1>Project Info<a class="headerlink" href="#project-info" title="Link to this heading">¶</a></h1>
+<div class="location-scene docutils container">
+<p><img alt="location" src="../../_images/location-scene.svg" /> Scene Properties <img alt="&gt;" src="../../_images/location-breadcrumb.svg" /> Project Overview <img alt="&gt;" src="../../_images/location-breadcrumb.svg" /> Project Info</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It’s recommended to avoid using the “Unload IFC project” button,
+as it may promote the misconception that the .blend file can continue without the IFC data.
+Always start a new Blender session for a clean project start.</p>
+<p>The Unload IFC project button will be removed in future versions.</p>
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>The “Project Info” panel in the “Project Overview” tab of “Scene Properties” of “Properties Editor”
+provides an overview of the essential information about the currently loaded IFC file or allows users to create a new or load an existing IFC project.</p>
+<p>The “Project Info” panel has four distinct modes depending on the state of the IFC project:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#project-setup-mode">Project Setup Mode</a></p></li>
+<li><p><a class="reference internal" href="#project-unsaved-mode">Project Unsaved Mode</a></p></li>
+<li><p><a class="reference internal" href="#project-loaded-mode">Project Loaded Mode</a></p></li>
+<li><p><a class="reference internal" href="#advanced-loading-mode">Advanced Loading Mode</a></p></li>
+</ol>
+<p>There’s also an editing submode in some modes that allows to modify the various metadata of the IFC file i.e. the IFC header section of the file.</p>
+</section>
+<section id="project-setup-mode">
+<h2>Project Setup Mode<a class="headerlink" href="#project-setup-mode" title="Link to this heading">¶</a></h2>
+<figure class="align-default">
+<img alt="Project Info in Project Setup Mode" src="../../_images/interface_property-editor_project-overview_new_load.png" />
+</figure>
+<p>When no IFC file is loaded or created, the “Project Info” panel displays options to create a new IFC project or load an existing one.</p>
+<section id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Link to this heading">¶</a></h3>
+<dl>
+<dt><img alt="FILE_CACHE" class="icon" src="../../_images/icon-FILE_CACHE.svg" /> <strong>IFC Schema</strong></dt><dd><p>Choose between which IFC schema version to use when creating a new project. IFC4 is recommended for all new projects.</p>
+<p>The list of IFC specifications can be viewed on the <a class="reference external" href="https://technical.buildingsmart.org/standards/ifc/ifc-schema-specifications/">BuildingSMART website</a>.</p>
+<p>Supported versions are <a class="reference external" href="https://standards.buildingsmart.org/IFC/RELEASE/IFC2x3/FINAL/HTML/">IFC2X3</a> (2005), <a class="reference external" href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/">IFC4</a> (2013) and <a class="reference external" href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/">IFC4X3</a> (2024).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Use the <a class="reference external" href="https://bonsaibim.org/search-ifc-class.html">IFC Class search tool</a> to help choose an <strong>IFC
+Class</strong> based on the IFC Schema version.</p>
+</div>
+</dd>
+<dt><strong>Unit System</strong></dt><dd><p>Choose between metric and imperial units of measurement when creating a project.</p>
+</dd>
+<dt><strong>Length Unit</strong></dt><dd><p>Depending on the unit system, choose the default unit to be used for all length measurements. Lengths are used for moving objects around in the 3D scene, as well as lengths, widths, height, and depth quantity take-off data.</p>
+</dd>
+<dt><strong>Area Unit</strong></dt><dd><p>Depending on the unit system, choose the default unit to be used for all area measurements. Areas are typically used for quantity take-off.</p>
+</dd>
+<dt><strong>Volume Unit</strong></dt><dd><p>Depending on the unit system, choose the default unit to be used for all volume measurements. Volumes are typically used for quantity take-off.</p>
+</dd>
+<dt><strong>Template</strong></dt><dd><p>Choose between starting a completely blank project with no objects, or with preloaded object assets (such as wall types, beam types, etc) that you can use immediately.</p>
+<ul class="simple">
+<li><p><strong>Blank</strong>: Start with an empty project and no predefined objects.</p></li>
+<li><p><strong>IFC4 Demo Template</strong>: Includes a basic set of common object types like bunny, windows, doors, and other basic elements with complex geometry.</p></li>
+</ul>
+<p>The blank project is recommended for users who want to curate assets,
+whereas the IFC4 Demo Template is recommended for users wanting to experiment
+and learn with a basic set of objects.</p>
+<p>Bonsai provides other larger libraries containing hundreds of objects, but
+loading them as a template is not recommended due to their size and
+complexity.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can start with a blank project and load in more assets later from a
+library using the IFC Project Library panel.</p>
+</div>
+</dd>
+</dl>
+</section>
+<section id="buttons">
+<h3>Buttons<a class="headerlink" href="#buttons" title="Link to this heading">¶</a></h3>
+<dl>
+<dt><strong>Create Project</strong></dt><dd><p>Create a new project based on the selected settings and template.</p>
+<p>By default, your project will be created with a basic spatial tree with the structure <code class="docutils literal notranslate"><span class="pre">IfcProject</span> <span class="pre">&gt;</span> <span class="pre">IfcSite</span> <span class="pre">&gt;</span>
+<span class="pre">IfcBuilding</span> <span class="pre">&gt;</span> <span class="pre">IfcStorey</span></code>. Template might include additional colllections and classes, such as Types. You can see the tree of collections in the outliner when this is done.</p>
+<p>After creation Project Info will transition into <a class="reference internal" href="#project-unsaved-mode">Project Unsaved Mode</a></p>
+</dd>
+<dt><strong>Load Project</strong></dt><dd><p>Load an existing project from an IFC file. The IFC may come from any source, including exported from proprietary BIM software.</p>
+<p>This will open an Open Dialog that is customized with some additional IFC loading functionality. See <a class="reference internal" href="#advanced-loading-mode">Advanced Loading Mode</a></p>
+<p>After loading Project Info will transition into <a class="reference internal" href="#project-loaded-mode">Project Loaded Mode</a></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="project-unsaved-mode">
+<h2>Project Unsaved Mode<a class="headerlink" href="#project-unsaved-mode" title="Link to this heading">¶</a></h2>
+<figure class="align-default">
+<img alt="Project Info when IFC project is created but IFC file is not saved" src="../../_images/interface_property-editor_project-overview_unsaved.png" />
+</figure>
+<p>Once a project is created, basic metadata about the project will be displayed.</p>
+<p>The IFC header can be edited by clicking the pencil button (see <a class="reference internal" href="#project-info-editing-mode">Project Info Editing Mode</a>).</p>
+<p>Caveat: In this mode you can’t unload the IFC project and go back to the Project Setup Mode. You have to save the IFC file first and then unload the project.</p>
+<section id="static-text">
+<h3>Static text<a class="headerlink" href="#static-text" title="Link to this heading">¶</a></h3>
+<p>Since the file is not yet saved, the “Project Info” panel displays the following messages:</p>
+<p><img alt="FILE" class="icon" src="../../_images/icon-FILE.svg" /> <strong>No File Found</strong></p>
+<p><strong>File Not Saved</strong></p>
+<p>This indicates that the current IFC project has not been saved to a file.</p>
+</section>
+<section id="id1">
+<h3>Fields<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><img alt="FILE_CACHE" class="icon" src="../../_images/icon-FILE_CACHE.svg" /> <strong>IFC Schema</strong> (read-only)</dt><dd><p>Indicates the version of the Industry Foundation Classes (IFC) schema used by the created file. This would usually be “IFC4”.</p>
+</dd>
+<dt><img alt="FILE_HIDDEN" class="icon" src="../../_images/icon-FILE_HIDDEN.svg" /> <strong>IFC MVD</strong></dt><dd><p>Specifies the Model View Definition (MVD) used by the loaded IFC file. An MVD defines a subset of the IFC schema for a specific data exchange purpose. By default this is “DesignTransferView”.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Buttons<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><img alt="GREASEPENCIL" class="icon" src="../../_images/icon-GREASEPENCIL.svg" /> <strong>Edit</strong></dt><dd><p>Clicking this button switches the “Project Info” panel to <a class="reference internal" href="#project-info-editing-mode">editing mode</a>, allowing users to modify the IFC header fields.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="project-loaded-mode">
+<h2>Project Loaded Mode<a class="headerlink" href="#project-loaded-mode" title="Link to this heading">¶</a></h2>
+<figure class="align-default">
+<img alt="Project Info when IFC project is created and IFC file is saved" src="../../_images/interface_property-editor_project-overview_saved.png" />
+</figure>
+<section id="id3">
+<h3>Fields<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><img alt="FILE" class="icon" src="../../_images/icon-FILE.svg" /> <strong>Filename</strong></dt><dd><p>Displays the name of the loaded IFC file. Example: “demo.ifc”</p>
+</dd>
+<dt><img alt="FILE_CACHE" class="icon" src="../../_images/icon-FILE_CACHE.svg" /> <strong>IFC Schema</strong> (read-only)</dt><dd><p>Same as in <a class="reference internal" href="#project-unsaved-mode">Project Unsaved Mode</a>.</p>
+</dd>
+<dt><img alt="FILE_HIDDEN" class="icon" src="../../_images/icon-FILE_HIDDEN.svg" /> <strong>IFC MVD</strong></dt><dd><p>Same as in <a class="reference internal" href="#project-unsaved-mode">Project Unsaved Mode</a>.</p>
+</dd>
+<dt><img alt="EXPORT" class="icon" src="../../_images/icon-EXPORT.svg" /> <strong>Saved</strong></dt><dd><p>Displays the last saved date and time of the loaded IFC file. Example: “2024-06-10 13:15”</p>
+</dd>
+<dt><strong>IFC File</strong></dt><dd><p>Shows the location of the loaded IFC file on the user’s file system. Example: “/home/user/Docum…lenderbim/demo.ifc”. If part of the path is hidden by ellipsis, hovering over it will reveal the full file path.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h3>Buttons<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><img alt="GREASEPENCIL" class="icon" src="../../_images/icon-GREASEPENCIL.svg" /> <strong>Edit</strong></dt><dd><p>Same as in <a class="reference internal" href="#project-unsaved-mode">Project Unsaved Mode</a>, switches to <a class="reference internal" href="#project-info-editing-mode">editing mode</a>.</p>
+</dd>
+<dt><strong>Select a different IFC file</strong></dt><dd><p>This button allows users to choose and load a different IFC file. Clicking the button will open a file browser dialog, enabling users to navigate to and select the desired IFC file.</p>
+</dd>
+<dt><strong>Unload the IFC project</strong></dt><dd><p>This button allows users to unload the currently loaded IFC file from the Blender scene.
+Clicking the button will remove the IFC data and clear the “Project Info” panel, returning it to the <a class="reference internal" href="#project-setup-mode">Project Setup Mode</a>.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="project-info-editing-mode">
+<h2>Project Info Editing Mode<a class="headerlink" href="#project-info-editing-mode" title="Link to this heading">¶</a></h2>
+<figure class="align-default">
+<img alt="Project Info when edit header toggle is active" src="../../_images/interface_property-editor_project-overview_edit-header.png" />
+</figure>
+<p>Clicking the pencil button (which doesn’t exist when in the Project Setup Mode) switches the “Project Info” panel to <a class="reference internal" href="#project-info-editing-mode">editing mode</a>, allowing users to modify the IFC header.</p>
+<dl class="simple">
+<dt>The header section has information about:</dt><dd><ul class="simple">
+<li><p>the IFC version used</p></li>
+<li><p>the application that exported the file</p></li>
+<li><p>the date and time when the export was done</p></li>
+<li><p>other optional user defined fields like the author’s name, company and authorizing person of the file</p></li>
+</ul>
+</dd>
+</dl>
+<p>The IFC Schema version cannot be edited in this mode. However, you have the option to upgrade the IFC schema when opening a file.</p>
+<section id="id5">
+<h3>Fields<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p><img alt="FILE_CACHE" class="icon" src="../../_images/icon-FILE_CACHE.svg" /> <strong>IFC Schema</strong> (read only)</p>
+<blockquote>
+<div><p>Indicates the version of the Industry Foundation Classes (IFC) schema used by the loaded file. Example: “IFC4”</p>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>IFC MVD</strong></dt><dd><p>Specifies the Model View Definition (MVD) used by the loaded IFC file. An MVD defines a subset of the IFC schema for a specific data exchange purpose. Example: “DesignTransferView”</p>
+</dd>
+<dt><strong>Author</strong></dt><dd><p>Displays the author of the IFC file.</p>
+</dd>
+<dt><strong>Author Email</strong></dt><dd><p>Shows the email address of the IFC file author.</p>
+</dd>
+<dt><strong>Organisation</strong></dt><dd><p>Indicates the organization associated with the IFC file.</p>
+</dd>
+<dt><strong>OrganisationEmail</strong></dt><dd><p>Displays the email address of the organization.</p>
+</dd>
+<dt><strong>Authoriser</strong></dt><dd><p>Shows the authoriser of the IFC file. Example: “Nobody”. The authoriser typically represents the person or entity responsible for approving the IFC file and its contents.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h3>Buttons<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><strong>Save header information (checkbox icon)</strong></dt><dd><p>Saves the edited IFC header/metadata fields.</p>
+</dd>
+<dt><strong>Cancel unsaved header information (cross icon)</strong></dt><dd><p>Discards the changes made to the IFC header/metadata fields and returns to the non-editing mode.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="advanced-loading-mode">
+<span id="project-info-advanced-loading-mode"></span><h2>Advanced Loading Mode<a class="headerlink" href="#advanced-loading-mode" title="Link to this heading">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">users/advanced/dealing_with_large_models:Filtered model loading</span>.</p>
+</div>
+<p>The Advanced Loading Mode is an additional mode that is available when loading an IFC file using the <strong>Enable Advanced Mode</strong> checkbox.</p>
+<p>This mode allows users to preload the model and filter elements, loading only a portion of the model.</p>
+<p>The Advanced Loading Mode provides users with extensive control over the loading process,
+allowing them to customize which elements are loaded and how they are represented in the Blender scene.</p>
+<p>This can be particularly helpful when working with large and complex IFC models, as it enables users to selectively load and optimize specific portions
+of the model based on their requirements.</p>
+<p>Once the desired settings have been configured, users can click on the “Load Project Elements” button to load the filtered and
+optimized IFC model into the Blender scene. After the model has been loaded using the Advanced Loading Mode,
+the “Project Info” panel will transition to the <a class="reference internal" href="#project-loaded-mode">Project Loaded Mode</a>, displaying the relevant metadata and options for the loaded IFC project.</p>
+<p>To access this mode, click on <strong>Enable Advanced Mode</strong> checkbox when loading a model.</p>
+<img alt="Open file dialog" src="../../_images/advanced-mode1.png" />
+<p>In the Advanced Loading Mode, the “Project Info” panel presents the following options:</p>
+<img alt="Project Info when in Advanced Loading Mode" src="../../_images/advanced-mode-settings1.png" />
+<section id="id7">
+<h3>Fields<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<dl>
+<dt><strong>Collection Mode</strong></dt><dd><p>Options:</p>
+<ul class="simple">
+<li><p>Decomposition</p></li>
+<li><p>Spatial Decomposition</p></li>
+<li><p>IFC Class</p></li>
+<li><p>None</p></li>
+</ul>
+</dd>
+<dt><strong>Filter Mode</strong></dt><dd><p>Options:</p>
+<ul class="simple">
+<li><p><strong>Decomposition</strong>: filter the IFC elements based on their decomposition within the building hierarchy, such as Level 1 or Building A.</p></li>
+<li><p><strong>IFC Class</strong>: Filter elements by their IFC class, such as “IfcWall”, “IfcColumn”, or “IfcDoor”.</p></li>
+<li><p><strong>IFC Type</strong>: Filter elements by their IFC type, which represents the specific subtype or predefined type of an element, such as “IfcSlabType/100mmConcrete”.</p></li>
+<li><p><strong>Whitelist</strong>: Filter elements based on a custom query, where only elements matching the query are included in the loaded model.</p></li>
+<li><p><strong>Blacklist</strong>: Filter elements based on a custom query, where elements matching the query are excluded from the loaded model.</p></li>
+</ul>
+<p>When “Whitelist” or “Blacklist” is chosen, users can input a custom query in the “Filter Query” field to define the specific criteria for filtering elements.</p>
+</dd>
+<dt><strong>Deflection Tolerance</strong></dt><dd><p>Maximum distance between a curved surface and its tessellation (mesh approximation).
+Higher values result in a coarser tessellation, while lower values produce a finer mesh approximation.</p>
+</dd>
+<dt><strong>Angular Tolerance</strong></dt><dd><p>Maximum angle between adjacent face normals in a tessellation (mesh approximation).
+Higher values result in a smoother tessellation, while lower values may produce more angular or faceted surfaces.</p>
+</dd>
+<dt><strong>Void Limit</strong></dt><dd><p>The maximum number of voids or openings an element can have before being considered excessive and skipped during the loading process.
+Elements with a number of openings exceeding the specified limit will be excluded from the loaded model,
+and a warning message will be displayed in the console, listing the skipped elements.</p>
+<p>Openings slowdown the rendering process, so lower values result in improved performance.</p>
+</dd>
+</dl>
+<p><strong>Distance Limit</strong></p>
+<blockquote>
+<div><p>Maximum distance between vertices in a tessellation (mesh approximation).
+Higher values result in a coarser mesh, while lower values produce a denser mesh with more vertices.</p>
+</div></blockquote>
+<dl>
+<dt><strong>False Origin Mode</strong></dt><dd><p>Sets the origin point or reference point for the loaded model geometry. This can be useful for aligning or positioning the model within the Blender scene.</p>
+<p>There are three modes available for setting the False Origin:</p>
+<ul class="simple">
+<li><p><strong>Automatic</strong>: An automatic false origin will be detected and applied based on the geometry with large coordinate values.
+This mode is useful when the model’s coordinates are extremely large or outside the typical Blender coordinate range.</p></li>
+<li><p><strong>Manual</strong>: You can specify the false origin coordinates manually.
+This mode allows you to enter the desired origin coordinates in the project’s units (e.g., meters, millimeters) where the Blender origin (0,0,0) should be positioned.</p></li>
+<li><p><strong>Disabled</strong>: The model will be loaded with its original local coordinates, without any false origin adjustments.
+This mode is suitable when the model’s coordinates are within the standard Blender coordinate range and do not require any origin shifting.</p></li>
+</ul>
+<p>When the “Manual” mode is selected, an additional field <strong>False Origin</strong> will appear,
+allowing you to enter the desired false origin coordinates in the project’s units, separated by commas (e.g., “20.1,10.9,-3.1”).</p>
+<p>Applying a false origin can help prevent precision issues and ensure accurate positioning and scaling of the model within the Blender scene,
+especially when working with large-scale projects or models with coordinates outside the typical Blender range.</p>
+</dd>
+<dt><strong>Element Range</strong></dt><dd><p>Users can define a range of elements to load based on their index within the IFC file.
+This is useful for loading a specific subset of elements when dealing with large models.</p>
+<ul class="simple">
+<li><p><strong>Element Offset</strong>: Specifies the starting index of the elements to be loaded.</p></li>
+<li><p><strong>Element Limit</strong>: Specifies the maximum number of elements to be loaded from the specified offset.</p></li>
+</ul>
+<p>For example, if the offset is set to 10 and the limit is set to 50, only 50 elements will be loaded, starting from the 11th element.</p>
+<p>If no offset or limit is specified, all elements within the specified filter criteria will be loaded.</p>
+</dd>
+</dl>
+</section>
+<section id="checkboxes">
+<h3>Checkboxes<a class="headerlink" href="#checkboxes" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Filter Spatial Elements</strong>: Available when the Filter Mode option is selected.</p></li>
+<li><p><strong>CPU Multiprocessing</strong>: Enables the use of multiple CPU cores to speed up the loading process.</p></li>
+<li><p><strong>Clean Meshes</strong>: Automatically cleans and optimizes the geometry of the loaded elements.</p></li>
+<li><p><strong>Cache</strong>: Caches the loaded elements to improve performance.</p></li>
+<li><p><strong>Load Geometry</strong>:</p></li>
+<li><p><strong>Native Meshes</strong>: Loads the native geometry of elements instead of using Blender’s built-in representation.</p></li>
+<li><p><strong>Merge Materials by Color</strong>: Merges materials with similar colors to reduce the number of unique materials in the model.</p></li>
+<li><p><strong>For Coordination Only</strong>: Loads the model in a coordination-only mode, which may disable certain features or simplify the representation of elements.</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>Buttons<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Load Project Elements</strong>: Loads the IFC model with the selected filters, options, and element range applied.</p></li>
+<li><p><strong>Unload Project</strong>: Unload the currently loaded IFC file from the Blender scene.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2024 IfcOpenShell Contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://ifcopenshell.org" aria-label="IfcOpenShell">
+                <img src="https://ifcopenshell.org/assets/images/logo.png" style="width: auto;" />
+            </a>
+              <a class="muted-link " href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/docs" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Project Info</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#project-setup-mode">Project Setup Mode</a><ul>
+<li><a class="reference internal" href="#fields">Fields</a></li>
+<li><a class="reference internal" href="#buttons">Buttons</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#project-unsaved-mode">Project Unsaved Mode</a><ul>
+<li><a class="reference internal" href="#static-text">Static text</a></li>
+<li><a class="reference internal" href="#id1">Fields</a></li>
+<li><a class="reference internal" href="#id2">Buttons</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#project-loaded-mode">Project Loaded Mode</a><ul>
+<li><a class="reference internal" href="#id3">Fields</a></li>
+<li><a class="reference internal" href="#id4">Buttons</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#project-info-editing-mode">Project Info Editing Mode</a><ul>
+<li><a class="reference internal" href="#id5">Fields</a></li>
+<li><a class="reference internal" href="#id6">Buttons</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-loading-mode">Advanced Loading Mode</a><ul>
+<li><a class="reference internal" href="#id7">Fields</a></li>
+<li><a class="reference internal" href="#checkboxes">Checkboxes</a></li>
+<li><a class="reference internal" href="#id8">Buttons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=ec16d22d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

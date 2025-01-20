@@ -1,0 +1,776 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Creating an IFC model" href="create_model.html" /><link rel="prev" title="Installation" href="installation.html" />
+
+    <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Exploring an IFC model - Bonsai 0.8.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=aefb6c79" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=76091274" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #f7f7f6;
+  --color-background-secondary: #eeeeec;
+  --color-background-border: #cfd0cb;
+  --color-foreground-primary: #2e3436;
+  --color-sidebar-item-background--hover: #f7f7f6;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #651fff;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Bonsai 0.8.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Bonsai 0.8.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction_to_bim.html">Introduction to BIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Exploring an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_model.html">Creating an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="next_steps.html">Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/viewing/dealing_with_large_models.html">Dealing with large models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/authoring/georeferencing.html">Georeferencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/authoring/git_support.html">Tracking revisions with Git</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides/development/index.html">Development</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Development</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/development/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/development/hello_world.html">Hello, world!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/development/running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/development/translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/development/undo_system.html">Undo system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/development/writing_docs.html">Writing documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/development/debugging.html">Debugging Bonsai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/authoring/other_addons.html">Other add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/topbar.html">Topbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/properties.html">Properties</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/docs/quickstart/explore_model.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/edit/v0.8.0/src/bonsai/docs/quickstart/explore_model.rst" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="exploring-an-ifc-model">
+<h1>Exploring an IFC model<a class="headerlink" href="#exploring-an-ifc-model" title="Link to this heading">¶</a></h1>
+<p>We’re going to load an existing IFC model and explore some common properties
+most users will be interested in.</p>
+<p>If you don’t have an IFC model available, here’s a small one for your
+convenience provided by the Institute for Automation and Applied Informatics
+(IAI) / Karlsruhe Institute of Technology.  It’s in German, so you may need to
+use some creativity when reading the data :)</p>
+<div class="blockbutton docutils container">
+<p><a class="reference external" href="https://www.ifcwiki.org/images/e/e3/AC20-FZK-Haus.ifc">Download sample IFC</a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can find more sample models online in the <a class="reference external" href="https://wiki.osarch.org/index.php?title=AEC_Open_Data_directory">OSArch Open Data Directory</a></p>
+</div>
+<section id="loading-a-model">
+<h2>Loading a model<a class="headerlink" href="#loading-a-model" title="Link to this heading">¶</a></h2>
+<p>Bonsai’s interface is divided into three panels. The left
+<span class="menuselection">Outliner</span> panel shows geometric objects. The centre main
+<span class="menuselection">3D Viewport</span> panel shows 3D geometry. The right
+<span class="menuselection">Properties</span> panel shows data and relationships.</p>
+<img alt="../_images/bonsai-layout.png" src="../_images/bonsai-layout.png" />
+<p>The <span class="menuselection">Properties</span> panel has tabs to switch between different
+types of properties.</p>
+<img alt="../_images/properties-tabs.png" src="../_images/properties-tabs.png" />
+<p>Go to <span class="menuselection">Topbar ‣ File</span>, click <strong>Open IFC Project</strong>, and browse
+to your <code class="docutils literal notranslate"><span class="pre">.ifc</span></code> file.</p>
+<img alt="../_images/properties-loadproject.png" src="../_images/properties-loadproject.png" />
+<p>After loading, you will see the model appear in the <span class="menuselection">3D Viewport</span>.</p>
+<img alt="../_images/example-project.png" src="../_images/example-project.png" />
+<p>Take a look at the <span class="menuselection">Properties ‣ Project Overview ‣ Project
+Info</span> panel. It shows the loaded filename, as well as the <strong>IFC Schema</strong>. There
+are two commonly seen <strong>IFC Schema</strong> versions: IFC2X3 and IFC4. Checking the
+<strong>IFC Schema</strong> is important because it has an impact on what BIM data may be
+stored. IFC4 is the newer version and it is recommended to use IFC4 models as
+it has significantly more BIM capabilities compared to IFC2X3.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Blender’s interface is highly customisable. Panels, panel types, colours,
+sizes, and tabs may be edited to suit your workflow. If you want a <a class="reference external" href="https://github.com/kame404/Blender-Themes">Hot Pink
+theme</a> look no further.</p>
+</div>
+</section>
+<section id="navigating-a-model-in-3d">
+<h2>Navigating a model in 3D<a class="headerlink" href="#navigating-a-model-in-3d" title="Link to this heading">¶</a></h2>
+<p>To navigate, can use the <strong>Navigate Gizmo</strong> on the top right corner of the
+<span class="menuselection">3D Viewport</span>. Click and drag on the coloured axes to <strong>Orbit</strong>,
+click and drag on the magnifying glass to <strong>Zoom</strong>, and click and drag on the
+hand icon to <strong>Pan</strong>.  You can also click on the grid icon to switch between
+perspective and orthographic view.</p>
+<p>To switch to a top view, front view, or side view, click the relevant axis on
+the <strong>Navigate Gizmo</strong>.</p>
+<img alt="../_images/navigate-gizmo.png" src="../_images/navigate-gizmo.png" />
+<p>You can also use your mouse to navigate. Hover your mouse over the <strong>Viewport</strong>
+panel and click and drag the Middle Mouse Button (<kbd class="kbd docutils literal notranslate">MMB</kbd>) to <strong>Orbit</strong>.
+Scroll the mousewheel to <strong>Zoom</strong>, and use <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">MMB</kbd></kbd> to <strong>Pan</strong>.</p>
+<p>If you have a numpad, you can use the numpad keys to quickly switch to top,
+front, or side view. Use <kbd class="kbd docutils literal notranslate">7</kbd> for top view, <kbd class="kbd docutils literal notranslate">1</kbd> for front view, and
+<kbd class="kbd docutils literal notranslate">3</kbd> for side view.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Blender’s hotkeys are context sensitive. This means that a hotkey has a
+different meaning depending on the panel your mouse cursor is hovering over.
+If you press <kbd class="kbd docutils literal notranslate">7</kbd> to go to top view, make sure your mouse cursor is over the
+<span class="menuselection">3D Viewport</span>. Be very careful where your mouse is, or you
+might press a hotkey and it will have unintended consequences!</p>
+</div>
+<p>If you click on an object, such as a wall in the <span class="menuselection">3D Viewport</span>,
+you can zoom to the selected object by clicking on <span class="menuselection">3D Viewport
+‣ View</span> then <strong>Frame Selected</strong>. The hotkey is the <kbd class="kbd docutils literal notranslate">.</kbd> button on the
+numpad.  After zooming into an element, when you <strong>Orbit</strong> the 3D view will
+rotate around the center of that element.</p>
+<p>You can also zoom to all objects in the project by clicking on
+<span class="menuselection">3D Viewport ‣ View</span> then <strong>Frame All</strong>.</p>
+<img alt="../_images/frame-selected.png" src="../_images/frame-selected.png" />
+<p>Another good way to navigate is by flying or walking around similar to a video
+game. Click on <span class="menuselection">3D Viewport ‣ Explore Tool</span>, then you can
+press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">W</kbd></kbd> to activate <strong>Walk Mode</strong>. Use the <kbd class="kbd docutils literal notranslate">WASD</kbd> keys and
+the mouse to move around like a video game. You can use the <kbd class="kbd docutils literal notranslate">Shift</kbd> key to
+switch between moving fast and slow. If you scroll with the mousewheel, it will
+adjust the speed that you move at.</p>
+<img alt="../_images/explore-tool.png" src="../_images/explore-tool.png" />
+<p>Sometimes, you want to look through objects. You can toggle <strong>X-Ray Mode</strong> by
+pressing the button on the top right of the <strong>Viewport</strong> panel. The hotkey is
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Z</kbd></kbd>.</p>
+<img alt="../_images/x-ray-mode.png" src="../_images/x-ray-mode.png" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Blender has lots of hotkeys to do things quickly. These can take time to
+learn but it is worth it as you will be much faster. These hotkeys can be
+customised in Blender’s preferences.</p>
+</div>
+</section>
+<section id="overview-of-all-objects">
+<h2>Overview of all objects<a class="headerlink" href="#overview-of-all-objects" title="Link to this heading">¶</a></h2>
+<p>All physical <strong>Elements</strong> are organised in a hierarchy of <strong>Spatial
+Containers</strong>. By default, this hierarchy represents a breakdown of spaces, from
+large spaces such as a site and a building, down to smaller spaces like
+building storeys and room spaces. The hierarchy will always begin with an
+<strong>IfcProject</strong>.</p>
+<p>The <span class="menuselection">Properties ‣ Project Overview ‣ Spatial Decomposition</span>
+panel shows this hierarchy. Below, it shows a list of all <strong>Elements</strong>
+contained inside the actively selected <strong>Spatial Container</strong>.</p>
+<img alt="../_images/spatial-tree.png" src="../_images/spatial-tree.png" />
+<p>With a <strong>Spatial Container</strong> selected, use the <strong>Isolate</strong> button or <strong>Hide /
+Show Icons</strong> to quickly focus or control visibility. Use the search filters at
+the bottom of the <strong>Container</strong> or <strong>Element</strong> lists to quickly find objects,
+and use the <strong>Select Icon</strong> to select them.</p>
+<img alt="../_images/spatial-tree-features.png" src="../_images/spatial-tree-features.png" />
+<p><strong>Elements</strong> are grouped into IFC <strong>Classes</strong>, such as Wall, Slab, or Door.
+Within that, <strong>Elements</strong> are grouped into <strong>Construction Types</strong>. You’ll see a
+count of how many objects of that type exist. In the example above, there is
+only one stair contained in the building storey.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Hold <kbd class="kbd docutils literal notranslate">Alt</kbd> when clicking on triangles in the hierarchy to show / hide
+children recursively.</p>
+</div>
+</section>
+<section id="viewing-element-classes">
+<h2>Viewing element classes<a class="headerlink" href="#viewing-element-classes" title="Link to this heading">¶</a></h2>
+<p>Usually the first thing you’ll want to check is the <strong>Class</strong> of element that an
+object represents. The IFC <strong>Class</strong> is an international classification system
+provided by IFC. Example IFC <strong>Classes</strong> are Wall, Slab, and Door. Every IFC
+element must have a <strong>Class</strong>.</p>
+<p><strong>Classes</strong> aren’t just for categorising elements. They also indicate what types of
+properties and relationships it is allowed to have. For example, a Wall
+<strong>Class</strong> can have a fire rating property, but a Grid <strong>Class</strong> cannot.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are hundreds of <strong>Classes</strong> to represent all aspects of our built
+environment, including non geometric classes like Task, Occupant, and CostItem.
+However, we’ll focus only on simple physical <strong>Classes</strong> in this guide. Don’t
+worry about memorising all the available <strong>Classes</strong>, you’ll get a feel for them
+as you explore more.</p>
+</div>
+<p>To view an object’s class, click on an object in the <span class="menuselection">3D
+Viewport</span>, then go to <span class="menuselection">Properties ‣ Object Information ‣
+Object Metadata</span> to see the <strong>Class</strong> name.</p>
+<img alt="../_images/element-class.png" src="../_images/element-class.png" />
+<p>In this case, the <strong>Class</strong> of our roof is an <strong>IfcSlab</strong>. You can also see the
+name of the actively selected object in the top left of the <span class="menuselection">3D
+Viewport</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Sometimes, an IFC model will use the wrong <strong>Class</strong>. For example, a chair might
+be assigned as the Wall <strong>Class</strong> instead the Furniture <strong>Class</strong>. There is a
+special class known as <strong>IfcBuildingElementProxy</strong>, used when the user is
+unable to find a more semantic <strong>Class</strong>. If you see many
+<strong>IfcBuildingElementProxy</strong> <strong>Classes</strong>, it is likely a symptom of a low
+quality IFC model. If this is the case, scold the project manager and ask
+them to do a better job.</p>
+</div>
+<p>After <strong>IfcSlab</strong> it also says <strong>ROOF</strong>. This is known as the
+<strong>Predefined Type</strong> of the element. You can think of it as a further level of
+classification. In this case, it distinguishes our object as a roof slab,
+compared to other types of slabs. The <strong>Predefined Type</strong> is optional so you may
+not see it all the time.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can use the <a class="reference external" href="https://bonsaibim.org/search-ifc-class.html">Search IFC Class</a> tool to learn the correct
+classes and predefined types you should see.</p>
+</div>
+<p>Press the <strong>Select Icon</strong> to select all objects that are of the same
+<strong>IfcSlab</strong> <strong>Class</strong>. Then, you can isolate these elements by going to
+<span class="menuselection">3D Viewport ‣ Object ‣ Show/Hide ‣ Hide Unselected</span>
+(<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">H</kbd></kbd>). To show all elements again, you can use <span class="menuselection">3D
+Viewport ‣ Object ‣ Show/Hide ‣ Show Hidden Objects</span> (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">H</kbd></kbd>). If
+you want to hide elements instead, you can use <span class="menuselection">3D Viewport ‣
+Object ‣ Show/Hidden ‣ Hide Selected</span> (<kbd class="kbd docutils literal notranslate">H</kbd>).</p>
+<img alt="../_images/element-class-select.png" src="../_images/element-class-select.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember that Blender’s hotkeys are context sensitive. Make sure your mouse
+is hovering over the <span class="menuselection">Viewport</span> panel when you press a hotkey
+or no cake for you.</p>
+</div>
+<p>You can also see statistics about the number of selected objects. If you right
+click on the bottom right <span class="menuselection">Status Bar</span> and enable <strong>Scene
+Statistics</strong> you will see information like <strong>Objects 4/4</strong>, which means that 4
+objects are selected out of 4 available objects. This is a great way of
+counting objects like toilets.</p>
+<img alt="../_images/scene-statistics.png" src="../_images/scene-statistics.png" />
+</section>
+<section id="viewing-attributes-and-properties">
+<h2>Viewing attributes and properties<a class="headerlink" href="#viewing-attributes-and-properties" title="Link to this heading">¶</a></h2>
+<p>You can view the <strong>Attributes</strong>, <strong>Properties</strong>, and <strong>Quantities</strong> of the
+selected object in the <span class="menuselection">Properties ‣ Object Information</span> tab.</p>
+<p>Let’s focus on <strong>Attributes</strong> first. Scroll down to the <strong>Attributes</strong>
+subpanel. <strong>Attributes</strong> are a limited set of fundamental data (usually less
+than 10) associated with all IFC elements. These are fixed by the IFC standard.</p>
+<img alt="../_images/attributes.png" src="../_images/attributes.png" />
+<p>Here are some common attributes and what they mean:</p>
+<ul class="simple">
+<li><p><strong>GlobalId</strong>: a unique ID for the element useful for computer geeks</p></li>
+<li><p><strong>Name</strong>: a short name, code, number, or label to identify the object for a
+human. If you had to annotate the object on a drawing or a schedule, the
+<strong>Name</strong> is what you should see. For example, a pump <strong>Name</strong> might be <code class="docutils literal notranslate"><span class="pre">P-10-A</span></code>.</p></li>
+<li><p><strong>Description</strong>: typically the longer form of the name, written to be
+descriptive and readable for humans. For example a pump <strong>Description</strong> might
+be <code class="docutils literal notranslate"><span class="pre">Water</span> <span class="pre">Suction</span> <span class="pre">Pump</span></code>.</p></li>
+<li><p><strong>Tag</strong>: this is an ID that may link it back to another BIM application. For
+example if the IFC model was produced using Revit or ArchiCAD, it might hold
+the Revit or ArchiCAD element ID.</p></li>
+<li><p><strong>Predefined Type</strong>: A further level of classification to be read
+in conjunction with the IFC class.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some IFC models have poor quality data. For example, if the <strong>Name</strong>
+of a Window doesn’t match the window code (e.g. <code class="docutils literal notranslate"><span class="pre">W01</span></code>) you see on a
+drawing, the project manager has clearly not put enough effort. Shame on
+them.</p>
+</div>
+<p><strong>Properties</strong> are other data associated with the object. Every project will
+have different <strong>Properties</strong> depending on what information they want to store.
+Each <strong>Property</strong> has a name and a value, and are grouped into <strong>Property
+Sets</strong>. Each <strong>Property Set</strong> also has a name.</p>
+<p>You can find <strong>Properties</strong> in the <span class="menuselection">Properties ‣ Object
+Information ‣ Property Sets</span> panel.</p>
+<img alt="../_images/psets.png" src="../_images/psets.png" />
+<p>Some very common <strong>Properties</strong> are standardised by international BIM standards.
+For example, the load bearing <strong>Property</strong> of a beam should always be called
+<code class="docutils literal notranslate"><span class="pre">LoadBearing</span></code>. If a <strong>Property Set</strong> is part of the international standard, it
+has a prefix of <code class="docutils literal notranslate"><span class="pre">Pset_</span></code>, like <code class="docutils literal notranslate"><span class="pre">Pset_BeamCommon</span></code>.</p>
+<p>If you see a <strong>Property Set</strong> without the <code class="docutils literal notranslate"><span class="pre">Pset_</span></code> prefix, it is a custom
+property defined by the author of the IFC model.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It’s important to distinguish between <strong>Properties</strong> that are
+part of the standard compared to custom ones. When <strong>Properties</strong> are
+standardised, it makes it easy to manage data. So if you need to isolate all
+<code class="docutils literal notranslate"><span class="pre">LoadBearing</span></code> elements, you now know exactly where to look.</p>
+</div>
+<p><strong>Quantities</strong> are very similar to properties. They also have a name and a
+value, and are grouped into <strong>Quantity Sets</strong>. Similarly, there are also common
+quantities defined as part of the international standard, denoted by the prefix
+<code class="docutils literal notranslate"><span class="pre">Qto_</span></code>. This prefix is short for “Quantity Take-Off”.</p>
+<p>You can find <strong>Quantities</strong> in the <span class="menuselection">Properties ‣ Object
+Information ‣ Quantity Sets</span> panel.</p>
+<img alt="../_images/qtos.png" src="../_images/qtos.png" />
+</section>
+<section id="finding-the-location-of-objects">
+<h2>Finding the location of objects<a class="headerlink" href="#finding-the-location-of-objects" title="Link to this heading">¶</a></h2>
+<p>Every object in the built environment has a location in the world. For example,
+a chair will be located in a space, and a wall is typically located in a
+building storey. You’ve already seen this hierarchy of spaces in the
+<span class="menuselection">Properties ‣ Project Overview ‣ Spatial Decomposition</span>
+panel, where an IFC project is broken down into site, building, storeys, and
+spaces.</p>
+<p>Sometimes, objects may have multiple relevant locations, such
+as a multi-storey column which can be related to multiple building storeys.
+Even in these cases, IFC enforces one location to be its primary
+location, known as its <strong>Spatial Container</strong>.</p>
+<p>If you click on any object, you can see its location in the
+<span class="menuselection">Properties ‣ Object Information ‣ Spatial Container</span> panel.</p>
+<p>Press the <strong>Select Icon</strong> to select all objects that are in the same location.</p>
+<img alt="../_images/spatial-container.png" src="../_images/spatial-container.png" />
+</section>
+<section id="checking-construction-types">
+<h2>Checking construction types<a class="headerlink" href="#checking-construction-types" title="Link to this heading">¶</a></h2>
+<p>Almost everything in the built environment will have a <strong>Construction Type</strong>.
+For example, an architect will specify a door type for every door in a project.</p>
+<p>You can see a list of <strong>Construction Types</strong> in the <span class="menuselection">Outliner</span>
+in the <strong>Types</strong> collection. For example, if the architect has a wall types
+schedule with the wall type names of <code class="docutils literal notranslate"><span class="pre">WT01</span></code>, <code class="docutils literal notranslate"><span class="pre">WT02</span></code>, and <code class="docutils literal notranslate"><span class="pre">WT03</span></code>, you
+should see three <strong>IfcWallType</strong> objects with those same names in the
+<strong>Outliner</strong>.</p>
+<p>You can click on these types to see more details about them in the
+<span class="menuselection">Properties</span> panel.</p>
+<img alt="../_images/outliner-types.png" src="../_images/outliner-types.png" />
+<p>When selecting an object, you can also see its construction type in
+<span class="menuselection">Properties ‣ Object Information ‣ Type</span>. You can press the
+<strong>Select Icon</strong> to select all objects that are of the same <strong>Construction
+Type</strong>. You can use the hide and isolate hotkeys to quickly view them in the
+model.</p>
+<img alt="../_images/properties-types.png" src="../_images/properties-types.png" />
+<p>A <strong>Construction Type</strong> defines properties that are common to all occurrences of
+that type. For example, if a wall type specifies a fire rating property, then
+all walls of that wall type will inherit that fire rating too.</p>
+<p>A <strong>Construction Type</strong> may also specify geometry or geometric rules that are
+common to all occurrences of the type. For example, a pump type will define the
+geometry of the pump, so all occurrences of that pump will have the same
+geometry.</p>
+<p>You can visually inspect types in isolation to the rest of the model. Types are
+hidden by default, so first enable the visibility of the <strong>Types</strong> collection
+in the <strong>Outliner</strong> by pressing the <strong>Visibility Icon</strong>. Then, select a type,
+and click on <span class="menuselection">3D Viewport ‣ View ‣ Local View ‣ Toggle
+Local View</span> (<kbd class="kbd docutils literal notranslate">/</kbd>). Toggle the view to see the entire model again.</p>
+<img alt="../_images/type-local-view.png" src="../_images/type-local-view.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only <strong>Construction Types</strong> where the geometry is exactly the same for all
+occurrences will specify geometry. When the geometry varies based on the
+occurrence (such as a wall, which varies based on the wall length), the
+<strong>Construction Type</strong> will typically have no geometry.</p>
+</div>
+</section>
+<section id="filtering-by-materials">
+<h2>Filtering by materials<a class="headerlink" href="#filtering-by-materials" title="Link to this heading">¶</a></h2>
+<p>Everything in the built environment is made from a physical raw <strong>Material</strong>
+resources. For example, a <strong>Material</strong> might be blockwork. Another
+<strong>Material</strong> might be in-situ concrete. <strong>Materials</strong> are grouped into
+categories like steel, concrete, brick, block, and so on.</p>
+<p>We can see a list of <strong>Materials</strong> used in the project in the
+<span class="menuselection">Properties ‣ Geometry and Materials ‣ Materials</span> panel.</p>
+<p>Press the <strong>Select Icon</strong> to select all objects that are of the selected
+material.</p>
+<img alt="../_images/materials.png" src="../_images/materials.png" />
+</section>
+<section id="taking-simple-measurements">
+<h2>Taking simple measurements<a class="headerlink" href="#taking-simple-measurements" title="Link to this heading">¶</a></h2>
+<p>The simplest form of measurement is the one that’s already taken for you. The
+<a class="reference internal" href="#viewing-attributes-and-properties"><span class="std std-ref">Viewing attributes and properties</span></a> section
+describes how to view pre-calculated <strong>Quantities</strong>.</p>
+<p>Sometimes, you may wish to take manual measurements yourself. You can view the
+overall X, Y, and Z dimensions of the currently selected object in the
+<span class="menuselection">Properties ‣ Geometry and Materials ‣ Placement ‣ Derived
+Coordinates</span> panel.</p>
+<img alt="../_images/dimensions.png" src="../_images/dimensions.png" />
+<p>Another way to manually measure from two points is to use the <strong>Measure</strong> tool.
+First, press the <strong>Snap Icon</strong> to enable snapping. Then choose snap targets in
+the <strong>Snap Menu</strong> in the top middle section of the <span class="menuselection">3D
+Viewport</span>.</p>
+<img alt="../_images/snap-targets.png" src="../_images/snap-targets.png" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is recommended to choose multiple snap targets, like <strong>Vertex</strong>, <strong>Edge</strong>, and
+<strong>Face</strong>, and <strong>Edge Center</strong>. You can use the <code class="docutils literal notranslate"><span class="pre">Shift</span></code> key to select
+multiple snap targets. For example, the <strong>Face</strong> snap target means that your
+measurements will automatically snap to the nearest object’s surface.</p>
+</div>
+<p>Now that you have configured snapping, press the <strong>Measure Tool Icon</strong> on the
+left of the <span class="menuselection">3D Viewport</span>. <strong>Click</strong> and <strong>Drag</strong> in the 3D
+viewport to take a measurement. A circle will appear guiding the first point of
+your measurement. While <strong>Dragging</strong>, press the <code class="docutils literal notranslate"><span class="pre">X</span></code> key to lock the
+measurement line along the X axis. Alternatively, press the <code class="docutils literal notranslate"><span class="pre">Y</span></code> or <code class="docutils literal notranslate"><span class="pre">Z</span></code> key
+to lock the measurement line along the Y or Z axis. Let go of the mouse to
+finish your measurement.</p>
+<img alt="../_images/measure-tool.png" src="../_images/measure-tool.png" />
+<p>To delete a measurement, just click on one point of the measurement, and press
+the <code class="docutils literal notranslate"><span class="pre">Delete</span></code> key. You can also click and drag the ends of your measurement
+lines to measure to another location.</p>
+</section>
+<section id="what-else-is-there">
+<h2>What else is there?<a class="headerlink" href="#what-else-is-there" title="Link to this heading">¶</a></h2>
+<p>Congratulations, and welcome to the digital built environment!</p>
+<p>We’ve barely scratched the surface of the data and relationships available in an
+IFC model. We’ve yet to cover documents and drawings, clearance zones, tasks,
+cost items, structural loads and forces, analytical models, distribution system
+connectivity, energy analysis, rendering textures, and so much more. Our built
+environment and its relationships are vast and complex and it is exciting that
+you can join us on its digital journey!</p>
+<p>Please do not hesitate to reach out with any questions.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://osarch.org/chat">OSArch live chat</a></p></li>
+<li><p><a class="reference external" href="https://community.osarch.org">OSArch community forum</a></p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="create_model.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Creating an IFC model</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="installation.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Installation</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2024 IfcOpenShell Contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://ifcopenshell.org" aria-label="IfcOpenShell">
+                <img src="https://ifcopenshell.org/assets/images/logo.png" style="width: auto;" />
+            </a>
+              <a class="muted-link " href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/docs" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Exploring an IFC model</a><ul>
+<li><a class="reference internal" href="#loading-a-model">Loading a model</a></li>
+<li><a class="reference internal" href="#navigating-a-model-in-3d">Navigating a model in 3D</a></li>
+<li><a class="reference internal" href="#overview-of-all-objects">Overview of all objects</a></li>
+<li><a class="reference internal" href="#viewing-element-classes">Viewing element classes</a></li>
+<li><a class="reference internal" href="#viewing-attributes-and-properties">Viewing attributes and properties</a></li>
+<li><a class="reference internal" href="#finding-the-location-of-objects">Finding the location of objects</a></li>
+<li><a class="reference internal" href="#checking-construction-types">Checking construction types</a></li>
+<li><a class="reference internal" href="#filtering-by-materials">Filtering by materials</a></li>
+<li><a class="reference internal" href="#taking-simple-measurements">Taking simple measurements</a></li>
+<li><a class="reference internal" href="#what-else-is-there">What else is there?</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=ec16d22d"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

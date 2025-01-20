@@ -1,0 +1,654 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Geometry and Materials - Bonsai 0.8.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=aefb6c79" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=76091274" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #f7f7f6;
+  --color-background-secondary: #eeeeec;
+  --color-background-border: #cfd0cb;
+  --color-foreground-primary: #2e3436;
+  --color-sidebar-item-background--hover: #f7f7f6;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #651fff;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Bonsai 0.8.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Bonsai 0.8.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/introduction_to_bim.html">Introduction to BIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/explore_model.html">Exploring an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/create_model.html">Creating an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/next_steps.html">Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/viewing/dealing_with_large_models.html">Dealing with large models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/authoring/georeferencing.html">Georeferencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/authoring/git_support.html">Tracking revisions with Git</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../guides/development/index.html">Development</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Development</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/hello_world.html">Hello, world!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/undo_system.html">Undo system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/writing_docs.html">Writing documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/debugging.html">Debugging Bonsai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/authoring/other_addons.html">Other add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topbar.html">Topbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../properties.html">Properties</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/docs/reference/geometry_and_materials/index.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/edit/v0.8.0/src/bonsai/docs/reference/geometry_and_materials/index.rst" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="geometry-and-materials">
+<h1>Geometry and Materials<a class="headerlink" href="#geometry-and-materials" title="Link to this heading">¶</a></h1>
+<figure class="align-default" id="id1">
+<img alt="property editor geometry and materials sub-tab" src="../../_images/interface_property-editor_geometry-materials.png" />
+<figcaption>
+<p><span class="caption-text">Geometry and Materials sub-tab.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Geometry and Materials sub-tab in the Property Editor provides access to various aspects of an IFC element’s
+geometric representation and material properties.</p>
+<p>This section is crucial for viewing and editing the physical and visual characteristics of IFC elements.</p>
+<section id="placement">
+<h2>Placement<a class="headerlink" href="#placement" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="id2">
+<img alt="Placement panel in the Geometry and Materials sub-tab" src="../../_images/placement.png" />
+<figcaption>
+<p><span class="caption-text">Placement panel in the Geometry and Materials sub-tab</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Placement panel allows you to view and edit the spatial position and orientation of the IFC element within the project.</p>
+<section id="location">
+<h3>Location<a class="headerlink" href="#location" title="Link to this heading">¶</a></h3>
+<p>The Location fields display and allow editing of the element’s position in 3D space:</p>
+<ul class="simple">
+<li><p>X: The position along the X-axis (left/right)</p></li>
+<li><p>Y: The position along the Y-axis (front/back)</p></li>
+<li><p>Z: The position along the Z-axis (up/down)</p></li>
+</ul>
+<p>These values are typically measured in the project’s chosen unit of measurement.</p>
+</section>
+<section id="rotation">
+<h3>Rotation<a class="headerlink" href="#rotation" title="Link to this heading">¶</a></h3>
+<p>The Rotation fields show and allow modification of the element’s orientation:</p>
+<ul class="simple">
+<li><p>X: Rotation around the X-axis (pitch)</p></li>
+<li><p>Y: Rotation around the Y-axis (roll)</p></li>
+<li><p>Z: Rotation around the Z-axis (yaw)</p></li>
+</ul>
+<p>Rotation values are measured in degrees.</p>
+</section>
+<section id="derived-coordinates">
+<h3>Derived Coordinates<a class="headerlink" href="#derived-coordinates" title="Link to this heading">¶</a></h3>
+<p>This section provides additional information about the element’s placement:</p>
+<dl class="simple">
+<dt><strong>Edit Object Placement</strong></dt><dd><p>A button that allows you to manually edit the object’s placement.</p>
+</dd>
+<dt><strong>XYZ Dimensions</strong></dt><dd><p>Displays the absolute bounding box dimensions of the object.</p>
+</dd>
+<dt><strong>Min Global Z and Max Global Z</strong></dt><dd><p>Shows the lowest and highest points of the object in the global Z coordinate system.</p>
+</dd>
+<dt><strong>Min Decomposed Z and Max Decomposed Z</strong></dt><dd><p>Indicates the lowest and highest points of the object when considering its decomposed parts or components.</p>
+</dd>
+</dl>
+<p>Note: The specific units used may depend on your project settings. Always ensure you’re working in the correct units when adjusting placement values.</p>
+<p>For more detailed information about Object Placements in IFC,
+including how they are represented mathematically and how to create them programmatically,
+please refer to the <a class="reference external" href="https://docs.ifcopenshell.org/ifcopenshell-python/geometry_creation.html#object-placements">IfcOpenShell documentation on Object Placements</a>.</p>
+</section>
+</section>
+<section id="representations">
+<h2>Representations<a class="headerlink" href="#representations" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="id3">
+<img alt="Representations panel in the Geometry and Materials sub-tab" src="../../_images/representations.png" />
+<figcaption>
+<p><span class="caption-text">Representations panel in the Geometry and Materials sub-tab</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Representations panel allows you to view and manage the geometric representations of an IFC element.
+In IFC, an element can have multiple representations for different purposes or contexts.</p>
+<section id="adding-representations">
+<h3>Adding Representations<a class="headerlink" href="#adding-representations" title="Link to this heading">¶</a></h3>
+<p>At the top of the panel, you can add new representations to the element:</p>
+<ol class="arabic simple">
+<li><p>Select the desired representation context from the dropdown menu (e.g., Model, Plan).</p></li>
+<li><p>Click the “+” button next to the dropdown.</p></li>
+<li><p>A dialog box will appear, allowing you to choose the type of representation to add (e.g., Trace Outline, Bounding Box).</p></li>
+<li><p>Depending on the chosen type, you may be prompted to select an object as the basis for the new representation.</p></li>
+</ol>
+<p>This feature allows you to create multiple representations for different purposes, such as simplified views, detailed 3D models, or 2D symbols.</p>
+<figure class="align-default" id="id4">
+<img alt="Add Representation dialog" src="../../_images/add-representation-dialog.png" />
+<figcaption>
+<p><span class="caption-text">Add Representation dialog</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="representation-list">
+<h3>Representation List<a class="headerlink" href="#representation-list" title="Link to this heading">¶</a></h3>
+<p>Below the add representation controls, you can see a list of representations.
+Each row shows the context (e.g., Model, Plan) and type (e.g., Axis, Body) of a representation.</p>
+<p>Two buttons are available for each representation in the list:</p>
+<ol class="arabic simple">
+<li><p>View/Edit button: This button allows you to switch to the selected representation and view or edit it in the 3D view.
+It’s useful for inspecting or modifying specific representations of the element.</p>
+<ul class="simple">
+<li><p>When a representation is not active, this button appears as a standard “switch/geometry” icon.</p></li>
+<li><p>When a representation is active (i.e., currently being viewed/edited), the button changes to a “reload” icon.
+This visual cue helps you identify which representation is currently active in the 3D view.</p></li>
+</ul>
+</li>
+<li><p>Delete button: This button allows you to remove the selected representation from the element.
+Use this with caution, as deleting a representation can affect how the element is displayed or used in different contexts.</p></li>
+</ol>
+<p>The ability to switch between representations and visually identify the active one allows for efficient management of multiple geometric
+representations for a single IFC element.</p>
+</section>
+<section id="representation-items">
+<h3>Representation Items<a class="headerlink" href="#representation-items" title="Link to this heading">¶</a></h3>
+<p>This section lists the items that make up the current representation. In the example, there is one item of type “IfcExtrudedAreaSolid”.</p>
+<ul class="simple">
+<li><p>You can select items to view or edit their properties.</p></li>
+<li><p>The “x” button allows you to remove items from the representation.</p></li>
+</ul>
+<section id="surface-style">
+<h4>Surface Style<a class="headerlink" href="#surface-style" title="Link to this heading">¶</a></h4>
+<p>Indicates whether a surface style is applied to the representation. You can assign a style using the pencil icon.</p>
+</section>
+<section id="presentation-layer">
+<h4>Presentation Layer<a class="headerlink" href="#presentation-layer" title="Link to this heading">¶</a></h4>
+<p>Shows if the representation is assigned to a presentation layer. This can be useful for organizing and displaying elements in CAD or BIM software.</p>
+</section>
+<section id="shape-aspect">
+<h4>Shape Aspect<a class="headerlink" href="#shape-aspect" title="Link to this heading">¶</a></h4>
+<p>Displays any shape aspects associated with the representation. Shape aspects can define specific parts or features of the geometry.</p>
+</section>
+</section>
+<section id="representation-utilities">
+<h3>Representation Utilities<a class="headerlink" href="#representation-utilities" title="Link to this heading">¶</a></h3>
+<p>This section provides advanced tools for manipulating representations:</p>
+<ul class="simple">
+<li><p>Manually Save Representation: Allows direct saving of representation data.</p></li>
+<li><p>Copy Mesh From Active To Selected: Copies mesh data between representations.</p></li>
+<li><p>Convert To Tessellation: Transforms the representation into a tessellated form.</p></li>
+<li><p>Convert To Rectangle Extrusion: Changes the representation to a simple rectangular extrusion.</p></li>
+<li><p>Convert To Circle Extrusion: Changes the representation to a circular extrusion.</p></li>
+<li><p>Convert To Arbitrary Extrusion: Allows for custom extrusion shapes.</p></li>
+<li><p>Convert To Arbitrary Extrusion With Voids: Similar to above, but includes the ability to add voids.</p></li>
+<li><p>Get Representation IFC Parameters: Retrieves the IFC-specific parameters of the representation.</p></li>
+</ul>
+<p>Note: These utilities are marked as “Advanced Users Only” and should be used with caution,
+as they can significantly alter the element’s geometry and IFC data.</p>
+<p>For more detailed information about IFC Representations and how they are handled in IfcOpenShell,
+refer to the <a class="reference external" href="https://docs.ifcopenshell.org/ifcopenshell-python/geometry_creation.html#representations">IfcOpenShell documentation on Representations</a>.</p>
+</section>
+</section>
+<section id="geometric-relationships">
+<h2>Geometric Relationships<a class="headerlink" href="#geometric-relationships" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="id5">
+<img alt="Geometric Relationships panel in the Geometry and Materials sub-tab" src="../../_images/geometric_relationships.png" />
+<figcaption>
+<p><span class="caption-text">Geometric Relationships panel in the Geometry and Materials sub-tab</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Geometric Relationships panel provides tools and information about how the current IFC element relates geometrically to other elements in the model.</p>
+<section id="vendor-workarounds">
+<h3>Vendor Workarounds<a class="headerlink" href="#vendor-workarounds" title="Link to this heading">¶</a></h3>
+<p>This section contains options to force certain geometric behaviors:</p>
+<ul class="simple">
+<li><p>Force Faceted Breps: Converts curved surfaces to faceted representations.</p></li>
+<li><p>Force Triangulation: Ensures all polygonal faces are triangulated.</p></li>
+<li><p>Force Presentation Style Assignment: Applies presentation styles to all geometric items.</p></li>
+</ul>
+<p>These options can be useful when working with software that has specific geometric requirements or limitations.</p>
+</section>
+<section id="presentation-layers">
+<h3>Presentation Layers<a class="headerlink" href="#presentation-layers" title="Link to this heading">¶</a></h3>
+<p>Displays and manages the presentation layers associated with the element. The pencil icon allows you to add or manage presentation layers.</p>
+<p>Note: There are known bugs an limitations with using presentation layers.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>While layers are supported for compatibility with CAD environments,
+consider using IFC properties, groups, or model views for more advanced data organization in BIM workflows.</p>
+</div>
+</section>
+<section id="voids">
+<h3>Voids<a class="headerlink" href="#voids" title="Link to this heading">¶</a></h3>
+<p>Lists the voids (openings) associated with the element. Each void has an associated element.</p>
+<p>The “x” button allows you to remove a void from the element.</p>
+</section>
+<section id="booleans">
+<h3>Booleans<a class="headerlink" href="#booleans" title="Link to this heading">¶</a></h3>
+<p>Shows boolean operations applied to the element’s geometry. The panel displays the number of booleans found and how many are manual (user-defined) versus automatic.</p>
+<ul class="simple">
+<li><p>The “+” button allows you to add a new boolean operation.</p></li>
+<li><p>The dropdown menu lets you choose the type of boolean operation.</p></li>
+<li><p>The “x” button removes the selected boolean operation.</p></li>
+</ul>
+</section>
+<section id="connections">
+<h3>Connections<a class="headerlink" href="#connections" title="Link to this heading">¶</a></h3>
+<p>Lists other elements that are geometrically connected to the current element. In this example, “Wall.006” is connected “AT_START” to the current element.</p>
+<ul class="simple">
+<li><p>The connection type (e.g., AT_START) indicates how the elements are related.</p></li>
+<li><p>The arrow button likely allows you to navigate to the connected element.</p></li>
+</ul>
+<p>This panel is crucial for understanding and managing the geometric relationships between different elements in your IFC model,
+including openings, boolean operations, and connections to other building components.</p>
+</section>
+</section>
+<section id="parametric-geometry">
+<h2>Parametric Geometry<a class="headerlink" href="#parametric-geometry" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="id6">
+<img alt="Parametric Geometry panel in the Geometry and Materials sub-tab" src="../../_images/geometric_relationships.png" />
+<figcaption>
+<p><span class="caption-text">Parametric Geometry panel in the Geometry and Materials sub-tab</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>For elements with parametric definitions,
+this panel allows you to view and edit the parameters that control the element’s geometry.
+This is particularly useful for elements like doors, windows, stairs, etc.</p>
+<p>Parametric geometry allows for efficient modeling and updating of BIM elements while maintaining IFC compatibility.
+Experiment with the available options to find parametric workflows that suit your modeling needs.</p>
+</section>
+<section id="materials">
+<h2>Materials<a class="headerlink" href="#materials" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="id7">
+<img alt="Materials panel in the Geometry and Materials sub-tab" src="../../_images/materials1.png" />
+<figcaption>
+<p><span class="caption-text">Materials panel in the Geometry and Materials sub-tab</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Materials panel allows you to manage material assignments for IFC elements.
+You can assign materials to elements, create and edit material definitions, and manage material layers for layered elements (e.g., walls).</p>
+</section>
+<section id="styles">
+<h2>Styles<a class="headerlink" href="#styles" title="Link to this heading">¶</a></h2>
+<p>The Styles panel is used to manage presentation styles for elements, including surface styles (color, texture, etc.),
+curve styles (line color, thickness, etc.), and fill area styles. These styles control how elements are visually represented in various contexts,
+such as in 2D drawings or 3D views.</p>
+</section>
+<section id="profiles">
+<h2>Profiles<a class="headerlink" href="#profiles" title="Link to this heading">¶</a></h2>
+<p>The Profiles panel is used to manage cross-sectional profiles for elements such as beams, columns, or railings.
+You can create new profiles, edit existing ones, or assign profiles to elements.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2024 IfcOpenShell Contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://ifcopenshell.org" aria-label="IfcOpenShell">
+                <img src="https://ifcopenshell.org/assets/images/logo.png" style="width: auto;" />
+            </a>
+              <a class="muted-link " href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/docs" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Geometry and Materials</a><ul>
+<li><a class="reference internal" href="#placement">Placement</a><ul>
+<li><a class="reference internal" href="#location">Location</a></li>
+<li><a class="reference internal" href="#rotation">Rotation</a></li>
+<li><a class="reference internal" href="#derived-coordinates">Derived Coordinates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#representations">Representations</a><ul>
+<li><a class="reference internal" href="#adding-representations">Adding Representations</a></li>
+<li><a class="reference internal" href="#representation-list">Representation List</a></li>
+<li><a class="reference internal" href="#representation-items">Representation Items</a><ul>
+<li><a class="reference internal" href="#surface-style">Surface Style</a></li>
+<li><a class="reference internal" href="#presentation-layer">Presentation Layer</a></li>
+<li><a class="reference internal" href="#shape-aspect">Shape Aspect</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#representation-utilities">Representation Utilities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geometric-relationships">Geometric Relationships</a><ul>
+<li><a class="reference internal" href="#vendor-workarounds">Vendor Workarounds</a></li>
+<li><a class="reference internal" href="#presentation-layers">Presentation Layers</a></li>
+<li><a class="reference internal" href="#voids">Voids</a></li>
+<li><a class="reference internal" href="#booleans">Booleans</a></li>
+<li><a class="reference internal" href="#connections">Connections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parametric-geometry">Parametric Geometry</a></li>
+<li><a class="reference internal" href="#materials">Materials</a></li>
+<li><a class="reference internal" href="#styles">Styles</a></li>
+<li><a class="reference internal" href="#profiles">Profiles</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=ec16d22d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

@@ -1,0 +1,557 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Starting a New IFC Project - Bonsai 0.8.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=aefb6c79" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=76091274" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #f7f7f6;
+  --color-background-secondary: #eeeeec;
+  --color-background-border: #cfd0cb;
+  --color-foreground-primary: #2e3436;
+  --color-sidebar-item-background--hover: #f7f7f6;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #651fff;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Bonsai 0.8.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Bonsai 0.8.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/introduction_to_bim.html">Introduction to BIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/explore_model.html">Exploring an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/create_model.html">Creating an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/next_steps.html">Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../viewing/dealing_with_large_models.html">Dealing with large models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="georeferencing.html">Georeferencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_support.html">Tracking revisions with Git</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../development/index.html">Development</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Development</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/hello_world.html">Hello, world!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/undo_system.html">Undo system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/writing_docs.html">Writing documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/debugging.html">Debugging Bonsai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other_addons.html">Other add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/topbar.html">Topbar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/properties.html">Properties</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/docs/guides/authoring/starting_new_project.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/edit/v0.8.0/src/bonsai/docs/guides/authoring/starting_new_project.rst" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="starting-a-new-ifc-project">
+<h1>Starting a New IFC Project<a class="headerlink" href="#starting-a-new-ifc-project" title="Link to this heading">¶</a></h1>
+<p>To ensure the best start for your IFC project, follow these steps:</p>
+<section id="start-a-new-blender-session">
+<h2>Start a New Blender Session<a class="headerlink" href="#start-a-new-blender-session" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Close any open Blender windows.</p></li>
+<li><p>Launch a fresh instance of Blender.</p></li>
+</ul>
+<p>This ensures there are no lingering connections or data from previous projects.</p>
+</section>
+<section id="create-a-new-ifc-project">
+<h2>Create a New IFC Project<a class="headerlink" href="#create-a-new-ifc-project" title="Link to this heading">¶</a></h2>
+<p>There are two main methods to create a new IFC project:</p>
+<section id="using-file-menu-recommended">
+<h3>Using File Menu (Recommended)<a class="headerlink" href="#using-file-menu-recommended" title="Link to this heading">¶</a></h3>
+<figure class="align-default" id="id1">
+<img alt="New IFC Project submenu options" src="../../_images/file_new-ifc-project-submenu.png" />
+<figcaption>
+<p><span class="caption-text">New IFC Project submenu options</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>Go to File &gt; New IFC Project.</p></li>
+<li><p>Choose from the following options:</p>
+<ul class="simple">
+<li><p>New Metric (m) Project: Creates a project using meters as the base unit.</p></li>
+<li><p>New Metric (mm) Project: Creates a project using millimeters as the base unit.</p></li>
+<li><p>New Imperial (ft) Project: Creates a project using feet as the base unit.</p></li>
+<li><p>New Demo Project: Creates a project with pre-populated demo content.</p></li>
+<li><p>New Project Wizard: Opens the Project Info panel for customized setup.</p></li>
+</ul>
+</li>
+<li><p>If you chose one of the first four options, your project will be created immediately.</p></li>
+<li><p>New Project Wizard is detailed below.</p></li>
+</ol>
+</section>
+<section id="using-new-project-wizard-scene-properties">
+<h3>Using New Project Wizard / Scene Properties<a class="headerlink" href="#using-new-project-wizard-scene-properties" title="Link to this heading">¶</a></h3>
+<figure class="align-default" id="id2">
+<img alt="Project Wizard in `Scene Properties &gt; Project Overview` subtab" src="../../_images/project_wizard.png" />
+<figcaption>
+<p><span class="caption-text">Project Wizard in <cite>Scene Properties &gt; Project Overview</cite> subtab</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>You can access this method in two ways:</p>
+<ul class="simple">
+<li><p>Go to <cite>File &gt; New IFC Project &gt; New Project Wizard</cite></p></li>
+<li><p>Navigate to Scene <cite>Properties &gt; Project Overview &gt; Project Info</cite></p></li>
+</ul>
+</li>
+<li><p>In the Project Info panel:</p>
+<ul class="simple">
+<li><p>Choose the IFC Schema (IFC2X3, IFC4, or IFC4X3).</p></li>
+<li><p>Select the Unit System (Metric or Imperial).</p></li>
+<li><p>Choose Length, Area, and Volume units.</p></li>
+<li><p>Select a Template (Blank or IFC4 Demo Template).</p></li>
+</ul>
+</li>
+<li><p>Click the “Create Project” button.</p></li>
+</ol>
+</section>
+</section>
+<section id="cleaning-the-scene">
+<h2>Cleaning the scene<a class="headerlink" href="#cleaning-the-scene" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>After creating a new project, Bonsai considers the presence of three default Blender objects:
+a mesh (usually the default cube), a camera, and a light.</p></li>
+<li><p>If have scene setup like this, Bonsai will clean it up</p></li>
+<li><p>Any customizations you make to the Blender scene before finalizing the IFC project creation will be preserved.</p></li>
+</ul>
+<p>If you like, you can delete the default cube, camera and light manually. Or create your own objects.
+This is only recommended for users proficient in Blender. Otherwise, use the File menu or Create Project button in New Project Wizard.</p>
+</section>
+<section id="project-initialization">
+<h2>Project Initialization<a class="headerlink" href="#project-initialization" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="id3">
+<img alt="A basic spatial tree in the Outliner" src="../../_images/outliner.png" />
+<figcaption>
+<p><span class="caption-text">A basic spatial tree in the Outliner</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>A basic spatial tree will be created with <cite>IfcProject &gt; IfcSite &gt; IfcBuilding &gt; IfcStorey</cite>.</p></li>
+<li><p>You can view this structure in the Outliner.</p></li>
+<li><p>The Project Info panel will update to show details about your new IFC project.</p></li>
+</ul>
+</section>
+<section id="saving">
+<h2>Saving<a class="headerlink" href="#saving" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="id4">
+<img alt="Project Info in Unsaved Mode" src="../../_images/project-info_unsaved.png" />
+<figcaption>
+<p><span class="caption-text">Project Info in Unsaved Mode</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>After creating a new project, Bonsai enters an Unsaved Mode. It’s important to understand how saving works in Bonsai:</p>
+<dl class="simple">
+<dt><strong>Saving IFC Project</strong>:</dt><dd><ul class="simple">
+<li><p>Using the keyboard shortcut <cite>Ctrl+S</cite> or <cite>File &gt; Save IFC Project</cite> will save only the <cite>.ifc</cite> file.</p></li>
+<li><p>The <cite>.blend</cite> file remains unsaved and unnamed after this operation.</p></li>
+</ul>
+</dd>
+<dt><strong>Initial Save</strong>:</dt><dd><ul class="simple">
+<li><p>On your first save, you’ll be prompted to choose a location and name for your <cite>.ifc</cite> file.</p></li>
+<li><p>This does not automatically save a <cite>.blend</cite> file.</p></li>
+</ul>
+</dd>
+<dt><strong>Blend File Saving</strong>:</dt><dd><ul class="simple">
+<li><p>To save the <cite>.blend</cite> file, you need to use Blender’s standard <cite>File &gt; Save</cite> or <cite>File &gt; Save As…</cite> options.</p></li>
+<li><p>This operation is separate from saving the IFC project.</p></li>
+</ul>
+</dd>
+<dt><strong>File Menu Options</strong>:</dt><dd><ul class="simple">
+<li><p><cite>File &gt; Save IFC Project</cite> saves only the <cite>.ifc</cite> file.</p></li>
+<li><p><cite>File &gt; Save IFC Project As…</cite> allows you to save the .ifc file to a new location or with a new name.</p></li>
+<li><p>Standard Blender save options (<cite>File &gt; Save</cite>, <cite>File &gt; Save As…</cite>) only affect the .blend file.</p></li>
+</ul>
+</dd>
+<dt><strong>Opening Projects</strong>:</dt><dd><ul class="simple">
+<li><p><cite>File &gt; Open IFC Project</cite> loads only the <cite>.ifc</cite> file. It does not automatically load a corresponding <cite>.blend</cite> file.</p></li>
+<li><p>To open a <cite>.blend</cite> file associated with an IFC project, you need to open it separately using Blender’s standard open options.</p></li>
+</ul>
+</dd>
+<dt><strong>Best Practices</strong>:</dt><dd><ul class="simple">
+<li><p>Always use <cite>File &gt; Open IFC Project</cite> to load your BIM data.</p></li>
+<li><p>If you want to preserve Blender-specific settings or custom scene setups, save the <cite>.blend</cite> file separately.</p></li>
+<li><p>Be aware that opening a <cite>.blend</cite> file directly will not load the associated IFC data.</p></li>
+</ul>
+</dd>
+<dt><strong>For BIM Workflows</strong>:</dt><dd><ul class="simple">
+<li><p>Focus on the <cite>.ifc</cite> file as the primary source of truth for your BIM data.</p></li>
+<li><p>Use <cite>.blend</cite> files if you need to preserve specific Blender setups or visual configurations, but remember these are secondary to the IFC data.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Remember, in Bonsai, the <cite>.ifc</cite> file contains the critical BIM information.
+The <cite>.blend</cite> file is primarily for Blender-specific settings and visual representations.
+Always ensure your IFC project is saved before closing Blender or starting a new session.
+If you need to preserve Blender-specific configurations, save the <cite>.blend</cite> file separately.</p>
+<p>Remember to save your work regularly using <cite>File &gt; Save IFC Project</cite>.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Begin modeling your building elements (walls, slabs, etc.).</p></li>
+<li><p>Set up project properties and classifications.</p></li>
+<li><p>Start defining spaces and zones within your building.</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><span class="xref std std-doc">/users/user_interface/property_editor/scene_editor/project_overview/project_info</span></p></li>
+<li><p><span class="xref std std-doc">/users/user_interface/topbar</span></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2024 IfcOpenShell Contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://ifcopenshell.org" aria-label="IfcOpenShell">
+                <img src="https://ifcopenshell.org/assets/images/logo.png" style="width: auto;" />
+            </a>
+              <a class="muted-link " href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/docs" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Starting a New IFC Project</a><ul>
+<li><a class="reference internal" href="#start-a-new-blender-session">Start a New Blender Session</a></li>
+<li><a class="reference internal" href="#create-a-new-ifc-project">Create a New IFC Project</a><ul>
+<li><a class="reference internal" href="#using-file-menu-recommended">Using File Menu (Recommended)</a></li>
+<li><a class="reference internal" href="#using-new-project-wizard-scene-properties">Using New Project Wizard / Scene Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cleaning-the-scene">Cleaning the scene</a></li>
+<li><a class="reference internal" href="#project-initialization">Project Initialization</a></li>
+<li><a class="reference internal" href="#saving">Saving</a></li>
+<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=ec16d22d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>
