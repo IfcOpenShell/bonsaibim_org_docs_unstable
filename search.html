@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=76091274" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=2633da35" />
     
     
 
@@ -237,7 +237,23 @@
   
   <span class="sidebar-brand-text">Bonsai 0.8.1 documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="#" role="search">
+  <select class="doc-version-switcher" onchange="switchDocs()">
+    <option value="stable">Stable</option>
+    <option value="unstable">Unstable</option>
+  </select>
+</a>
+
+<script>
+  function switchDocs() {
+    var selectBox = document.querySelector('.doc-version-switcher');
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    if (selectedValue === 'unstable') {
+      window.location.href = 'http://docs-unstable.bonsaibim.org/';
+    } else {
+      window.location.href = 'http://docs.bonsaibim.org/';
+    }
+  }
+</script><form class="sidebar-search-container" method="get" action="#" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
