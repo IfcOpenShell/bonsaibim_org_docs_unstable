@@ -357,70 +357,87 @@
         <article role="main" id="furo-main-content">
           <section id="debugging-bonsai">
 <h1>Debugging Bonsai<a class="headerlink" href="#debugging-bonsai" title="Link to this heading">¶</a></h1>
-<p>This is a mini-guide to setting up an IDE and configuring it to debug Bonsai more
-easily. It is currently specific to this writers own system (Ubuntu) but this
-can be expanded by others.</p>
+<p>This is a mini-guide to setting up an IDE and configuring it to debug Bonsai
+more easily. It is currently specific to this writers own system (Ubuntu) but
+this can be expanded by others.</p>
 <ol class="arabic">
-<li><p><strong>Install VSCodium</strong>: This will be system specific. I used the available
-snap package.</p>
+<li><p><strong>Install VSCode/VSCodium</strong>: This will be system specific. I used the
+available snap package.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>--classic<span class="w"> </span>codium
 </pre></div>
 </div>
 <p>I chose VSCodium to avoid Microsoft telemetry and data harvesting, but
-VSCode is going to be similar, and even a bit easier (i.e. steps 3 &amp; 4).</p>
+VSCode is going to be similar, and even a bit easier (i.e. step 3).</p>
 </li>
-<li><p><strong>Activate Python language support</strong>: Start VSCodium, open the Extensions, find the Python
-language support and activate it.</p></li>
-<li><p><strong>Install Blender Addon</strong>: It seems VSCodium is not allowed to directly access
-the Marketplace, and this addon (and the next) is not available in
-VSCodium’s equivalent. (Or I’m an idiot… entirely possible). This means a
-few more steps are needed.</p>
-<p>Download the Blender addon’s <code class="docutils literal notranslate"><span class="pre">.vsix</span></code> file from marketplace (Under “Resources”)
-using your browser from <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=JacquesLucke.blender-development">this</a>
-page.</p>
-<p>Install it with “<strong>…</strong>” -&gt; “<strong>Install from VSIX…</strong>”</p>
+<li><p><strong>Activate Python language support</strong>: Start VSCode/VSCodium, open the
+Extensions tab, find the Python language support and activate it.</p></li>
+<li><p><strong>Install Blender Addon</strong>: This step depends on which IDE you chose.</p>
+<ol class="loweralpha">
+<li><p>VSCode</p>
+<p>Open up the Extensions tab on the left, and search for the <em>Blender
+Development</em> extension. Select it, and click Install.</p>
+<p>I haven’t actually tested this, but this should install the
+<em>ms-vscode.cpptools</em> dependancy for you. If not, you may need to search
+for, and install, this extension too.</p>
 </li>
-<li><p><strong>Install ms-vscode.cpptools</strong>: When trying to use the Blender addon I got
-an error about a missing dependancy. I read somewhere that this addon was
-not needed, but I can’t currently find the reference. At least for me, it
-needs to be added the same way as step 3, or the Blender addon fails to
-start.</p>
-<p>Download the Cpp Tools addon’s <code class="docutils literal notranslate"><span class="pre">.vsix</span></code> file from marketplace (Under “Resources”)
-using your browser from <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">this</a>
-page. You will need to select the correct download for your system OS and
-architecture.</p>
-<p>Install it with “<strong>…</strong>” -&gt; “<strong>Install from VSIX…</strong>”</p>
+<li><p>VSCodium</p>
+<p>It seems VSCodium is not allowed to direct access the Marketplace, and
+due to licensing it is not possible to install the <em>Blender Development</em>
+extension because of the <em>ms-vscode.cpptools</em> dependancy.</p>
+<p>VSCodium’s equivalent Marketplace does not (and could not due to
+licensing) provide a functioning <em>Blender Development</em> extension. (Or I’m
+an idiot… entirely possible).</p>
+<p>I’ve created an alternative <em>Blender Development</em> extension with the
+<em>ms-vscode.cpptools</em> dependancy removed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This alternative should also work in VSCode, but you may as well save
+yourself the hassle, and just use the original one.</p>
+</div>
+<p>Download the <em>Blender Development</em> <code class="docutils literal notranslate"><span class="pre">.vsix</span></code> file from my GitHub fork
+using your browser from <a class="reference external" href="https://github.com/sboddy/blender_vscode">this</a>
+repository. The <code class="docutils literal notranslate"><span class="pre">.vsix</span></code> is available on the Releases page.</p>
+<p>In VSCodium’s Extensions sidebar install it with “<strong>…</strong>” -&gt;
+“<strong>Install from VSIX…</strong>”</p>
+<p>If you are squeamish about downloading my <code class="docutils literal notranslate"><span class="pre">.vsix</span></code>, you can review the
+single commit, clone the repo and create your own.</p>
 </li>
-<li><p><strong>Set the Blender config directory</strong>: In <strong>Settings</strong> -&gt; <strong>Extensions</strong> -&gt; <strong>Blender</strong> -&gt; “<strong>Environment Variables</strong>”
+</ol>
+</li>
+<li><p><strong>Set the Blender config directory</strong>: In <strong>Settings</strong> -&gt; <strong>Extensions</strong> -&gt;
+<strong>Blender</strong> -&gt; “<strong>Environment Variables</strong>”
 edit the json file to set the <code class="docutils literal notranslate"><span class="pre">BLENDER_USER_RESOURCE</span></code> to the config folder
-you installed Bonsai to. For me:</p>
+you installed Bonsai to. <em>For me</em>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;blender.environmentVariables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;BLENDER_USER_RESOURCES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/steve/.config/blender/4.2bonsai&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">   </span><span class="nt">&quot;blender.environmentVariables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;BLENDER_USER_RESOURCES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/steve/.config/blender/4.2bonsai&quot;</span>
+<span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>You <cite>must</cite> change that path to the correct value for your system.</p>
 </div>
 </li>
-<li><p><strong>Unset the Just My Code flag</strong>:  In <strong>Settings</strong> -&gt; <strong>Extensions</strong> -&gt; <strong>Blender</strong> -&gt; “<strong>Just My Code</strong>”
-by unchecking the box.</p>
+<li><p><strong>Unset the Just My Code flag</strong>:  In <strong>Settings</strong> -&gt; <strong>Extensions</strong> -&gt;
+<strong>Blender</strong> -&gt; “<strong>Just My Code</strong>” by unchecking the box.</p>
 <p>Again, this was advice found searching around in a github issue. If not
 done, the breakpoints do not work for me.</p>
 </li>
-<li><p><strong>Open the folder in VSCodium</strong>: This is the same folder set in step 5.</p>
+<li><p><strong>Open the folder in VSCode/VSCodium</strong>: This is the same folder set in step
+5. Again, <em>for me</em>:</p>
 <p><code class="docutils literal notranslate"><span class="pre">/home/steve/.config/blender/4.2bonsai</span></code></p>
 <p>This was a key point for me. Do <cite>not</cite> go deeper in the folder structure -
-that just doesn’t work. (Thanks &#64;theoryshaw)</p>
+that just doesn’t work. (Thanks &#64;theoryshaw) This feels a little like
+using a sledgehammer to crack a nut, and there might be a better, “proper”
+way of setting this up. If there is I’d love to hear it.</p>
 </li>
-<li><p><strong>Start Blender</strong>: In VSCodium press <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+P</span></code>, and search/select
-<strong>Blender: Start</strong>.</p></li>
+<li><p><strong>Start Blender</strong>: In VSCode/VSCodium press <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+P</span></code>, and
+search/select <strong>Blender: Start</strong>.</p></li>
 <li><p><strong>Set the Blender binary path</strong>: The first time you try to start Blender the
 addon will ask for the path of the binary. Navigate to your Blender binary
-and select it. For me:</p>
+and select it. <em>For me</em>:</p>
 <p><code class="docutils literal notranslate"><span class="pre">/home/steve/Software/blender-git/build_linux/bin/blender</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -433,13 +450,13 @@ use that.</p>
 <li><p><strong>Ensure Blender is behaving</strong>: Exercise the interface a bit to be sure
 Bonsai is working normally. Add a demo project, add some walls, etc.</p>
 <p>One issue I ran in to was opening the wrong folder in step 7. Due to the
-way VSCodium works, I was getting two Bonsai plugins conflicting, and
-failing in interesting ways. One symptom of this was the modal user
+way VSCode/VSCodium works, I was getting two Bonsai plugins conflicting,
+and failing in interesting ways. One symptom of this was the modal user
 interface when adding walls was completely missing. Oh, and the debugger
 completely failed to work.</p>
 <p>If you are happy, quit Blender, and try setting some breakpoints in
-VSCodium then run Blender again, and try to trigger them. I set one on
-the <code class="docutils literal notranslate"><span class="pre">bim.add_sheet</span></code> operator at:
+VSCode/VSCodium then run Blender again, and try to trigger them. I set one
+on the <code class="docutils literal notranslate"><span class="pre">bim.add_sheet</span></code> operator at:
 <code class="docutils literal notranslate"><span class="pre">extensions/.local/lib/python3.11/site-packages/bonsai/bim/module/drawing/operator.py:1456</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
