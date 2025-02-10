@@ -545,7 +545,7 @@ ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</spa
 <span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai/bim/data/gantt&quot;</span>
 wget<span class="w"> </span>https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.js
 wget<span class="w"> </span>https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.css
-<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai/bim/schema&quot;</span>
+<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai/bim/data/brick&quot;</span>
 wget<span class="w"> </span>https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl
 </pre></div>
 </div>
@@ -624,7 +624,7 @@ in the <cite>rem</cite> tags.</p>
 <span class="k">echo</span> Manually downloading some third party dependencies...
 curl https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.js -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\data\gantt\jsgantt.js&quot;</span>
 curl https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.css -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\data\gantt\jsgantt.css&quot;</span>
-curl -L https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\schema\Brick.ttl&quot;</span>
+curl -L https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\data\brick\Brick.ttl&quot;</span>
 
 <span class="k">pause</span>
 </pre></div>
