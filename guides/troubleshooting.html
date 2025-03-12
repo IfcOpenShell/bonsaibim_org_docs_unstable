@@ -449,7 +449,7 @@ create unpredictable, and sometimes unrecoverable errors.</p>
 are not available in IFC. As <a class="reference internal" href="#saving-and-loading-blend-files"><span class="std std-ref">Bonsai uses IFC as its native data
 store</span></a>, using these
 incompatible features may result in data loss.</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p><strong>Manual geometry editing</strong>. Manually changing the mode to Edit or Object
 mode in the <span class="menuselection">3D Viewport</span> top left dropdown menu. This
 changes the Blender mesh editing mode, but any changes may be incompatible
@@ -462,6 +462,22 @@ toggle in the top right of the <span class="menuselection">3D Viewport</span>.</
 objects that have been scaled in object mode will have their scale reset to
 1, and scaling an object may result in unpredictable operations. Instead,
 scale objects within edit mode.</p></li>
+<li><p><strong>Copy and Paste for IFC objects</strong>. Copying and pasting objects preserving their IFC data
+is not currently supported as pasting object may be unsafe:
+object may come from a different Blender session or from current session but it’s earlier state.</p>
+<p>If you copy and paste IFC object, you will find that pasted IFC object is unlinked to any IFC data
+to keep it safe.</p>
+<p>Current workarounds:</p>
+<ul class="simple">
+<li><p>copying IFC objects in current session instead use “IFC Duplicate Object” operator (<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">D</kbd>).</p></li>
+<li><p>copying IFC occurrences objects from other projects - link IFC project,
+query element using Explore Tool and then append it from Links UI.</p></li>
+<li><p>copying any IFC objects to a new separate project - use IfcPatch with ExtractElements recipe.</p></li>
+<li><p>copying IFC types from a different project use Project Library UI.</p></li>
+</ul>
+<p>WARNING. Manually using Blender’s “Paste Objects” operator instead of “IFC Paste BIM Objects” to paste IFC objects
+will have unpredictable results and will lead to data corruption.</p>
+</li>
 </ol>
 </section>
 <section id="where-is-the-add-on-installed">
