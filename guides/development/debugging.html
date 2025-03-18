@@ -220,7 +220,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -350,7 +350,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -361,6 +361,13 @@
 <p>This is a mini-guide to setting up an IDE and configuring it to debug Bonsai
 more easily. It is currently specific to this writers own system (Ubuntu) but
 this can be expanded by others.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Attaching debugger to Blender may significantly decrease performance due to
+the debugger overhead.</p>
+</div>
+<section id="vscode-extension">
+<h2>VSCode Extension<a class="headerlink" href="#vscode-extension" title="Link to this heading">¶</a></h2>
 <ol class="arabic">
 <li><p><strong>Install VSCode/VSCodium</strong>: This will be system specific. I used the
 available snap package.</p>
@@ -471,6 +478,19 @@ me when trying to get the addon to work.</p>
 when troubleshooting issues, and able to make many more contributions, fixes
 and patches.</p>
 </section>
+<section id="blender-addon-vs-code-debugger">
+<h2>Blender Addon + VS Code Debugger<a class="headerlink" href="#blender-addon-vs-code-debugger" title="Link to this heading">¶</a></h2>
+<p>Setting up debugging with Blender Addon is a bit simpler as it doesn’t require Blender to be started in a special way
+and debugger can be always attached later when it’s needed.</p>
+<ol class="arabic simple">
+<li><p>Install Hextant Python Debugger Blender addon from <a class="reference external" href="https://github.com/hextantstudios/hextant_python_debugger#installation">official repository</a>.</p></li>
+<li><p>Open IfcOpenShell repository in VS Code and setup configuration for attaching debugger <a class="reference external" href="https://github.com/hextantstudios/hextant_python_debugger#debug-a-blender-add-on-from-visual-studio-code">per the instructions</a>.</p></li>
+<li><p>Start Debug Server in Blender (Blender -&gt; System -&gt; Start Debug Server)</p></li>
+<li><p>VS Code -&gt; Run and Debug -&gt; “Python Debugger: Remote Attach” in dropdown -&gt; Start Debugging</p></li>
+<li><p>Now debugger is attached to Blender. You can set breakpoints in VS Code and use Debug Console.</p></li>
+</ol>
+</section>
+</section>
 
         </article>
       </div>
@@ -525,8 +545,28 @@ and patches.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Debugging Bonsai</a><ul>
+<li><a class="reference internal" href="#vscode-extension">VSCode Extension</a></li>
+<li><a class="reference internal" href="#blender-addon-vs-code-debugger">Blender Addon + VS Code Debugger</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
