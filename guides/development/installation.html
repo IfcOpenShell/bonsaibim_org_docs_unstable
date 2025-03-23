@@ -428,7 +428,7 @@ button.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Make sure the extension you install has <code class="docutils literal notranslate"><span class="pre">raw.githubusercontent.com</span></code> as
-it’s “Repository” (not <code class="docutils literal notranslate"><span class="pre">extensions.blender.org</span></code>).</p>
+the “Repository” (not <code class="docutils literal notranslate"><span class="pre">extensions.blender.org</span></code>).</p>
 <img alt="../../_images/unstable-repo.png" src="../../_images/unstable-repo.png" />
 </div>
 <ol class="arabic" start="6">
@@ -479,17 +479,12 @@ and install.</p>
 </section>
 <section id="live-development-environment">
 <h2>Live development environment<a class="headerlink" href="#live-development-environment" title="Link to this heading">¶</a></h2>
-<p>One option for developers who want to actively develop from source is to follow
-the instructions from <a class="reference internal" href="#bundling-for-blender"><span class="std std-ref">Bundling for Blender</span></a>. However,
-creating a build, uninstalling the old add-on, and installing a new build is a
-slow process.  Although it works, it is very slow, so we do not recommend it.</p>
-<p>A more rapid approach is to follow the
-<a class="reference internal" href="#unstable-installation"><span class="std std-ref">Unstable installation</span></a> method, as this
-provides all dependencies for you out of the box.</p>
-<p>Once you’ve done this, you can replace certain Python files that tend to be
-updated frequently with those from the Git repository. We’re going to use
-symbolic links, so we can code in our Git repository, and see the changes in
-our Blender installation (you will need to restart Blender to see changes).</p>
+<p>First, install using the <a class="reference internal" href="#unstable-installation"><span class="std std-ref">Unstable installation</span></a> method. This will provide all compiled dependencies for you out
+of the box.</p>
+<p>Once you’ve done this, we’ll replace the installed Python files with those from
+our Git repository. We’re going to use symbolic links, so we can code in our
+Git repository, and see the changes in our Blender installation (you will need
+to restart Blender to see changes).</p>
 <p>For Linux or Mac:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">dev_environment.sh</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
@@ -551,9 +546,8 @@ wget<span class="w"> </span>https://github.com/BrickSchema/Brick/releases/downlo
 </pre></div>
 </div>
 </div>
-<p>Or, if you’re on Windows, you can use the batch script below. You need to run
-it as an administrator. Before running it follow the instructions descibed
-in the <cite>rem</cite> tags.</p>
+<p>For Windows, run this batch script as an administrator. Before running it
+follow the instructions descibed in the <cite>rem</cite> tags.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">dev_environment.bat</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
 <div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">echo</span> off
@@ -633,14 +627,14 @@ curl -L https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl
 </div>
 <p>After you modify your code in the Git repository, you will need to restart
 Blender for the changes to take effect.</p>
+<p>Note that this only links Python code to the Git repository. If there are any
+major changes such as new dependencies or newly compiled C++ code, you will
+need to make the updates manually. This is relatively rare. Reviewing the
+<a class="reference external" href="https://github.com/IfcOpenShell/IfcOpenShell/commits/v0.8.0/src/bonsai/Makefile">Makefile history</a>,
+is one quick way to see if a dependency has changed.</p>
 <p>If there are changes to the IfcOpenShell binaries, you may replace the two
 <code class="docutils literal notranslate"><span class="pre">*ifcopenshell_wrapper*</span></code> files with new ones downloaded from the automated
 <a class="reference external" href="https://builds.ifcopenshell.org/">IfcOpenShell builds directory</a>.</p>
-<p>The downside with this approach is that if a new dependency is added, or a
-compiled dependency has changed (that is not available via the build
-directory), or the build system changes, you’ll need to fix your setup
-manually. But this is relatively rare. Reviewing the Makefile history, <a class="reference external" href="https://github.com/IfcOpenShell/IfcOpenShell/commits/v0.8.0/src/bonsai/Makefile">here</a>,
-is one quick way to see if a dependency has changed.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>There is a <a class="reference external" href="https://blenderartists.org/uploads/short-url/yto1sjw7pqDRVNQzpVLmn51PEDN.zip">useful Blender Addon</a>
