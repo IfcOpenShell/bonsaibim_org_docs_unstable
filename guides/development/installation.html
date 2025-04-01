@@ -500,6 +500,10 @@ to restart Blender to see changes).</p>
 <span class="c1"># BONSAI_PATH=&quot;${BLENDER_PATH}/extensions/user_default/bonsai&quot;</span>
 <span class="nv">BONSAI_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BLENDER_PATH</span><span class="si">}</span><span class="s2">/extensions/raw_githubusercontent_com/bonsai&quot;</span>
 
+<span class="c1"># Validate inputs.</span>
+<span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$REPO_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: REPO_PATH is not set.&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BLENDER_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: BLENDER_PATH is not set.&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+
 <span class="c1"># Changing to the Git repository directory</span>
 <span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPO_PATH</span><span class="si">}</span><span class="s2">&quot;</span>
 
