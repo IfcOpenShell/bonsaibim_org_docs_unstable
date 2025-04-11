@@ -586,6 +586,12 @@ follow the instructions described in the <cite>rem</cite> tags.</p>
 <span class="k">echo</span> Changing to the Git repository directory...
 <span class="k">cd</span> <span class="nv">%REPO_PATH%</span>
 
+<span class="p">:</span><span class="c1">: Handle symlinks (they could be disabled by default on Windows).</span>
+git config --local core.symlinks true
+<span class="p">:</span><span class="c1">: Delete and checkout is the only way to ensure files are added as symlinks.</span>
+<span class="k">del</span> /Q src\bonsai\bonsai\bim\data\templates\projects\*.ifc
+git checkout -- src/bonsai/bonsai/bim/data/templates/projects/*.ifc
+
 <span class="k">echo</span> Copy over compiled IfcOpenShell files...
 <span class="k">copy</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcopenshell\*_wrapper*&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcopenshell-python\ifcopenshell\&quot;</span>
 
