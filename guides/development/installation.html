@@ -557,8 +557,11 @@ wget<span class="w"> </span>https://github.com/BrickSchema/Brick/releases/downlo
 </pre></div>
 </div>
 </div>
-<p>For Windows, run this batch script as an administrator. Before running it
-follow the instructions described in the <cite>rem</cite> tags.</p>
+<p>For Windows, run this batch script as an administrator. Make sure to
+run the script with blender closed. By default the script assumes its
+in the root directory of the IFCOpenShell repository. If you want to run
+it from another directory, set the environment variables described in the
+<cite>rem</cite> tags.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">dev_environment.bat</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
 <div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">echo</span> off
@@ -571,7 +574,7 @@ follow the instructions described in the <cite>rem</cite> tags.</p>
 <span class="c1">rem SET REPO_PATH=%HOMEDRIVE%\Users\%USERNAME%\Where\Your\Git\Repository\Is\Cloned\IfcOpenShell</span>
 <span class="k">SET</span> <span class="nv">BLENDER_PATH</span><span class="p">=</span><span class="nv">%HOMEDRIVE%</span>\Users\<span class="nv">%USERNAME%</span>\AppData\Roaming\Blender Foundation\Blender\4.4
 <span class="k">SET</span> <span class="nv">PACKAGE_PATH</span><span class="p">=</span><span class="nv">%BLENDER_PATH%</span>\extensions\.local\lib\python3.11\site-packages
-<span class="k">SET</span> <span class="nv">BONSAI_PATH</span><span class="p">=</span><span class="nv">%BLENDER_PATH%</span>\extensions\user_default\bonsai
+<span class="k">SET</span> <span class="nv">BONSAI_PATH</span><span class="p">=</span><span class="nv">%BLENDER_PATH%</span>\extensions\raw_githubusercontent_com\bonsai
 
 
 <span class="k">echo</span> SETUP BONSAI ADD-ON LIVE DEVELOPMENT ENVIRONMENT
