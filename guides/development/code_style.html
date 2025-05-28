@@ -365,8 +365,8 @@
         <article role="main" id="furo-main-content">
           <section id="code-style">
 <h1>Code style<a class="headerlink" href="#code-style" title="Link to this heading">¶</a></h1>
-<section id="black-code-formatter">
-<h2>Black code formatter<a class="headerlink" href="#black-code-formatter" title="Link to this heading">¶</a></h2>
+<section id="code-formatters">
+<h2>Code formatters<a class="headerlink" href="#code-formatters" title="Link to this heading">¶</a></h2>
 <p>For Python code formatting, we use <a class="reference external" href="https://pypi.org/project/black/">Black code formatter</a>,
 black settings are stored in the repository’s pyproject.toml.</p>
 <p>We have GitHub workflow <cite>ci-black-formatting</cite> to maintain black formatting across the repository.</p>
@@ -378,6 +378,10 @@ black<span class="w"> </span>.
 black<span class="w"> </span>src/bonsai/bonsai/bim/module/qto/operator.py
 </pre></div>
 </div>
+<p>There is also <cite>ruff</cite> with some basic linter rules (checked automatically by the same Github workflow).
+Which also helps maintaining consistency across the code base
+and ensure new Python syntax doesn’t break code on older Python versions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ruff</span></code> can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ruff</span></code> and files can be formatted with the following example commands:</p>
 </section>
 </section>
 
@@ -429,7 +433,7 @@ black<span class="w"> </span>src/bonsai/bonsai/bim/module/qto/operator.py
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Code style</a><ul>
-<li><a class="reference internal" href="#black-code-formatter">Black code formatter</a></li>
+<li><a class="reference internal" href="#code-formatters">Code formatters</a></li>
 </ul>
 </li>
 </ul>
