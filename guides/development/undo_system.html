@@ -412,7 +412,7 @@ Instead, stuff happens in Blender operators.</p>
 </span><span class="hll">        <span class="k">return</span> <span class="n">IfcStore</span><span class="o">.</span><span class="n">execute_ifc_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-        <span class="n">ifcopenshell</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;foo.bar&quot;</span><span class="p">,</span> <span class="n">tool</span><span class="o">.</span><span class="n">Ifc</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+        <span class="n">ifcopenshell</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span> <span class="n">tool</span><span class="o">.</span><span class="n">Ifc</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;FINISHED&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
