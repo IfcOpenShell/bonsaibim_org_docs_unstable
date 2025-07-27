@@ -386,10 +386,8 @@ Blender versions:</p>
 <li><p>64-bit MacOS Intel (<code class="docutils literal notranslate"><span class="pre">macos-x64</span></code>)</p></li>
 <li><p>64-bit MacOS Silicon (<code class="docutils literal notranslate"><span class="pre">macos-arm64</span></code>)</p></li>
 <li><p>64-bit Windows (<code class="docutils literal notranslate"><span class="pre">windows-x64</span></code>)</p></li>
-<li><p>Blender 4.2 with Python 3.11</p></li>
+<li><p>Blender 4.3, 4.3, or 4.5 with Python 3.11</p></li>
 </ul>
-<p>Due to significant changes in the Blender extensions system, Blender versions
-&lt;4.2 are not supported.</p>
 <p>Developer builds may exist for different versions of Python but there will be
 no guarantee of the uptime or stability of these builds.</p>
 <p>Other system specifications match the <a class="reference external" href="https://www.blender.org/download/requirements/">Blender Requirements</a> and the <a class="reference external" href="https://vfxplatform.com/">VFX Platform</a> standard.</p>
@@ -494,161 +492,13 @@ our Git repository. We’re going to use symbolic links, so we can code in our
 Git repository, and see the changes in our Blender installation (you will need
 to restart Blender to see changes).</p>
 <p>For Linux or Mac:</p>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">dev_environment.sh</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Please update REPO_PATH and BLENDER_PATH in the script below.</span>
-<span class="c1"># Default BLENDER_PATH on Mac: &quot;/Users/$USER/Library/Application Support/Blender/4.4&quot;</span>
-<span class="c1"># Default BLENDER_PATH on Linux: &quot;$HOME/.config/blender/4.4&quot;</span>
-<span class="c1"># REPO_PATH=&quot;/path/to/where/your/git/repository/is/cloned/IfcOpenShell&quot;</span>
-<span class="nb">set</span><span class="w"> </span>-e
-<span class="nv">REPO_PATH</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">BLENDER_PATH</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">PACKAGE_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BLENDER_PATH</span><span class="si">}</span><span class="s2">/extensions/.local/lib/python3.11/site-packages&quot;</span>
-<span class="c1"># If you are installing offline, use this instead:</span>
-<span class="c1"># BONSAI_PATH=&quot;${BLENDER_PATH}/extensions/user_default/bonsai&quot;</span>
-<span class="nv">BONSAI_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BLENDER_PATH</span><span class="si">}</span><span class="s2">/extensions/raw_githubusercontent_com/bonsai&quot;</span>
-
-<span class="c1"># Validate inputs.</span>
-<span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$REPO_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: REPO_PATH is not set.&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BLENDER_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: BLENDER_PATH is not set.&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-
-<span class="c1"># Changing to the Git repository directory</span>
-<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPO_PATH</span><span class="si">}</span><span class="s2">&quot;</span>
-
-<span class="c1"># Copy over compiled IfcOpenShell files</span>
-cp<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcopenshell/&quot;</span>*_wrapper*<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcopenshell-python/ifcopenshell/&quot;</span>
-
-<span class="c1"># Remove extension and link to Git</span>
-rm<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BONSAI_PATH</span><span class="si">}</span><span class="s2">/__init__.py&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcopenshell&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifccsv.py&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcdiff.py&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bsdd.py&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bcf&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifc4d&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifc5d&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifccityjson&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcclash&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcpatch&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifctester&quot;</span>
-rm<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcfm&quot;</span>
-
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/bonsai/bonsai/__init__.py&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BONSAI_PATH</span><span class="si">}</span><span class="s2">/__init__.py&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/bonsai/bonsai&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcopenshell-python/ifcopenshell&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcopenshell&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifccsv/ifccsv.py&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifccsv.py&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcdiff/ifcdiff.py&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcdiff.py&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/bsdd/bsdd.py&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bsdd.py&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/bcf/bcf&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bcf&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifc4d/ifc4d&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifc4d&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifc5d/ifc5d&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifc5d&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifccityjson/ifccityjson&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifccityjson&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcclash/ifcclash&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcclash&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcpatch/ifcpatch&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcpatch&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifctester/ifctester&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifctester&quot;</span>
-ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/src/ifcfm/ifcfm&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/ifcfm&quot;</span>
-
-<span class="c1"># Manually download some third party dependencies</span>
-<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai/bim/data/gantt&quot;</span>
-wget<span class="w"> </span>https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.js
-wget<span class="w"> </span>https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.css
-<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai/bim/data/brick&quot;</span>
-wget<span class="w"> </span>https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl
-<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PACKAGE_PATH</span><span class="si">}</span><span class="s2">/bonsai/bim/data/webui/static/js&quot;</span>
-wget<span class="w"> </span>https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>src/bonsai/scripts
+python<span class="w"> </span>dev_environment.py
 </pre></div>
 </div>
-</div>
-<p>For Windows, run this batch script as an administrator. Make sure to
+<p>For Windows, you may need to run the script as an administrator. Make sure to
 run the script with blender closed. By default the script assumes its
-in the root directory of the IFCOpenShell repository. If you want to run
-it from another directory, set the environment variables described in the
-<cite>rem</cite> tags.</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">dev_environment.bat</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
-<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">echo</span> off
-
-<span class="k">setlocal</span>
-
-
-<span class="c1">rem Uncomment setting REPO_PATH to use custom path for IfcOpenShell repository.</span>
-<span class="c1">rem Otherwise by default it is assumed script is executed from IfcOpenShell directory.</span>
-<span class="c1">rem SET REPO_PATH=%HOMEDRIVE%\Users\%USERNAME%\Where\Your\Git\Repository\Is\Cloned\IfcOpenShell</span>
-<span class="k">SET</span> <span class="nv">BLENDER_PATH</span><span class="p">=</span><span class="nv">%HOMEDRIVE%</span>\Users\<span class="nv">%USERNAME%</span>\AppData\Roaming\Blender Foundation\Blender\4.5
-<span class="k">SET</span> <span class="nv">PACKAGE_PATH</span><span class="p">=</span><span class="nv">%BLENDER_PATH%</span>\extensions\.local\lib\python3.11\site-packages
-<span class="k">SET</span> <span class="nv">BONSAI_PATH</span><span class="p">=</span><span class="nv">%BLENDER_PATH%</span>\extensions\raw_githubusercontent_com\bonsai
-
-
-<span class="k">echo</span> SETUP BONSAI ADD-ON LIVE DEVELOPMENT ENVIRONMENT
-<span class="k">echo</span> Update REPO_PATH, BLENDER_PATH, PACKAGE_PATH, BONSAI_PATH in the script above.
-<span class="k">echo</span> This script needs to be run as administrator (to create symbolic links)
-<span class="k">echo</span> Make sure you have followed these steps before proceeding :)
-<span class="k">echo</span>.
-<span class="k">echo</span> Currently set paths:
-<span class="k">if</span> <span class="k">not</span> <span class="k">defined</span> <span class="nv">REPO_PATH</span> <span class="p">(</span>
-    <span class="k">echo</span> REPO_PATH is not set, assuming we&#39;re already in IfcOpenShell directory.
-    <span class="k">set</span> <span class="nv">REPO_PATH</span><span class="p">=</span><span class="nv">%cd%</span>
-<span class="p">)</span>
-<span class="k">echo</span> REPO_PATH=<span class="nv">%REPO_PATH%</span>
-<span class="k">echo</span> BLENDER_PATH=<span class="nv">%BLENDER_PATH%</span>
-<span class="k">echo</span> PACKAGE_PATH=<span class="nv">%PACKAGE_PATH%</span>
-<span class="k">echo</span> BONSAI_PATH=<span class="nv">%BONSAI_PATH%</span>
-<span class="k">pause</span>
-
-<span class="k">echo</span> Changing to the Git repository directory...
-<span class="k">cd</span> <span class="nv">%REPO_PATH%</span>
-
-<span class="p">:</span><span class="c1">: Handle symlinks (they could be disabled by default on Windows).</span>
-git config --local core.symlinks true
-<span class="p">:</span><span class="c1">: Delete and checkout is the only way to ensure files are added as symlinks.</span>
-<span class="k">del</span> /Q src\bonsai\bonsai\bim\data\templates\projects\*.ifc
-git checkout -- src/bonsai/bonsai/bim/data/templates/projects/*.ifc
-
-<span class="k">echo</span> Copy over compiled IfcOpenShell files...
-<span class="k">copy</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcopenshell\*_wrapper*&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcopenshell-python\ifcopenshell\&quot;</span>
-
-<span class="k">echo</span> Remove extension and link to Git...
-<span class="k">del</span> <span class="s2">&quot;</span><span class="nv">%BONSAI_PATH%</span><span class="s2">\__init__.py&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcopenshell&quot;</span>
-<span class="k">del</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifccsv.py&quot;</span>
-<span class="k">del</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcdiff.py&quot;</span>
-<span class="k">del</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bsdd.py&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bcf&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifc4d&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifc5d&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifccityjson&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcclash&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcpatch&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifctester&quot;</span>
-<span class="k">rd</span> /S /Q <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcfm&quot;</span>
-
-<span class="k">mklink</span> <span class="s2">&quot;</span><span class="nv">%BONSAI_PATH%</span><span class="s2">\__init__.py&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\bonsai\bonsai\__init__.py&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\bonsai\bonsai&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcopenshell&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcopenshell-python\ifcopenshell&quot;</span>
-<span class="k">mklink</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifccsv.py&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifccsv\ifccsv.py&quot;</span>
-<span class="k">mklink</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcdiff.py&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcdiff\ifcdiff.py&quot;</span>
-<span class="k">mklink</span> <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bsdd.py&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\bsdd\bsdd.py&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bcf&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\bcf\bcf&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifc4d&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifc4d\ifc4d&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifc5d&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifc5d\ifc5d&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifccityjson&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifccityjson\ifccityjson&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcclash&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcclash\ifcclash&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcpatch&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcpatch\ifcpatch&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifctester&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifctester\ifctester&quot;</span>
-<span class="k">mklink</span> /D <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\ifcfm&quot;</span> <span class="s2">&quot;</span><span class="nv">%CD%</span><span class="s2">\src\ifcfm\ifcfm&quot;</span>
-
-<span class="k">echo</span> Manually downloading some third party dependencies...
-curl https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.js -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\data\gantt\jsgantt.js&quot;</span>
-curl https://raw.githubusercontent.com/jsGanttImproved/jsgantt-improved/master/dist/jsgantt.css -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\data\gantt\jsgantt.css&quot;</span>
-curl -L https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\data\brick\Brick.ttl&quot;</span>
-curl https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js -o <span class="s2">&quot;</span><span class="nv">%PACKAGE_PATH%</span><span class="s2">\bonsai\bim\data\webui\static\js\jquery.min.js&quot;</span>
-
-<span class="k">pause</span>
-</pre></div>
-</div>
-</div>
+in the root directory of the IfcOpenShell repository.</p>
 <p>After you modify your code in the Git repository, you will need to restart
 Blender for the changes to take effect.</p>
 <p>Note that this only links Python code to the Git repository. If there are any
