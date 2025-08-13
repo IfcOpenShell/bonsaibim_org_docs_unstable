@@ -366,8 +366,8 @@
         <article role="main" id="furo-main-content">
           <section id="code-style">
 <h1>Code style<a class="headerlink" href="#code-style" title="Link to this heading">¶</a></h1>
-<section id="code-formatters">
-<h2>Code formatters<a class="headerlink" href="#code-formatters" title="Link to this heading">¶</a></h2>
+<section id="python-code-formatters">
+<h2>Python code formatters<a class="headerlink" href="#python-code-formatters" title="Link to this heading">¶</a></h2>
 <p>For Python code formatting, we use <a class="reference external" href="https://pypi.org/project/black/">Black code formatter</a>,
 black settings are stored in the repository’s pyproject.toml.</p>
 <p>We have GitHub workflow <cite>ci-black-formatting</cite> to maintain black formatting across the repository.</p>
@@ -383,6 +383,50 @@ black<span class="w"> </span>src/bonsai/bonsai/bim/module/qto/operator.py
 Which also helps maintaining consistency across the code base
 and ensure new Python syntax doesn’t break code on older Python versions.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ruff</span></code> can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ruff</span></code> and files can be formatted with the following example commands:</p>
+</section>
+<section id="python-code-style">
+<h2>Python code style<a class="headerlink" href="#python-code-style" title="Link to this heading">¶</a></h2>
+<p>Naming should be <a class="reference external" href="https://www.python.org/dev/peps/pep-0008">PEP8</a> compliant.
+Also prefer using long descriptive variable names.</p>
+</section>
+<section id="c-code-style">
+<h2>C++ code style<a class="headerlink" href="#c-code-style" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>prefer British English instead of American</p></li>
+<li><p>strictly use C++17</p></li>
+<li><p>use similar style for all languages</p></li>
+<li><p>spaces (4) instead of tabs</p></li>
+<li><p><cite>CONSTANTS_AND_MACROS</cite></p></li>
+<li><p>prefix macros that leak into client code (code using the IfcOpenShell libraries) with <cite>IFC_</cite></p></li>
+<li><p><cite>filenames_namespaces_classes_functions_and_variables</cite></p></li>
+<li><p><cite>private_or_protected_member_variable_</cite></p></li>
+<li><p>postfix typedefs with <cite>_t</cite>, e.g. <cite>typedef float real_t</cite></p></li>
+<li><p>(outdated? codebase is mainly using same line brace)
+K&amp;R style braces for control flow, but braces on their own line for non-control flow
+(classes, enums, functions, etc.)</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef FOO_H</span>
+<span class="cp">#define FOO_H</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">foo</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="n">bar</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">foo_or_bar</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">foo_or_bar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// ...</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// ...</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">i_am_foo_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -434,7 +478,9 @@ and ensure new Python syntax doesn’t break code on older Python versions.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Code style</a><ul>
-<li><a class="reference internal" href="#code-formatters">Code formatters</a></li>
+<li><a class="reference internal" href="#python-code-formatters">Python code formatters</a></li>
+<li><a class="reference internal" href="#python-code-style">Python code style</a></li>
+<li><a class="reference internal" href="#c-code-style">C++ code style</a></li>
 </ul>
 </li>
 </ul>
