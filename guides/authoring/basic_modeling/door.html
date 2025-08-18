@@ -1,0 +1,702 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Window" href="window.html" /><link rel="prev" title="Opening Without Filling" href="opening.html" />
+        <link rel="prefetch" href="https://bonsaibim.org/assets/images/blender/blender-logo.png" as="image" />
+
+    <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"/><!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
+        <title>Door - Bonsai 0.8.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=aefb6c79" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=2633da35" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #f7f7f6;
+  --color-background-secondary: #eeeeec;
+  --color-background-border: #cfd0cb;
+  --color-foreground-primary: #2e3436;
+  --color-sidebar-item-background--hover: #f7f7f6;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #651fff;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Bonsai 0.8.4 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Bonsai 0.8.4 documentation</span>
+  
+  <select class="doc-version-switcher" onchange="switchDocs()">
+    <option value="stable">Stable</option>
+    <option value="unstable">Unstable</option>
+    <!-- Add more versions here as needed -->
+  </select>
+</a>
+
+<script>
+  // Define the mapping of versions to URLs
+  const versionURLs = {
+    stable: 'http://docs.bonsaibim.org/',
+    unstable: 'http://docs-unstable.bonsaibim.org/',
+    // Add more versions here as needed
+  };
+
+  // Set the select box value based on the current URL
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const selectBox = document.querySelector('.doc-version-switcher');
+    const currentURL = window.location.href;
+
+    for (const [version, url] of Object.entries(versionURLs)) {
+      if (currentURL.includes(url)) {
+        selectBox.value = version;
+        break;
+      }
+    }
+  });
+
+  function switchDocs() {
+    const selectBox = document.querySelector('.doc-version-switcher');
+    const selectedValue = selectBox.value;
+    const currentURL = window.location.href;
+
+    if (!currentURL.includes(versionURLs[selectedValue])) {
+      window.location.href = versionURLs[selectedValue];
+    }
+  }
+</script><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/introduction_to_bim.html">Introduction to BIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/explore_model.html">Exploring an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/create_model.html">Creating an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/next_steps.html">Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Authoring models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Authoring models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../starting_new_project.html">Starting a New IFC Project</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../understanding_ifc/index.html">Understanding IFC</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Understanding IFC</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../understanding_ifc/spatial_objects.html">Basic Spatial Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../understanding_ifc/classification_and_types.html">Classification and Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../understanding_ifc/geometry_and_representations.html">Geometry and Representations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../understanding_ifc/working_with_representations.html">Working with Representations</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Basic Modeling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Basic Modeling</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="creating_walls.html">Creating Walls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defining_rooms_spaces.html">Defining Rooms and Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opening.html">Opening Without Filling</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Door</a></li>
+<li class="toctree-l3"><a class="reference internal" href="window.html">Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeling_slabs_roofs.html">Modeling Slabs and Roofs</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../advanced_modeling/index.html">Advanced Modeling</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Advanced Modeling</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../advanced_modeling/georeferencing.html">Georeferencing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced_modeling/parametric_geometry.html">Parametric Geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced_modeling/material_assignment.html">Material Assignment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../git_support.html">Tracking revisions with Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other_addons.html">Other add-ons</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../viewing/index.html">Viewing models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Viewing models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../viewing/dealing_with_large_models.html">Dealing with large models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../coordination/index.html">Coordination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../costing_and_scheduling/index.html">Costing and scheduling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drawings/index.html">Drawings and documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../facility_management/index.html">Facility management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../services/index.html">Services and systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../structural_analysis/index.html">Structural analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../alignment.html">Road and Rail Alignments</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../development/index.html">Development</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Development</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../development/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/hello_world.html">Hello, world!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/code_style.html">Code style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/ux_guidelines.html">User Experience and User Interface guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/undo_system.html">Undo system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/writing_docs.html">Writing documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development/debugging.html">Debugging Bonsai</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../development/ide/index.html">Exploring Bonsai Sourcecode</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Exploring Bonsai Sourcecode</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../development/ide/linux_ide.html">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/ide/windows_ide.html">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../development/ide/macos_ide.html">MacOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tutorials/index.html">Tutorials and Real-World Projects</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Tutorials and Real-World Projects</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/project0.html">Project 0: Designing a Room</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/project1.html">Project 1: Designing a Flat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/project2.html">Project 2: Building a Bungalow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/project3.html">Project 3: Multi-Storey Single-Family Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/project4.html">Project 4: Terraced/Town Houses/Duplexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/project5.html">Project 5: Apartment Block</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../reference/general/index.html">General</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of General</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/topbar.html">Topbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/3d_viewport.html">3D Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/status_bar.html">Status Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/blender.html">Blender Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/hotkeys.html">Hotkeys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/interface.html">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/outliner.html">Outliner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/properties.html">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/scene.html">Scene Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/general/switch_tab.html">Switch Tab</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../reference/toolbar/index.html">Toolbar</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Toolbar</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/explore.html">Explore Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/wall.html">Create Wall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/slab.html">Create Slab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/door.html">Create Door</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/window.html">Create Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/column.html">Create Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/beam.html">Create Beam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/duct.html">Create Duct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/element.html">Create Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/annotation.html">Annotation Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/spatial.html">Spatial Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/structural.html">Structural Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/toolbar/covering.html">Covering Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/costing_and_scheduling/index.html">Costing and Scheduling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/drawings_and_documents/index.html">Drawings and documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/facility_management/index.html">Facility Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/geometry_and_materials/index.html">Geometry and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/object_information/index.html">Object Information</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../reference/project_overview/index.html">Project Overview</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Project Overview</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/project_overview/project_info.html">Project Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/quality_and_coordination/index.html">Quality and Coordination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/services_and_systems/index.html">Services and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/structural_analysis/index.html">Structural Analysis</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/docs/guides/authoring/basic_modeling/door.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/edit/v0.8.0/src/bonsai/docs/guides/authoring/basic_modeling/door.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="door">
+<h1>Door<a class="headerlink" href="#door" title="Link to this heading">¶</a></h1>
+<p>A door is a wall opening that allows passage between spaces, controlled access for people and goods.</p>
+<p>In IFC, it’s represented by the IfcDoor entity, which is a subtype of IfcBuildingElement.
+Doors play a crucial role in building design, affecting circulation, accessibility, and space functionality.</p>
+<p>This section covers how to add and customize doors in your BIM model using Bonsai.</p>
+<section id="adding-a-door">
+<h2>Adding a Door<a class="headerlink" href="#adding-a-door" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Select the wall where you want to place the door.</p></li>
+<li><p>Set the 3D cursor on the wall at the desired door location.</p></li>
+<li><p>Click on the “Create Door” tool in the Bonsai toolbar.</p></li>
+<li><p>In the top bar, you’ll see “[No IfcDoorType Found] | Name [TYPEX] | + Add IfcDoorType”.</p></li>
+<li><p>Edit [TYPEX] to use a door type name of your choice (e.g., DOOR001).</p></li>
+<li><p>Click “+ Add IfcDoorType”. The top bar will update with additional options.</p></li>
+<li><p>Click “Add” (or press SHIFT+A) to create a door with its own type.</p></li>
+<li><p>Adjust the door’s width and height using the parameters in the top bar.</p></li>
+</ol>
+</section>
+<section id="placing-a-door-and-changing-its-swing-direction">
+<h2>Placing a Door and Changing its Swing Direction<a class="headerlink" href="#placing-a-door-and-changing-its-swing-direction" title="Link to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Select the wall:
+- (Optional) Use the “Create Wall” tool to add a wall in your scene.
+- Select the wall where you want to place the door.</p>
+<p>Selecting the wall is crucial as it ensures that the void relation between the door and the wall is automatically created.</p>
+</li>
+<li><p>Add a Door:
+- Use the “Create Door” tool from the toolbar.
+- Press SHIFT+A or click “Add” to place the door on the selected wall.</p></li>
+</ol>
+<p><strong>Applying Void</strong></p>
+<p>If you forgot to select the wall before placing the door, you’ll need to manually create the void relation:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Select both the wall and the door.</p></li>
+<li><p>Click “Apply Void” (Shift+O) button.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you need to use “Apply Void”, do this before making any modifications to the door,
+as there are limitations with this function that may affect door orientation.</p>
+<p>Usually, the Regen function will recalculate all the openings with existing void relationships.</p>
+</div>
+<ol class="arabic" start="3">
+<li><p>Adjust Door Position (if needed):
+- With the door selected, use Blender’s move tools to adjust its position along the wall.</p></li>
+<li><p>Regenerate the Wall Geometry:
+- Select the wall.
+- Press Shift+G to regenerate the wall geometry, incorporating the door opening.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This step ensures the wall geometry is updated to include the door opening.</p>
+<p>Moving the Door using Blender tools doesn’t actually change the IFC model.
+Future versions need to improve UX in that regard.
+Synchronisation between the Blender scene and IFC model is an issue that has the highest priority.</p>
+</div>
+</li>
+<li><p>Change Door Swing Direction:
+- Select only the door.
+- Press Shift+F to flip the door. It rotates the door by 180 degrees and moves the pivot point.
+- Locate the “Parametric Geometry” panel in the <cite>Scene Properties &gt; Geometry and Materials</cite> subtab.
+- Find the “Door” section within this panel.
+- Change the “Operation Type” to “SINGLE_SWING_RIGHT”.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Shift+F shortcut is currently a hidden feature and not available as a button in the Door tool interface.</p>
+<p>You may need to experiment with the combination of changing the Operation Type and using Shift+F to achieve the desired orientation.</p>
+</div>
+</li>
+<li><p>Final Wall Geometry Regeneration:
+- Select the wall again.
+- Press Shift+G one more time to ensure all changes are properly applied.</p></li>
+</ol>
+</section>
+<section id="additional-notes">
+<h2>Additional Notes<a class="headerlink" href="#additional-notes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>The Shift+F shortcut for flipping the door is not visible in the Door tool interface.
+This functionality may be added as a visible button in future updates.</p></li>
+<li><p>Always use Shift+G (Regenerate) after making changes
+to ensure the wall and door geometries are correctly updated.</p></li>
+<li><p>Avoid using Shift+O (Apply Void) as it may cause issues
+with the door’s orientation.</p></li>
+</ul>
+</section>
+<section id="modifying-doors">
+<h2>Modifying Doors<a class="headerlink" href="#modifying-doors" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some functionality is not implemented.</p>
+</div>
+<p>You can modify doors using various tools:</p>
+<ul class="simple">
+<li><p>Resize: Adjust the width and height parameters in the top bar.</p></li>
+<li><p>Move: Use Blender’s standard move tools to reposition the door.</p></li>
+<li><p>Flip: Change the opening direction using the flip tool (Shift+F).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After moving a door, you need to recalculate the void in the wall. To do this:</p>
+</div>
+<ul class="simple">
+<li><p>Select the wall containing the moved door.</p></li>
+<li><p>Click on the “Regen” (<kbd class="kbd docutils literal notranslate">Shift</kbd> + <kbd class="kbd docutils literal notranslate">G</kbd>) button in the top bar or use the appropriate shortcut.</p></li>
+<li><p>This ensures that the opening in the wall is correctly positioned after moving the door.</p></li>
+</ul>
+<p>If Regen operation doesn’t achive the required result, use Apply Void function:</p>
+<ul class="simple">
+<li><p>Click on the “Apply Void” (<kbd class="kbd docutils literal notranslate">Shift</kbd> + <kbd class="kbd docutils literal notranslate">O</kbd>) button in the top bar or use the appropriate shortcut.</p></li>
+<li><p>This ensures that the opening is linked to the wall.</p></li>
+</ul>
+<section id="door-properties">
+<h3>Door Properties<a class="headerlink" href="#door-properties" title="Link to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This functionality is not implemented.</p>
+</div>
+<p>After adding a door, you can customize its properties:</p>
+<ol class="arabic simple">
+<li><p>Select the door in the 3D viewport.</p></li>
+<li><p>Go to the … panel.</p></li>
+<li><p>Find the … section.</p></li>
+<li><p>Here you can set various properties such as fire rating, u-value, or any custom properties required for your project.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This functionality is not implemented.</p>
+</div>
+<p>You can customize various properties of the door:</p>
+<ul class="simple">
+<li><p>Dimensions (width, height, thickness)</p></li>
+<li><p>Opening direction</p></li>
+<li><p>Door type (e.g. single swing, double swing, sliding)</p></li>
+<li><p>Material</p></li>
+</ul>
+</section>
+</section>
+<section id="creating-multiple-doors">
+<h2>Creating Multiple Doors<a class="headerlink" href="#creating-multiple-doors" title="Link to this heading">¶</a></h2>
+<p>To create multiple doors of the same type:</p>
+<ol class="arabic simple">
+<li><p>Select the desired door type from the dropdown menu in the top bar.</p></li>
+<li><p>Set the 3D cursor on a wall where you want to place a new door.</p></li>
+<li><p>Select the wall</p></li>
+<li><p>Click “Add” (or press SHIFT+A) for each new door you want to create.</p></li>
+<li><p>Adjust the 3D cursor, position and parameters for each new door as needed.</p></li>
+</ol>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="creating_walls.html"><span class="doc">Creating Walls</span></a></p></li>
+<li><p><a class="reference internal" href="../advanced_modeling/material_assignment.html"><span class="doc">Material Assignment</span></a></p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="window.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Window</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="opening.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Opening Without Filling</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2025 IfcOpenShell Contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://ifcopenshell.org" aria-label="IfcOpenShell">
+                <img src="https://ifcopenshell.org/assets/images/logo.png" style="width: auto;" />
+            </a>
+              <a class="muted-link " href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/docs" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Door</a><ul>
+<li><a class="reference internal" href="#adding-a-door">Adding a Door</a></li>
+<li><a class="reference internal" href="#placing-a-door-and-changing-its-swing-direction">Placing a Door and Changing its Swing Direction</a></li>
+<li><a class="reference internal" href="#additional-notes">Additional Notes</a></li>
+<li><a class="reference internal" href="#modifying-doors">Modifying Doors</a><ul>
+<li><a class="reference internal" href="#door-properties">Door Properties</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-multiple-doors">Creating Multiple Doors</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=b41f4c93"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

@@ -1,0 +1,734 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Switch Tab" href="switch_tab.html" /><link rel="prev" title="Properties" href="properties.html" />
+        <link rel="prefetch" href="https://bonsaibim.org/assets/images/blender/blender-logo.png" as="image" />
+
+    <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"/><!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
+        <title>Scene Properties - Bonsai 0.8.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=aefb6c79" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=2633da35" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #f7f7f6;
+  --color-background-secondary: #eeeeec;
+  --color-background-border: #cfd0cb;
+  --color-foreground-primary: #2e3436;
+  --color-sidebar-item-background--hover: #f7f7f6;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #651fff;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #282C34;
+  --color-code-foreground: #ABB2BF;
+  --color-brand-primary: #39b54a;
+  --color-brand-content: #39b54a;
+  --color-brand-visited: #d9e021;
+  --color-background-primary: #2e3436;
+  --color-background-border: #2e3436;
+  --color-foreground-primary: #eeeeec;
+  --color-sidebar-item-background--hover: #2e3436;
+  --color-link: #39b54a;
+  --color-link--visited: #39b54a;
+  --color-link--hover: #d98014;
+  --color-link--visited--hover: #d98014;
+  --color-admonition-text: #EEEEEC;
+  --font-stack: Nunito, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Bonsai 0.8.4 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Bonsai 0.8.4 documentation</span>
+  
+  <select class="doc-version-switcher" onchange="switchDocs()">
+    <option value="stable">Stable</option>
+    <option value="unstable">Unstable</option>
+    <!-- Add more versions here as needed -->
+  </select>
+</a>
+
+<script>
+  // Define the mapping of versions to URLs
+  const versionURLs = {
+    stable: 'http://docs.bonsaibim.org/',
+    unstable: 'http://docs-unstable.bonsaibim.org/',
+    // Add more versions here as needed
+  };
+
+  // Set the select box value based on the current URL
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const selectBox = document.querySelector('.doc-version-switcher');
+    const currentURL = window.location.href;
+
+    for (const [version, url] of Object.entries(versionURLs)) {
+      if (currentURL.includes(url)) {
+        selectBox.value = version;
+        break;
+      }
+    }
+  });
+
+  function switchDocs() {
+    const selectBox = document.querySelector('.doc-version-switcher');
+    const selectedValue = selectBox.value;
+    const currentURL = window.location.href;
+
+    if (!currentURL.includes(versionURLs[selectedValue])) {
+      window.location.href = versionURLs[selectedValue];
+    }
+  }
+</script><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/introduction_to_bim.html">Introduction to BIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/explore_model.html">Exploring an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/create_model.html">Creating an IFC model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/next_steps.html">Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../guides/authoring/index.html">Authoring models</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Authoring models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/authoring/starting_new_project.html">Starting a New IFC Project</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../guides/authoring/understanding_ifc/index.html">Understanding IFC</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Understanding IFC</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/understanding_ifc/spatial_objects.html">Basic Spatial Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/understanding_ifc/classification_and_types.html">Classification and Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/understanding_ifc/geometry_and_representations.html">Geometry and Representations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/understanding_ifc/working_with_representations.html">Working with Representations</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../guides/authoring/basic_modeling/index.html">Basic Modeling</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Basic Modeling</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/basic_modeling/creating_walls.html">Creating Walls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/basic_modeling/defining_rooms_spaces.html">Defining Rooms and Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/basic_modeling/opening.html">Opening Without Filling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/basic_modeling/door.html">Door</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/basic_modeling/window.html">Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/basic_modeling/modeling_slabs_roofs.html">Modeling Slabs and Roofs</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../guides/authoring/advanced_modeling/index.html">Advanced Modeling</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Advanced Modeling</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/advanced_modeling/georeferencing.html">Georeferencing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/advanced_modeling/parametric_geometry.html">Parametric Geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/authoring/advanced_modeling/material_assignment.html">Material Assignment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/authoring/git_support.html">Tracking revisions with Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/authoring/other_addons.html">Other add-ons</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../guides/viewing/index.html">Viewing models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Viewing models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/viewing/dealing_with_large_models.html">Dealing with large models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/coordination/index.html">Coordination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/costing_and_scheduling/index.html">Costing and scheduling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/drawings/index.html">Drawings and documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/facility_management/index.html">Facility management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/services/index.html">Services and systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/structural_analysis/index.html">Structural analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/alignment.html">Road and Rail Alignments</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../guides/development/index.html">Development</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Development</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/hello_world.html">Hello, world!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/code_style.html">Code style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/running_tests.html">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/ux_guidelines.html">User Experience and User Interface guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/undo_system.html">Undo system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/writing_docs.html">Writing documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/development/debugging.html">Debugging Bonsai</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../guides/development/ide/index.html">Exploring Bonsai Sourcecode</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Exploring Bonsai Sourcecode</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/development/ide/linux_ide.html">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/development/ide/windows_ide.html">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../guides/development/ide/macos_ide.html">MacOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/index.html">Tutorials and Real-World Projects</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Tutorials and Real-World Projects</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/project0.html">Project 0: Designing a Room</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/project1.html">Project 1: Designing a Flat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/project2.html">Project 2: Building a Bungalow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/project3.html">Project 3: Multi-Storey Single-Family Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/project4.html">Project 4: Terraced/Town Houses/Duplexes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/project5.html">Project 5: Apartment Block</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">General</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of General</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="topbar.html">Topbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3d_viewport.html">3D Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_bar.html">Status Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blender.html">Blender Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hotkeys.html">Hotkeys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface.html">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="outliner.html">Outliner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="properties.html">Properties</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Scene Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="switch_tab.html">Switch Tab</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../toolbar/index.html">Toolbar</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Toolbar</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/explore.html">Explore Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/wall.html">Create Wall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/slab.html">Create Slab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/door.html">Create Door</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/window.html">Create Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/column.html">Create Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/beam.html">Create Beam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/duct.html">Create Duct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/element.html">Create Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/annotation.html">Annotation Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/spatial.html">Spatial Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/structural.html">Structural Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../toolbar/covering.html">Covering Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../costing_and_scheduling/index.html">Costing and Scheduling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drawings_and_documents/index.html">Drawings and documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../facility_management/index.html">Facility Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geometry_and_materials/index.html">Geometry and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object_information/index.html">Object Information</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../project_overview/index.html">Project Overview</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Project Overview</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../project_overview/project_info.html">Project Info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quality_and_coordination/index.html">Quality and Coordination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services_and_systems/index.html">Services and Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structural_analysis/index.html">Structural Analysis</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/docs/reference/general/scene.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/IfcOpenShell/IfcOpenShell/edit/v0.8.0/src/bonsai/docs/reference/general/scene.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="scene-properties">
+<h1>Scene Properties<a class="headerlink" href="#scene-properties" title="Link to this heading">¶</a></h1>
+<p>The scene properties panels allow you to manage data that applies to your entire
+IFC project as a whole, or to multiple elements.</p>
+<section id="building-information-modeling-panel">
+<h2>Building Information Modeling Panel<a class="headerlink" href="#building-information-modeling-panel" title="Link to this heading">¶</a></h2>
+<section id="system-setup">
+<h3>System Setup<a class="headerlink" href="#system-setup" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Quick Project Setup</strong> - this will create a basic spatial tree. It will
+create a tree of collections with the structure <code class="docutils literal notranslate"><span class="pre">IfcProject</span> <span class="pre">&gt;</span> <span class="pre">IfcSite</span> <span class="pre">&gt;</span>
+<span class="pre">IfcBuilding</span> <span class="pre">&gt;</span> <span class="pre">IfcStorey</span></code> This is merely for convenience instead of having to
+create it all by yourself, since all IFC exports require a valid spatial
+tree. You can see the tree of collections in the outliner when this is done.</p></li>
+<li><p><strong>Schema Directory</strong> - this folder stores the current IFC schema. You can
+download different schemas from the buildingSMART website. Unless you are an
+IFC guru, you probably shouldn’t touch this. Bonsai recognises different
+IFC data based on what is provided in this schema folder. It defaults to the
+<code class="docutils literal notranslate"><span class="pre">{{BLENDER_ADDONS_DIR}}/bonsai/schema/</span></code> folder, which is prepackaged
+with the IFC4 schema. This is known as the <code class="docutils literal notranslate"><span class="pre">{SCHEMA_DIR}</span></code>.</p></li>
+<li><p><strong>Data Directory</strong> - the data directory holds the auxiliary data related to
+your IFC model. Examples include related property definitions, documents, and
+classification systems. Each project should have its own data directory. It
+defaults to the data directory in the
+<code class="docutils literal notranslate"><span class="pre">{{BLENDER_ADDONS_DIR}}/bonsai/data/</span></code> folder, which comes with some
+example preset data. You are encouraged to copy this template and set your
+own. This is known as the <code class="docutils literal notranslate"><span class="pre">{DATA_DIR}</span></code>.</p></li>
+</ul>
+</section>
+<section id="software-identity">
+<h3>Software Identity<a class="headerlink" href="#software-identity" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>GlobalId</strong> - this field let’s you enter an IFC element’s <code class="docutils literal notranslate"><span class="pre">GlobalId</span></code>. It
+must be in the 22-character encoded form.</p></li>
+<li><p><strong>Select GlobalId</strong> - this will select an element that has the same
+<code class="docutils literal notranslate"><span class="pre">GlobalId</span></code> attribute as what you have specified, based on what is currently
+visible in the scene.</p></li>
+</ul>
+</section>
+<section id="ifc-categorisation">
+<h3>IFC Categorisation<a class="headerlink" href="#ifc-categorisation" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>IFC Class</strong> - this dropdown lets you pick from a list of all non-abstract
+children of <code class="docutils literal notranslate"><span class="pre">IfcElement</span></code> and <code class="docutils literal notranslate"><span class="pre">IfcSpatialStructureElement</span></code></p></li>
+<li><p><strong>IFC Predefined Type</strong> - this dropdown lets you pick from an enumeration of
+valid <code class="docutils literal notranslate"><span class="pre">PredefinedType</span></code> values for the currently selected <em>IFC Class</em>. It
+changes dynamically with the currently selected <em>IFC Class</em>.</p></li>
+<li><p><strong>IFC Userdefined Type</strong> - this field lets you enter a value for a user
+defined type. It is stored as the <code class="docutils literal notranslate"><span class="pre">ObjectType</span></code> attribute of an
+<code class="docutils literal notranslate"><span class="pre">IfcProduct</span></code>. It is only set when the <strong>IFC Predefined Type</strong> is set to
+<code class="docutils literal notranslate"><span class="pre">USERDEFINED</span></code>, otherwise it is ignored. It is recommended to make this
+value uppercase and alphabetic, to match the conventions for the
+<code class="docutils literal notranslate"><span class="pre">PredefinedType</span></code> enumeration.</p></li>
+<li><p><strong>Assign Class</strong> - this applies the active <em>IFC Class</em>, <em>IFC Predefined Type</em>
+and <em>IFC Userdefined Type</em> to any selected objects.</p></li>
+<li><p><strong>Select Class</strong> - this will select any objects that are currently visible
+that also have the same IFC class as the currently active <em>IFC Class</em> dropdown.</p></li>
+<li><p><strong>Select Type</strong> - same as <em>Select Class</em>, but it also filters by the
+currently active <em>IFC Predefined Type</em> dropdown, as well as the <em>IFC
+Userdefined Type</em> field.</p></li>
+</ul>
+</section>
+<section id="property-sets">
+<h3>Property Sets<a class="headerlink" href="#property-sets" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Pset Name</strong> - this lets you select from a list of available property set
+types. The list is derived from the folders in
+<code class="docutils literal notranslate"><span class="pre">{DATA_DIR}/pset</span></code>. Each folder name corresponds to a property set name. If
+you want to assign properties to an object based on an IFC standard pset,
+just create a new folder with the same name as the pset. You can also create
+your own custom property sets, so long as the folder name does not start with
+<code class="docutils literal notranslate"><span class="pre">Pset_</span></code>, as these are reserved for official IFC property sets.</p></li>
+<li><p><strong>Pset File</strong> - this lets you select from a list of available property set
+data. The available property sets depends on the currently selected <em>PSet
+Name</em> dropdown. Each property set is represented by a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file inside
+<code class="docutils literal notranslate"><span class="pre">{DATA_DIR}/pset/{PSET_NAME}/</span></code>. You can create your own <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files
+with any software, where each line contains a property name and property
+value pair. Data types are automatically converted based on the property set
+templates defined in <code class="docutils literal notranslate"><span class="pre">{SCHEMA_DIR}</span></code>. If the pset is part of an official IFC
+standard, you can only use property names that are part of the IFC standard.
+If you want to add your own custom properties, you will need to create your
+own <em>PSet Name</em> folder first, and then you can put in your own <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file
+which contains any property names and values that you want.</p></li>
+<li><p><strong>Assign Pset</strong> - this assigns the currently selected <em>Pset file</em> to any
+selected objects. The assigned data will then be visible in the <em>Object
+Properties</em>. This only assigns a link to the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> containing the data, so
+you can change the data in the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file and that will automatically
+propagate to all assigned elements when an IFC is exported, without needing
+to reassign the data.</p></li>
+<li><p><strong>Unassign Pset</strong> - this removes the link to the property set <code class="docutils literal notranslate"><span class="pre">.csv</span></code>
+file for all currently selected objects.</p></li>
+</ul>
+</section>
+<section id="aggregates">
+<h3>Aggregates<a class="headerlink" href="#aggregates" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Aggregate Class</strong> - this lets you select what type of class you want an
+aggregate of parts to be.</p></li>
+<li><p><strong>Aggregate name</strong> - this lets you set the name of an aggregate that you can
+can create.</p></li>
+<li><p><strong>Create Aggregate</strong> - this will create a new aggregate from one or more
+currently selected objects. The selected objects will be moved out of the
+spatial tree into an <code class="docutils literal notranslate"><span class="pre">IfcRelAggregates/*</span></code> collection. Then, a collection
+instance will be created to represent the aggregation, and will be placed in
+the current location of the spatial tree, and the  The parts will then be
+hidden so only the whole composition (i.e. the aggregate object) will be shown.</p></li>
+<li><p><strong>Explode Aggregate</strong> - this does the opposite of <em>Create Aggregate</em>, and
+will remove the aggregation.</p></li>
+<li><p><strong>Edit Aggregate</strong> - this will hide the collection instance that represents
+the aggregate object, and show all of the individual parts. This allows you
+to select and modify the aggregate parts.</p></li>
+<li><p><strong>Save Aggregate</strong> - this does the opposite of <em>Edit Aggregate</em>.</p></li>
+</ul>
+</section>
+</section>
+<section id="ifc-classifications-panel">
+<h2>IFC Classifications Panel<a class="headerlink" href="#ifc-classifications-panel" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Classification</strong> - this lets you select which classification system you’d
+like to use. The list of possible classification systems is derived from the
+<code class="docutils literal notranslate"><span class="pre">{DATA_DIR}/class/classifications.csv</span></code> file. By default, Bonsai comes
+with Uniclass 2015 and Omniclass. If you need another classification system,
+you can add it to this <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file.</p></li>
+<li><p><strong>Reference</strong> - this lets you select a single classification reference item,
+filtered depending on the currently active <em>Classification</em>. The list is
+derived from the <code class="docutils literal notranslate"><span class="pre">{DATA_DIR}/class/references.csv</span></code> file. Out of the box,
+Bonsai only lists a single Uniclass reference as an example. It is
+advised to make a list of all the references you require for a project and
+add it to this <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file.</p></li>
+<li><p><strong>Assign Classification</strong> - this assigns the currently active <em>Reference</em> to
+all of the selected objects. You can see the results in the <em>Object
+Properties</em> pane.</p></li>
+<li><p><strong>Unassign Classification</strong> - this removes the currently active <em>Reference</em>
+in all of the selected objects.</p></li>
+</ul>
+</section>
+<section id="ifc-owner-history-panel">
+<h2>IFC Owner History Panel<a class="headerlink" href="#ifc-owner-history-panel" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Person</strong> - this lets you select who you are. The values are derived from
+the <code class="docutils literal notranslate"><span class="pre">{DATA_DIR}/owner/person.json</span></code> file, particularly the
+<code class="docutils literal notranslate"><span class="pre">Identification</span></code> attribute, which is mandatory and a requirement in COBie
+data. You are encouraged to edit this file to add your own details. This
+information will be stored in the IFC file as part of the owner history to
+keep track of any objects which you edit. You will also be recorded as the
+author of the IFC file.</p></li>
+<li><p><strong>Organisation</strong> - this lets you select which organisation you are part of.
+The values are derived from the <code class="docutils literal notranslate"><span class="pre">{DATA_DIR}/owner/organisation.json</span></code> file,
+in particular the <code class="docutils literal notranslate"><span class="pre">Name</span></code> attribute, which is mandatory and a requirement in
+COBie data. You are encouraged to edit this file to add your own organisation
+details.  This information will be stored in the IFC file as part of the
+owner history to keep track of any objects which you edit. The organisation
+will also be recorded as the author of the IFC file.</p></li>
+</ul>
+</section>
+<section id="ifc-geometric-representation-contexts-panel">
+<h2>IFC Geometric Representation Contexts Panel<a class="headerlink" href="#ifc-geometric-representation-contexts-panel" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Has Model Context</strong> - enabling this will allow you to export geometric data
+related to the model view of your BIM data. This is generally 3D
+representations. It may also contain wireframe representations such as an
+Axis model for structural members. This defaults to being enabled, as most
+people want to export model geometry.</p>
+<ul>
+<li><p><strong>Available Subcontexts</strong> - this lets you select a possible subcontext to
+be used underneath the Model context.</p></li>
+<li><p><strong>Available Target Views</strong> - subcontexts may have a particular target view,
+which you can set here.</p></li>
+<li><p><strong>Add Subcontext</strong> - This will add a new subcontext based on the currently
+selected <em>Available Subcontext</em> and <em>Available Target View</em>.</p>
+<ul>
+<li><p><strong>Subcontext Name</strong> - for each subcontext you have added, it will show
+you the subcontext name. By default, the <code class="docutils literal notranslate"><span class="pre">Body</span></code> subcontext is added,
+as most people want to export the body geometry of products in their BIM data.</p></li>
+<li><p><strong>Subcontext Target View</strong> - same as <em>Subcontext Name</em>, but shows the
+target view. By default, the <code class="docutils literal notranslate"><span class="pre">MODEL_VIEW</span></code> target view is added, as most
+people will be viewing the model geometry of your BIM data.</p></li>
+<li><p><strong>Remove Subcontext</strong> - this will remove the subcontext.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Has Plan Context</strong> - the same as <em>Has Model Context</em>, but it lets you add
+subcontexts and target views related to the <code class="docutils literal notranslate"><span class="pre">PLAN</span></code> context of your BIM
+data. This is usually plans, sections, RCPs, and other documentation views.</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="switch_tab.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Switch Tab</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="properties.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Properties</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020-2025 IfcOpenShell Contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://ifcopenshell.org" aria-label="IfcOpenShell">
+                <img src="https://ifcopenshell.org/assets/images/logo.png" style="width: auto;" />
+            </a>
+              <a class="muted-link " href="https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.8.0/src/bonsai/docs" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Scene Properties</a><ul>
+<li><a class="reference internal" href="#building-information-modeling-panel">Building Information Modeling Panel</a><ul>
+<li><a class="reference internal" href="#system-setup">System Setup</a></li>
+<li><a class="reference internal" href="#software-identity">Software Identity</a></li>
+<li><a class="reference internal" href="#ifc-categorisation">IFC Categorisation</a></li>
+<li><a class="reference internal" href="#property-sets">Property Sets</a></li>
+<li><a class="reference internal" href="#aggregates">Aggregates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ifc-classifications-panel">IFC Classifications Panel</a></li>
+<li><a class="reference internal" href="#ifc-owner-history-panel">IFC Owner History Panel</a></li>
+<li><a class="reference internal" href="#ifc-geometric-representation-contexts-panel">IFC Geometric Representation Contexts Panel</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=b41f4c93"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>
