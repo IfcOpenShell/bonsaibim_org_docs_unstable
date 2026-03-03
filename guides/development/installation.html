@@ -449,6 +449,7 @@ for power users helping with testing.</p></li>
 recommended for developers who are actively coding.</p></li>
 <li><p><a class="reference internal" href="#packaged-installation"><span class="std std-ref">Packaged installation</span></a> is recommended
 for those who use a package manager.</p></li>
+<li><p><a class="reference internal" href="#bonsaipr-bleeding-edge-installation"><span class="std std-ref">BonsaiPR (Bleeding Edge) Installation</span></a> merges all open, non-draft PRs automatically.</p></li>
 </ol>
 <section id="system-requirements">
 <h2>System requirements<a class="headerlink" href="#system-requirements" title="Link to this heading">¶</a></h2>
@@ -629,6 +630,79 @@ source of truth for how dependencies are bundled are found in
 the <a class="reference external" href="https://github.com/IfcOpenShell/IfcOpenShell/blob/v0.8.0/src/bonsai/Makefile">Makefile</a>
 in the <code class="docutils literal notranslate"><span class="pre">dist</span></code> target.</p>
 </section>
+<section id="bonsaipr-bleeding-edge-installation">
+<h2>BonsaiPR (Bleeding Edge) Installation<a class="headerlink" href="#bonsaipr-bleeding-edge-installation" title="Link to this heading">¶</a></h2>
+<p><strong>BonsaiPR</strong> is a community-maintained build that automatically merges open pull
+requests (PRs) from the IfcOpenShell repository into a single installable add-on.
+It is intended for power users and testers who want to try the latest community
+contributions before they are officially reviewed and merged.</p>
+<section id="why-bonsaipr-exists">
+<h3>Why BonsaiPR Exists<a class="headerlink" href="#why-bonsaipr-exists" title="Link to this heading">¶</a></h3>
+<p>Many excellent PRs are submitted by contributors, but core maintainers have
+limited time for timely reviews. As a result, PRs often sit unmerged,
+contributors lose momentum, and valuable work risks being forgotten.</p>
+<p>BonsaiPR addresses this by providing a <code class="docutils literal notranslate"><span class="pre">bleeding_edge</span></code> build that merges all
+open, non-draft PRs automatically. Power users can install this build to test
+multiple PRs together, helping catch issues earlier and reducing the load on core
+developers.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You must enable either <strong>Bonsai</strong> or <strong>BonsaiPR</strong>, but <strong>not both at the
+same time</strong>. Enabling both can cause conflicts or unexpected behaviour. To
+switch between them, disable the active one before enabling the other.</p>
+</div>
+</section>
+<section id="how-it-works">
+<h3>How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h3>
+<p>On a regular basis (and whenever a PR is opened or modified), an automated
+system:</p>
+<ol class="arabic simple">
+<li><p>Clones the IfcOpenShell repository and merges all open, non-draft PRs.</p></li>
+<li><p>Builds the resulting add-on for all supported platforms.</p></li>
+<li><p>Publishes the result as a release on the <a class="reference external" href="https://github.com/falken10vdl/bonsaiPR/releases">BonsaiPR releases page</a>.</p></li>
+<li><p>The list of branches is also published on <a class="reference external" href="https://github.com/falken10vdl/IfcOpenShell/branches">falken10vdl’s IfcOpenShell Fork</a>.</p></li>
+</ol>
+<p>Each release includes a full report listing which PRs were merged successfully,
+which were skipped (e.g. drafts), and which failed due to conflicts with other
+PRs.</p>
+</section>
+<section id="installing-bonsaipr-with-automated-updates">
+<h3>Installing BonsaiPR with Automated Updates<a class="headerlink" href="#installing-bonsaipr-with-automated-updates" title="Link to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>Open Blender and go to <span class="menuselection">Edit ‣ Preferences ‣ Add-ons</span>.
+Disable <strong>Bonsai</strong> if it is currently enabled.</p></li>
+<li><p>Click on the <strong>Get Extensions</strong> tab in the left sidebar.</p></li>
+<li><p>In the top right, click the <strong>Repositories</strong> dropdown, then the <strong>+ icon</strong>,
+and select <strong>Add Remote Repository</strong>.</p></li>
+<li><p>Enter the following URL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">falken10vdl</span><span class="o">/</span><span class="n">bonsaiPR</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</li>
+<li><p>Enable <strong>Check for Updates on Startup</strong>, then click <strong>Create</strong>.</p></li>
+<li><p>In the <strong>Get Extensions</strong> search bar, type <code class="docutils literal notranslate"><span class="pre">bonsai</span></code> and look for
+<strong>BonsaiPR</strong>. Click <strong>Install</strong>.</p></li>
+<li><p>Go to <span class="menuselection">Edit ‣ Preferences ‣ Add-ons</span> and confirm that
+<strong>BonsaiPR</strong> is enabled and <strong>Bonsai</strong> is disabled.</p></li>
+<li><p>Restart Blender.</p></li>
+</ol>
+<p>Blender will automatically check for updates to the BonsaiPR extension on
+startup, so you will always have access to the latest bleeding edge build.</p>
+</section>
+<section id="installing-bonsaipr-manually">
+<h3>Installing BonsaiPR Manually<a class="headerlink" href="#installing-bonsaipr-manually" title="Link to this heading">¶</a></h3>
+<p>If you prefer to install manually, download the appropriate <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file for
+your platform from the <a class="reference external" href="https://github.com/falken10vdl/bonsaiPR/releases">BonsaiPR releases page</a>:</p>
+<ul class="simple">
+<li><p><strong>Linux (x64)</strong>: <code class="docutils literal notranslate"><span class="pre">bonsaiPR_py311-0.8.4-alphaYYMMDDHHMM-linux-x64.zip</span></code></p></li>
+<li><p><strong>macOS Intel (x64)</strong>: <code class="docutils literal notranslate"><span class="pre">bonsaiPR_py311-0.8.4-alphaYYMMDDHHMM-macos-x64.zip</span></code></p></li>
+<li><p><strong>macOS Apple Silicon (ARM64)</strong>: <code class="docutils literal notranslate"><span class="pre">bonsaiPR_py311-0.8.4-alphaYYMMDDHHMM-macos-arm64.zip</span></code></p></li>
+<li><p><strong>Windows (x64)</strong>: <code class="docutils literal notranslate"><span class="pre">bonsaiPR_py311-0.8.4-alphaYYMMDDHHMM-windows-x64.zip</span></code></p></li>
+</ul>
+<p>Then go to <span class="menuselection">Edit ‣ Preferences ‣ Get Extensions ‣ “V” Icon
+(top right) ‣ Install from Disk</span> and select the downloaded zip.</p>
+</section>
+</section>
 <section id="add-on-compatibility">
 <h2>Add-on compatibility<a class="headerlink" href="#add-on-compatibility" title="Link to this heading">¶</a></h2>
 <p>Bonsai is a non-trivial add-on. By turning Blender into a graphical front-end
@@ -724,6 +798,13 @@ same dependency. Neither add-on may work simultaneously.</p></li>
 <li><a class="reference internal" href="#live-development-environment">Live development environment</a></li>
 <li><a class="reference internal" href="#packaged-installation">Packaged installation</a></li>
 <li><a class="reference internal" href="#tips-for-package-managers">Tips for package managers</a></li>
+<li><a class="reference internal" href="#bonsaipr-bleeding-edge-installation">BonsaiPR (Bleeding Edge) Installation</a><ul>
+<li><a class="reference internal" href="#why-bonsaipr-exists">Why BonsaiPR Exists</a></li>
+<li><a class="reference internal" href="#how-it-works">How It Works</a></li>
+<li><a class="reference internal" href="#installing-bonsaipr-with-automated-updates">Installing BonsaiPR with Automated Updates</a></li>
+<li><a class="reference internal" href="#installing-bonsaipr-manually">Installing BonsaiPR Manually</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#add-on-compatibility">Add-on compatibility</a></li>
 </ul>
 </li>
