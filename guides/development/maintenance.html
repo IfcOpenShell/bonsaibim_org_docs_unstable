@@ -7,7 +7,7 @@
         <link rel="prefetch" href="https://bonsaibim.org/assets/images/blender/blender-logo.png" as="image">
 
     <link rel="shortcut icon" href="https://bonsaibim.org/assets/images/blender/blender-logo.png"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
-        <title>Maintenance - Bonsai 0.8.5 documentation</title>
+        <title>Maintenance - Bonsai 0.8.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=3e69a11e" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -204,7 +204,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">Bonsai 0.8.5 documentation</div></a>
+      <a href="../../index.html"><div class="brand">Bonsai 0.8.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -229,7 +229,7 @@
     <img class="sidebar-logo" src="https://bonsaibim.org/assets/images/blender/blender-logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Bonsai 0.8.5 documentation</span>
+  <span class="sidebar-brand-text">Bonsai 0.8.6 documentation</span>
   
   <select class="doc-version-switcher" onchange="switchDocs()">
     <option value="stable">Stable</option>
@@ -532,6 +532,46 @@
 </table>
 </div>
 </section>
+<section id="release">
+<h2>Release<a class="headerlink" href="#release" title="Link to this heading">¶</a></h2>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>Typically all packages are released at once using the same version schema</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">README.md</span></code> badges can serve as a visual reference for what versions have been released</p></li>
+</ul>
+<p>Things to update:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-bcf-pypi.yml</span></code> - release <a class="reference external" href="https://pypi.org/project/bcf-client/">bcf-client</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-bonsai.yml</span></code> - release bonsai in GitHub releases</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-bsdd-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/bsdd/">bsdd</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifc4d-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifc4d/">ifc4d</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifc5d-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifc5d/">ifc5d</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcclash-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifcclash/">ifcclash</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcconvert.yml</span></code> - release ifcconvert binaries in GitHub releases</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifccsv-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifccsv/">ifccsv</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcdiff-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifcdiff/">ifcdiff</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcedit-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifcedit/">ifcedit</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcfm-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifcfm/">ifcfm</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifccityjson-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifccityjson/">ifccityjson</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcmcp-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifcopenshell-mcp/">ifcopenshell-mcp</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcopenshell-python.yml</span></code> - release ifcopenshell-python binaries in GitHub releases</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcopenshell-python-pypi.yml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifcopenshell/">ifcopenshell</a> wheels to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcpatch-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifcpatch/">ifcpatch</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcquery-pypi.yaml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifcquery/">ifcquery</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcsverchok.yml</span></code> - release ifcsverchok Blender add-on in GitHub releases</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifctester-pypi.yml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifctester/">ifctester</a> to PyPI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-pyodide-wasm-release.yml</span></code> - release pyodide wasm wheel to <a class="reference external" href="https://github.com/IfcOpenShell/wasm-wheels">wasm-wheels</a></p></li>
+<li><p>Release Bonsai Blender extension - zip files from ci-bonsai.yml releases should be uploaded manually to <a class="reference external" href="https://extensions.blender.org/add-ons/bonsai/">Blender extensions platform</a></p></li>
+<li><p>Publishing documentation and websites (see <a class="reference external" href="https://github.com/IfcOpenShell/website">website</a> repository):</p>
+<ul>
+<li><p><cite>ifcopenshell-docs.yml</cite> - builds and publishes IfcOpenShell documentation to <a class="reference external" href="https://docs.ifcopenshell.org">docs.ifcopenshell.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/ifcopenshell_org_docs">ifcopenshell_org_docs</a> repo)</p></li>
+<li><p><cite>bonsai-docs.yml</cite> - builds and publishes Bonsai documentation to <a class="reference external" href="https://docs.bonsaibim.org">docs.bonsaibim.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/bonsaibim_org_docs">bonsaibim_org_docs</a> repo)</p></li>
+<li><p><cite>main.yml</cite> - publishes <a class="reference external" href="https://bonsaibim.org">bonsaibim.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/bonsaibim_org_static_html">bonsaibim_org_static_html</a> repo) and <a class="reference external" href="https://ifcopenshell.org">ifcopenshell.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/ifcopenshell_org_static_html">ifcopenshell_org_static_html</a> repo)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VERSION</span></code> to the release version - <strong>UPDATE THIS LAST</strong> as all workflows above typically depend on it to set the version correctly</p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -603,6 +643,7 @@
 <li><a class="reference internal" href="#python-version-added-or-removed">Python Version Added or Removed</a></li>
 <li><a class="reference internal" href="#blender-version-updated">Blender Version Updated</a></li>
 <li><a class="reference internal" href="#blender-s-bundled-python-version-updated">Blender’s Bundled Python Version Updated</a></li>
+<li><a class="reference internal" href="#release">Release</a></li>
 </ul>
 </li>
 </ul>
@@ -614,7 +655,7 @@
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=1067c88a"></script>
+</div><script src="../../_static/documentation_options.js?v=279f42e0"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
