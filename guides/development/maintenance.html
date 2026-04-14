@@ -561,7 +561,11 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifcsverchok.yml</span></code> - release ifcsverchok Blender add-on in GitHub releases</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-ifctester-pypi.yml</span></code> - release <a class="reference external" href="https://pypi.org/project/ifctester/">ifctester</a> to PyPI</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-pyodide-wasm-release.yml</span></code> - release pyodide wasm wheel to <a class="reference external" href="https://github.com/IfcOpenShell/wasm-wheels">wasm-wheels</a></p></li>
-<li><p>Release Bonsai Blender extension - zip files from ci-bonsai.yml releases should be uploaded manually to <a class="reference external" href="https://extensions.blender.org/add-ons/bonsai/">Blender extensions platform</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/publish-bonsai-releases.yml</span></code> - publish Bonsai Blender extension to <a class="reference external" href="https://extensions.blender.org/add-ons/bonsai/">Blender extensions platform</a></p>
+<ul>
+<li><p>❗ Requires <code class="docutils literal notranslate"><span class="pre">BLENDER_EXTENSIONS_TOKEN</span></code> secret to be set - ❗ not yet configured</p></li>
+</ul>
+</li>
 <li><p>Publishing documentation and websites (see <a class="reference external" href="https://github.com/IfcOpenShell/website">website</a> repository):</p>
 <ul>
 <li><p><cite>ifcopenshell-docs.yml</cite> - builds and publishes IfcOpenShell documentation to <a class="reference external" href="https://docs.ifcopenshell.org">docs.ifcopenshell.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/ifcopenshell_org_docs">ifcopenshell_org_docs</a> repo)</p></li>
