@@ -522,10 +522,13 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.github/workflows/ci-lint.yaml</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">MIN_BLENDER_PY_VERSION</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">src/bonsai/Makefile</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.github/scripts/publish-bonsai-releases.py</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CURRENT_PYTHON_VERSION</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">src/bonsai/Makefile</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">SUPPORTED_PYVERSIONS</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">src/bonsai/scripts/dev_environment.py</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">src/bonsai/scripts/dev_environment.py</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">PYTHON_VERSION</span></code> mapping (Blender version, bundled Python version)</p></td>
 </tr>
 </tbody>
@@ -538,6 +541,21 @@
 <ul class="simple">
 <li><p>Typically all packages are released at once using the same version schema</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">README.md</span></code> badges can serve as a visual reference for what versions have been released</p></li>
+<li><p>Corrective Release (if needed after a standard release):</p>
+<ul>
+<li><p>Create a new branch from the release tag (e.g., from the <code class="docutils literal notranslate"><span class="pre">ifcopenshell-0.8.5</span></code> tag)</p></li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">VERSION</span></code> with the <code class="docutils literal notranslate"><span class="pre">-post1</span></code> suffix (e.g., <code class="docutils literal notranslate"><span class="pre">0.8.5-post1</span></code>, <strong>not</strong> <code class="docutils literal notranslate"><span class="pre">.post1</span></code>)</p></li>
+<li><p>The hyphen is required for semantic versioning compliance; Blender will not process <code class="docutils literal notranslate"><span class="pre">.post1</span></code> suffixes correctly</p></li>
+<li><p>Follow the standard release process for the corrective version</p></li>
+</ul>
+</li>
+<li><p>Multiple Blender Python Versions:</p>
+<ul>
+<li><p>Blender does not allow multiple builds for the same platform with different Python versions (e.g., cannot have both <code class="docutils literal notranslate"><span class="pre">bonsai_py311-0.8.5-windows-x64.zip</span></code> and <code class="docutils literal notranslate"><span class="pre">bonsai_py313-0.8.5-windows-x64.zip</span></code>)</p></li>
+<li><p>Workaround: publish different Python versions as different extension versions (e.g., py313 as <code class="docutils literal notranslate"><span class="pre">0.8.5</span></code> and py311 as <code class="docutils literal notranslate"><span class="pre">0.8.5-post1</span></code>)</p></li>
+<li><p>Set the maximum Blender version on the Blender extensions platform UI to prevent conflicts (e.g., set max version <code class="docutils literal notranslate"><span class="pre">5.1.0</span></code> for <code class="docutils literal notranslate"><span class="pre">0.8.5-post1</span></code>, which restricts it to versions below 5.1.0)</p></li>
+</ul>
+</li>
 </ul>
 <p>Things to update:</p>
 <ul class="simple">
@@ -570,7 +588,7 @@
 <ul>
 <li><p><cite>ifcopenshell-docs.yml</cite> - builds and publishes IfcOpenShell documentation to <a class="reference external" href="https://docs.ifcopenshell.org">docs.ifcopenshell.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/ifcopenshell_org_docs">ifcopenshell_org_docs</a> repo)</p></li>
 <li><p><cite>bonsai-docs.yml</cite> - builds and publishes Bonsai documentation to <a class="reference external" href="https://docs.bonsaibim.org">docs.bonsaibim.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/bonsaibim_org_docs">bonsaibim_org_docs</a> repo)</p></li>
-<li><p><cite>main.yml</cite> - publishes <a class="reference external" href="https://bonsaibim.org">bonsaibim.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/bonsaibim_org_static_html">bonsaibim_org_static_html</a> repo) and <a class="reference external" href="https://ifcopenshell.org">ifcopenshell.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/ifcopenshell_org_static_html">ifcopenshell_org_static_html</a> repo)</p></li>
+<li><p><cite>publish-websites.yml</cite> - publishes <a class="reference external" href="https://bonsaibim.org">bonsaibim.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/bonsaibim_org_static_html">bonsaibim_org_static_html</a> repo) and <a class="reference external" href="https://ifcopenshell.org">ifcopenshell.org</a> (<a class="reference external" href="https://github.com/IfcOpenShell/ifcopenshell_org_static_html">ifcopenshell_org_static_html</a> repo)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">VERSION</span></code> to the release version - <strong>UPDATE THIS LAST</strong> as all workflows above typically depend on it to set the version correctly</p></li>
