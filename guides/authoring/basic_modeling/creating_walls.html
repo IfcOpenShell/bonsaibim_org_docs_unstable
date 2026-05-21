@@ -491,6 +491,59 @@ Remember to use snapping and alignment tools to ensure precision in your model.<
 <li><p>Follow the on-screen prompts or adjust parameters as needed.</p></li>
 </ol>
 </section>
+<section id="interactive-parametric-editing">
+<h2>Interactive Parametric Editing<a class="headerlink" href="#interactive-parametric-editing" title="Link to this heading">¶</a></h2>
+<p>Selected walls expose an in-viewport parametric edit mode that mirrors the door /
+window / stair pen-icon UI:</p>
+<ol class="arabic simple">
+<li><p>Select a single wall. A pen (Edit Wall) icon appears next to the wall in the
+3D viewport, and a matching <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">Wall</span></code> button is available in the
+<code class="docutils literal notranslate"><span class="pre">Parametric</span> <span class="pre">Geometry</span></code> tab of the N panel.</p></li>
+<li><p>Click the pen icon (or the panel button) to enter edit mode. Dimension
+gizmos for length, height, slope (x-angle) and the layer offset baseline
+appear around the wall.</p></li>
+<li><p>Drag any handle to update the value. Dragging only modifies the in-progress
+draft — the IFC file is not touched until you commit, so dragging a length
+handle through many intermediate values produces zero extra IFC entities.</p></li>
+<li><p>Click the green ✓ icon to commit; click the red ✗ to discard. Pressing the
+✓ icon on a wall that hasn’t been dragged is a true byte-identical no-op —
+the IFC file is unchanged.</p></li>
+</ol>
+<p>While editing, additional gizmos surface based on context:</p>
+<ul class="simple">
+<li><p><strong>Cycle Baseline</strong>: cycles the layer offset baseline (Exterior → Centreline →
+Interior). Shift+click cycles in reverse.</p></li>
+<li><p><strong>3D-cursor scissors</strong>: appears when the 3D cursor sits on the wall axis;
+clicking splits the wall at the cursor’s projected X.</p></li>
+<li><p><strong>3D-cursor extend (horizontal)</strong>: appears when the 3D cursor sits beyond the
+wall axis; clicking extends the wall to the cursor’s projected X.</p></li>
+<li><p><strong>3D-cursor extend (vertical)</strong>: appears when the 3D cursor sits above /
+below the wall; clicking extends the wall’s height to the cursor’s Z.</p></li>
+<li><p><strong>Rotate 90°</strong>: rotates the wall around its Z axis.</p></li>
+<li><p><strong>Show / hide openings</strong>: toggles opening fill visibility (doors and windows).</p></li>
+</ul>
+<p>When two walls are selected, the gizmo switches to a state-aware icon at their
+common point:</p>
+<ul class="simple">
+<li><p>Already joined → an Unjoin icon at the shared corner.</p></li>
+<li><p>Collinear (same axis line) → a Merge icon at the boundary midpoint.</p></li>
+<li><p>Joinable corner → a Join icon at the floor + an Extend-To-Wall icon at the
+active wall’s top.</p></li>
+</ul>
+<p>When a wall and a slab (LAYER3 element) are selected, an Extend-Vertically icon
+appears at the wall’s origin / slab elevation; clicking dispatches
+<code class="docutils literal notranslate"><span class="pre">bim.extend_walls_to_underside</span></code>.</p>
+<p>When a wall and a non-wall, non-slab object are selected, an Add-Opening icon
+appears above the wall at the other object’s projected X.</p>
+<section id="auto-commit-on-save">
+<h3>Auto-commit on save<a class="headerlink" href="#auto-commit-on-save" title="Link to this heading">¶</a></h3>
+<p>Pressing Ctrl+S (or running <code class="docutils literal notranslate"><span class="pre">bim.save_project</span></code>) while any wall is mid-edit
+flushes every pending parametric draft first — the same Apply-Wall-Edits the ✓
+icon performs, scoped per wall. The IFC saved on disk reflects the values the
+user dragged, not the snapshot taken when edit mode was entered. Each commit
+produces its own undo entry, so Ctrl+Z walks back through commits individually.</p>
+</section>
+</section>
 <section id="aligning-walls">
 <h2>Aligning Walls<a class="headerlink" href="#aligning-walls" title="Link to this heading">¶</a></h2>
 <p>You can align walls using the following options:</p>
@@ -588,6 +641,10 @@ Remember to use snapping and alignment tools to ensure precision in your model.<
 <li><a class="reference internal" href="#creating-a-standalone-wall">Creating a Standalone Wall</a></li>
 <li><a class="reference internal" href="#creating-multiple-connected-walls">Creating Multiple Connected Walls</a></li>
 <li><a class="reference internal" href="#modifying-and-joining-walls">Modifying and Joining Walls</a></li>
+<li><a class="reference internal" href="#interactive-parametric-editing">Interactive Parametric Editing</a><ul>
+<li><a class="reference internal" href="#auto-commit-on-save">Auto-commit on save</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#aligning-walls">Aligning Walls</a></li>
 <li><a class="reference internal" href="#adding-openings">Adding Openings</a></li>
 <li><a class="reference internal" href="#calculating-quantities">Calculating Quantities</a></li>
